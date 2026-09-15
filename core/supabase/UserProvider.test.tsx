@@ -1,4 +1,5 @@
-import { act, cleanup, render, screen, waitFor } from '@testing-library/react';
+import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { useState } from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { User } from '@supabase/supabase-js';
 
@@ -16,6 +17,10 @@ function user(id: string) { return { id, user_metadata: {} } as User; }
 function Probe() {
   const value = useUser();
   return <div data-testid="session">{JSON.stringify({ id: value.userId, role: value.role, status: value.status, avatar: value.avatarUrl, loading: value.loading })}</div>;
+}
+function Draft() {
+  const [value, setValue] = useState('');
+  return <input aria-label="Draft" value={value} onChange={event => setValue(event.target.value)} />;
 }
 function readContext() { return JSON.parse(screen.getByTestId('session').textContent!); }
 
@@ -50,6 +55,39 @@ async function signIn(id: string) {
 }
 
 describe('user context identity transitions', () => {
+  it('preserves an existing edit when the browser confirms the server identity', async () => {
+    const lookup = deferred<{ data: { user: User }; error: null }>();
+    mock.client().auth.getUser.mockReturnValue(lookup.promise);
+    render(<UserProvider initialUser={user('admin-a')}><Draft /><Probe /></UserProvider>);
+    const input = screen.getByRole('textbox', { name: 'Draft' });
+    fireEvent.change(input, { target: { value: 'Garden Academy' } });
+
+    await act(async () => { authCallback('INITIAL_SESSION', { user: user('admin-a') }); });
+
+    expect(screen.getByRole('textbox', { name: 'Draft' })).toHaveValue('Garden Academy');
+    expect(screen.getByRole('textbox', { name: 'Draft' })).toBe(input);
+    await act(async () => { lookup.resolve({ data: { user: user('admin-a') }, error: null }); });
+    expect(screen.getByRole('textbox', { name: 'Draft' })).toBe(input);
+  });
+
+  it('resets child drafts on a real account change and logout', async () => {
+    render(<UserProvider initialUser={user('admin-a')}><Draft /></UserProvider>);
+    await signIn('admin-a');
+    fireEvent.change(screen.getByRole('textbox', { name: 'Draft' }), { target: { value: 'Administrator draft' } });
+    await signIn('student-b');
+    expect(screen.getByRole('textbox', { name: 'Draft' })).toHaveValue('');
+    fireEvent.change(screen.getByRole('textbox', { name: 'Draft' }), { target: { value: 'Student draft' } });
+    await act(async () => { authCallback('SIGNED_OUT', null); });
+    expect(screen.getByRole('textbox', { name: 'Draft' })).toHaveValue('');
+  });
+
+  it('discards the server identity if browser verification fails', async () => {
+    mock.client().auth.getUser.mockRejectedValue(new Error('Session unavailable'));
+    render(<UserProvider initialUser={user('admin-a')}><Probe /></UserProvider>);
+    await waitFor(() => expect(readContext().loading).toBe(false));
+    expect(readContext()).toEqual({ id: '', role: 'user', status: 'suspended', avatar: null, loading: false });
+  });
+
   it('clears privileged profile state immediately when the identity changes', async () => {
     profiles.set('admin-a', Promise.resolve({ data: { role: 'admin', status: 'active', avatar_url: '/a.png' }, error: null }));
     const pendingB = deferred<{ data: Profile; error: null }>();

@@ -25,11 +25,26 @@ test('account language, settings and navigation persist across locales and brows
   expect(created.error).toBeNull();
   const userId = created.data.user!.id;
   const errors: string[] = [];
-  const observe = (target: Page) => {
-    target.on('pageerror', error => errors.push(error.message));
-    target.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+  const responses: Array<{ page: string; phase: string; method: string; origin: string; pathname?: string; status: number }> = [];
+  let omittedResponses = 0;
+  const observe = (target: Page, name: string) => {
+    let phase = 'created';
+    target.on('pageerror', error => errors.push(`[${name}/${phase}] ${error.message}`));
+    target.on('console', message => { if (message.type() === 'error') errors.push(`[${name}/${phase}] ${message.text()}`); });
+    target.on('response', response => {
+      if (response.status() < 400) return;
+      if (responses.length >= 40) { omittedResponses += 1; return; }
+      const url = new URL(response.url());
+      const origin = url.origin === appOrigin ? 'app' : url.origin === apiOrigin ? 'auth' : 'external';
+      responses.push({
+        page: name, phase, method: response.request().method(), origin,
+        ...(origin !== 'external' ? { pathname: url.pathname.slice(0, 200) } : {}),
+        status: response.status(),
+      });
+    });
+    return (nextPhase: string) => { phase = nextPhase; };
   };
-  observe(page);
+  const setPhase = observe(page, 'original');
   const signIn = async (target: Page) => {
     await target.goto(`${baseURL}/login`);
     await target.locator('input[name="email"]').fill(email);
@@ -40,9 +55,12 @@ test('account language, settings and navigation persist across locales and brows
 
   try {
     expect((await service.from('profiles').update({ role: 'admin' }).eq('id', userId)).error).toBeNull();
+    setPhase('sign-in');
     await signIn(page);
+    setPhase('settings');
     await page.goto(`${baseURL}/settings`);
     for (const locale of ['en', 'pt', 'es'] as const) {
+      setPhase(`locale-${locale}`);
       const messages = catalogs[locale];
       // The autonym remains readable even before changing the current language.
       // Setting a cookie can first emit an RSC navigation with the same URL.
@@ -76,6 +94,7 @@ test('account language, settings and navigation persist across locales and brows
       await expect(menu).toHaveCount(0);
       await page.screenshot({ path: testInfo.outputPath(`settings-${locale}.png`), fullPage: true, animations: 'disabled' });
 
+      setPhase(`admin-${locale}`);
       await page.goto(`${baseURL}/admin`);
       await expect(page.locator('html')).toHaveAttribute('lang', locale);
       if (isMobile) {
@@ -94,8 +113,14 @@ test('account language, settings and navigation persist across locales and brows
       await palette.getByRole('textbox', { name: messages.navigation.commands.query, exact: true }).fill(messages.navigation.adminItems.reports);
       await expect(palette.getByText(messages.navigation.adminItems.reports, { exact: true })).toBeVisible();
       await palette.getByRole('button', { name: messages.navigation.commands.close, exact: true }).click();
+      setPhase(`settings-${locale}`);
       await page.goto(`${baseURL}/settings`);
     }
+
+    // The next phase checks persistence in a new browser, without an older
+    // page continuing authenticated reads when that browser signs out.
+    setPhase('close-original');
+    await page.close();
 
     // A fresh cookie jar/browser language must not override the account's ES.
     const freshContext = await browser.newContext({ locale: 'en-US', baseURL });
@@ -108,22 +133,27 @@ test('account language, settings and navigation persist across locales and brows
         await route.continue({ headers: { ...await route.request().allHeaders(), ...identity.headers } });
       });
       const freshPage = await freshContext.newPage();
-      observe(freshPage);
+      const setFreshPhase = observe(freshPage, 'fresh');
+      setFreshPhase('sign-in');
       await signIn(freshPage);
+      setFreshPhase('settings');
       await freshPage.goto(`${baseURL}/settings`);
       await expect(freshPage.locator('html')).toHaveAttribute('lang', 'es');
       await expect(freshPage.getByRole('heading', { level: 1 })).toHaveText('Configuración');
       // Logout keeps the anonymous language cookie, but a new login still uses
       // the saved preference. Only the test's own account/session is affected.
+      setFreshPhase('sign-out');
       await freshPage.getByRole('button', { name: es.settings.session.signOut, exact: true }).click();
       await expect(freshPage).toHaveURL(/\/login$/);
+      setFreshPhase('relogin');
       await signIn(freshPage);
+      setFreshPhase('settings-after-relogin');
       await freshPage.goto(`${baseURL}/settings`);
       await expect(freshPage.locator('html')).toHaveAttribute('lang', 'es');
     } finally {
       await freshContext.close();
     }
-    expect(errors).toEqual([]);
+    expect(errors, errors.length ? `HTTP error responses by observation phase: ${JSON.stringify({ responses, omittedResponses })}` : undefined).toEqual([]);
   } finally {
     expect((await service.auth.admin.deleteUser(userId)).error).toBeNull();
   }

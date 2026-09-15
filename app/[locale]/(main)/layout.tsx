@@ -35,7 +35,7 @@ export default async function MainLayout({ children }: { children: React.ReactNo
   ]);
 
   return (
-    <UserProvider>
+    <UserProvider initialUser={user}>
       <div className="flex flex-col min-h-screen">
         <NavShell
           siteName={settings.site_name}

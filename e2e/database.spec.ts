@@ -132,7 +132,12 @@ test('administrator saves a new identity and a student receives that identity', 
     await page.goto('/admin/branding');
     await page.getByLabel('Site name', { exact: true }).fill(siteName);
     await page.getByLabel('Body font', { exact: true }).selectOption('serif');
-    await page.getByRole('button', { name: /Save changes/i }).click();
+    await expect(page.getByLabel('Site name', { exact: true })).toHaveValue(siteName);
+    await expect(page.getByLabel('Body font', { exact: true })).toHaveValue('serif');
+    await Promise.all([
+      page.waitForEvent('load'),
+      page.getByRole('button', { name: /Save changes/i }).click(),
+    ]);
     await expect.poll(async () => (await admin.from('tenant_settings').select('site_name').limit(1).single()).data?.site_name).toBe(siteName);
     await expect(page).toHaveTitle(siteName);
     await page.screenshot({ path: test.info().outputPath('saved-administrator-brand.png'), fullPage: true });

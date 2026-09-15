@@ -70,8 +70,9 @@ function ProfileProvider({ user, sessionLoading, children }: {
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
 
-export function UserProvider({ children }: { children: React.ReactNode }) {
-  const [session, setSession] = useState<{ user: User | null; loading: boolean }>({ user: null, loading: true });
+export function UserProvider({ children, initialUser = null }: { children: React.ReactNode; initialUser?: User | null }) {
+  // Keep the page mounted when the browser confirms the server-verified identity.
+  const [session, setSession] = useState<{ user: User | null; loading: boolean }>({ user: initialUser, loading: true });
 
   useEffect(() => {
     const supabase = createClient();
