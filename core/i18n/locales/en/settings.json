@@ -1,0 +1,102 @@
+{
+  "page": {
+    "eyebrow": "Account",
+    "heading": "Settings",
+    "description": "Manage your profile, credentials, and learning preferences."
+  },
+  "profile": {
+    "eyebrow": "Identity",
+    "heading": "Profile",
+    "photo": "Profile photo",
+    "photoHelp": "JPG, PNG or WebP · up to {maxSize} MB",
+    "changePhoto": "Change photo",
+    "displayName": "Display name",
+    "namePlaceholder": "Your name"
+  },
+  "email": {
+    "eyebrow": "Contact",
+    "heading": "Email",
+    "currentAddress": "Current email address",
+    "newAddress": "New email address",
+    "sendConfirmation": "Send confirmation"
+  },
+  "password": {
+    "eyebrow": "Security",
+    "heading": "Password",
+    "label": "Login password",
+    "description": "Choose a new password for your account.",
+    "newPassword": "New password (at least {minLength} characters)",
+    "confirmPassword": "Confirm new password",
+    "update": "Update password"
+  },
+  "language": {
+    "eyebrow": "Preferences",
+    "heading": "Language",
+    "description": "Choose the interface language to save in your account. Your preference will also apply when you sign in on another device.",
+    "options": {
+      "en": "English",
+      "pt": "Portuguese",
+      "es": "Spanish"
+    }
+  },
+  "playback": {
+    "eyebrow": "Playback",
+    "heading": "Video preferences",
+    "autoplay": "Autoplay next lesson",
+    "description": "When a lesson ends, start the next one automatically after a short countdown."
+  },
+  "session": {
+    "eyebrow": "This device",
+    "heading": "Session",
+    "signOut": "Log out",
+    "description": "Sign out of your account on this device."
+  },
+  "danger": {
+    "eyebrow": "Irreversible",
+    "heading": "Danger zone",
+    "deleteAccount": "Delete account",
+    "description": "Permanently erase your profile, progress, and data. This cannot be undone.",
+    "delete": "Delete",
+    "irreversible": "This cannot be undone",
+    "confirmDescription": "Your profile, progress, and data will be permanently deleted. Type <strong>{word}</strong> to confirm.",
+    "confirmWord": "DELETE",
+    "confirmPlaceholder": "Type {word} to confirm",
+    "deleting": "Deleting…"
+  },
+  "actions": {
+    "save": "Save",
+    "saving": "Saving…",
+    "change": "Change",
+    "sending": "Sending…",
+    "updating": "Updating…",
+    "cancel": "Cancel"
+  },
+  "status": {
+    "photoUpdated": "Profile photo updated!",
+    "nameUpdated": "Name updated!",
+    "emailSent": "Confirmation email sent",
+    "emailSentDescription": "Check your inbox to verify the new address.",
+    "passwordUpdated": "Password updated!"
+  },
+  "errors": {
+    "notAuthenticated": "Please sign in again to continue.",
+    "invalidAvatar": "This profile photo is not valid. Please upload another image.",
+    "saveAvatar": "Could not save your profile photo. Please try again.",
+    "invalidName": "Enter a name between 1 and 50 characters.",
+    "updateName": "Could not update your name. Please try again.",
+    "invalidEmail": "Enter a valid email address.",
+    "currentEmail": "That is already your current email address.",
+    "updateEmail": "Could not request the email change. Please try again.",
+    "invalidPassword": "Your password must have at least 8 characters.",
+    "updatePassword": "Could not update your password. Please try again.",
+    "unsupportedLanguage": "Choose English, Portuguese, or Spanish.",
+    "updateLanguage": "Could not save your language preference. Please try again.",
+    "updatePreference": "Could not save your video preference. Please try again.",
+    "deleteAccount": "Could not delete your account. Please try again.",
+    "imageFile": "Please select an image file.",
+    "imageTooLarge": "The image must be no larger than {maxSize} MB.",
+    "uploadImage": "Could not upload the image. Please try again.",
+    "passwordMismatch": "Passwords do not match.",
+    "unexpected": "Something went wrong. Please try again."
+  }
+}

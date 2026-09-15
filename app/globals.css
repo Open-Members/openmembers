@@ -1,0 +1,328 @@
+@import "tailwindcss";
+@import "@heroui/react/styles";
+
+@theme inline {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* Editorial serif — reserved for display headlines on hero / course
+     detail / large typography surfaces. Use sparingly for contrast with
+     the sans-serif body. */
+  --font-display-token: var(--font-display, Georgia), ui-serif, Georgia, 'Times New Roman', serif;
+
+  /* Default palette; installations can override primary and accent. */
+  /* Primary — Blue scale */
+  --color-primary-50:  #e6ecf7;
+  --color-primary-100: #b3c4e8;
+  --color-primary-200: #809cd9;
+  --color-primary-300: #4d74ca;
+  --color-primary-400: #1a4cbb;
+  --color-primary-500: #0235A8;
+  --color-primary-600: #023373;
+  --color-primary-700: #022660;
+  --color-primary-800: #011840;
+  --color-primary-900: #010b20;
+
+  /* Accent — Red scale */
+  --color-accent-50:  #fee8e8;
+  --color-accent-100: #fbb8b8;
+  --color-accent-200: #f88888;
+  --color-accent-300: #f55858;
+  --color-accent-400: #f22828;
+  --color-accent-500: #F20505;
+  --color-accent-600: #BF0606;
+  --color-accent-700: #8c0404;
+  --color-accent-800: #590303;
+  --color-accent-900: #260101;
+
+  /* Light mode surfaces (defaults) */
+  --color-background:       #ffffff;
+  --color-foreground:       #040d1f;
+  --color-muted:            #f4f6fb;
+  --color-muted-foreground: #5a6a8a;
+  --color-border:           #dde2ef;
+  --color-card:             #ffffff;
+  --color-card-foreground:  #040d1f;
+
+  /* Semantic aliases */
+  --color-primary:          var(--color-primary-500);
+  --color-primary-dark:     var(--color-primary-600);
+  --color-primary-hover:    var(--color-primary-700);
+  --color-accent:           var(--color-accent-500);
+  --color-accent-dark:      var(--color-accent-600);
+  --color-accent-hover:     var(--color-accent-700);
+
+  /* Score colours */
+  --color-score-excellent: #16a34a;
+  --color-score-good:      #65a30d;
+  --color-score-fair:      #d97706;
+  --color-score-poor:      var(--color-accent-500);
+}
+
+/* ─── Dark Mode ───
+   Opt-in via .dark class on <html>. Toggleable via ThemeToggle component.
+   Near-black base with warm neutral tint — closer to Masterclass / Netflix
+   than navy. Primary + accent are overridden at runtime by the tenant. */
+.dark {
+  --color-background:       #0a0b0e;  /* deep near-black, slight blue-gray */
+  --color-foreground:       #f2f1ee;  /* warm off-white */
+  --color-muted:            #14151a;  /* one tier above background */
+  --color-muted-foreground: #8e8d93;  /* neutral warm gray */
+  --color-border:           #24252a;  /* hairline tone for cards + dividers */
+  --color-card:             #111217;  /* slightly lifted from background */
+  --color-card-foreground:  #f2f1ee;
+
+  /* Primary scale still biased toward blue for the default fallback, but
+     runtime tenant override at :root,.dark wins. */
+  --color-primary-50:  #0f1e40;
+  --color-primary-100: #162850;
+  --color-primary-200: #1a3d8a;
+  --color-primary:     #4d8aff;
+  --color-primary-dark: #f2f1ee;
+
+  /* Accent adjustments — keep vivid on dark */
+  --color-accent-50:  #3d1020;
+  --color-accent-100: #5a1525;
+
+  /* Score colours — brighter on dark for contrast */
+  --color-score-excellent: #34d399;
+  --color-score-good:      #a3e635;
+  --color-score-fair:      #fbbf24;
+  --color-score-poor:      #fb7185;
+}
+
+/* ─── Premium Animation Keyframes ─── */
+
+@keyframes shimmer {
+  0% { transform: translateX(-200%); }
+  100% { transform: translateX(200%); }
+}
+
+@utility animate-shimmer {
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.15); opacity: 0.2; }
+}
+
+@utility animate-pulse-ring {
+  animation: pulse-ring 2.2s ease-in-out infinite;
+}
+
+@keyframes float-up {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-60px) scale(0.6); opacity: 0; }
+}
+
+/* Hide scrollbar on horizontal content rows while keeping scroll behavior. */
+@utility scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-feature-settings: 'rlig', 'calt';
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* ─── Editorial display utility ─── */
+/* Apply `.font-display` to headlines that should use the serif. Pair
+   with tracking-tight + leading-[1.05] for a proper Masterclass feel. */
+@utility font-display {
+  font-family: var(--font-display, Georgia), ui-serif, Georgia, 'Times New Roman', serif;
+  font-feature-settings: 'ss01', 'ss02', 'liga', 'calt';
+  letter-spacing: -0.01em;
+}
+
+/* Hairline separator tuned for premium surfaces (8% opacity in both modes). */
+@utility border-hairline {
+  border-color: color-mix(in oklab, var(--color-foreground) 8%, transparent);
+}
+
+/* Ken Burns — slow, very subtle zoom for hero images when no trailer is set.
+   30s duration + alternate keeps motion below distraction threshold. */
+@keyframes ken-burns {
+  from { transform: scale(1); }
+  to   { transform: scale(1.06); }
+}
+
+@utility animate-ken-burns {
+  animation: ken-burns 30s ease-in-out infinite alternate;
+}
+
+/* ─── Live class banner animations ─────────────────────────────────
+   The red-tinted pulsing halo, three-bar soundwave, and diagonal
+   shimmer sweep that announce a "live now" session. Scoped so the
+   countdown card is the only surface that uses them. */
+@keyframes live-halo {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.55), 0 8px 24px -12px rgba(239, 68, 68, 0.4); }
+  50%      { box-shadow: 0 0 28px 4px rgba(239, 68, 68, 0.35), 0 14px 40px -10px rgba(239, 68, 68, 0.55); }
+}
+
+@keyframes live-wave-a {
+  0%, 100% { transform: scaleY(0.35); }
+  50%      { transform: scaleY(1);    }
+}
+@keyframes live-wave-b {
+  0%, 100% { transform: scaleY(0.85); }
+  50%      { transform: scaleY(0.25); }
+}
+@keyframes live-wave-c {
+  0%, 100% { transform: scaleY(0.5);  }
+  50%      { transform: scaleY(0.95); }
+}
+
+@keyframes live-shimmer-sweep {
+  0%   { transform: translateX(-140%) skewX(-18deg); opacity: 0;   }
+  35%  { opacity: 0.35; }
+  65%  { opacity: 0.35; }
+  100% { transform: translateX(140%)  skewX(-18deg); opacity: 0;   }
+}
+
+@keyframes countdown-soft-pulse {
+  0%, 100% { opacity: 1;    }
+  50%      { opacity: 0.65; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-halo-wrapper,
+  .live-shimmer,
+  [data-soundwave-bar],
+  [data-countdown-pulse] {
+    animation: none !important;
+  }
+  .live-shimmer {
+    display: none;
+  }
+}
+
+/* ─── Stagger fade-in for horizontal row cards ──────────────────────
+   Cards inside a `[data-row-scroller]` fade up sequentially on mount.
+   Only the first ~8 stagger; the rest land instantly so off-screen
+   content never feels delayed. */
+@keyframes row-stagger {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-row-scroller] > * {
+  animation: row-stagger 420ms ease-out backwards;
+}
+[data-row-scroller] > *:nth-child(1)  { animation-delay: 0ms;   }
+[data-row-scroller] > *:nth-child(2)  { animation-delay: 40ms;  }
+[data-row-scroller] > *:nth-child(3)  { animation-delay: 80ms;  }
+[data-row-scroller] > *:nth-child(4)  { animation-delay: 120ms; }
+[data-row-scroller] > *:nth-child(5)  { animation-delay: 160ms; }
+[data-row-scroller] > *:nth-child(6)  { animation-delay: 200ms; }
+[data-row-scroller] > *:nth-child(7)  { animation-delay: 240ms; }
+[data-row-scroller] > *:nth-child(8)  { animation-delay: 280ms; }
+[data-row-scroller] > *:nth-child(n+9) { animation-delay: 320ms; }
+
+/* ─── Keyboard focus ring ─────────────────────────────────────────
+   Only shows for keyboard-driven focus (`:focus-visible`) so mouse
+   clicks don't leave ugly outlines. Uses the tenant primary color. */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible,
+[role='button']:focus-visible,
+[role='menuitem']:focus-visible,
+[role='tab']:focus-visible,
+[tabindex]:not([tabindex='-1']):focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ─── Respect prefers-reduced-motion ─────────────────────────────
+   Zero-out animations + transitions + auto scrolls for users who
+   opt out at the OS level. Matches Apple / Google a11y guidance. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Dark mode image adjustments ─── */
+/* White-on-transparent logos: invert for light mode visibility */
+.logo-adaptive {
+  /* Light mode: make white logo dark */
+  filter: brightness(0) saturate(100%);
+}
+.dark .logo-adaptive {
+  /* Dark mode: keep white logo as-is */
+  filter: none;
+}
+
+/* Ensure images in dark mode have slight brightness adjustment */
+.dark img:not(.logo-adaptive):not([data-no-dark-adjust]) {
+  opacity: 0.92;
+}
+
+/* ─── Dark mode: elevated surfaces get lighter borders + subtle glow shadows ─── */
+.dark [class*="shadow-sm"],
+.dark [class*="shadow-md"] {
+  --tw-shadow-color: rgba(0, 20, 60, 0.5);
+  border-color: var(--color-border);
+}
+
+/* ─── HeroUI field tokens for dark mode ─── */
+/* Override HeroUI's default dark field colours to match our navy palette */
+.dark {
+  --field-background: var(--color-muted);
+  --field-foreground: var(--color-foreground);
+  --field-placeholder: var(--color-muted-foreground);
+  --field-border: var(--color-border);
+}
+
+/* Inputs and textareas in dark mode (non-HeroUI native inputs) */
+.dark input:not([data-slot]),
+.dark textarea:not([data-slot]),
+.dark select:not([data-slot]) {
+  background-color: var(--color-muted);
+  color: var(--color-foreground);
+  border-color: var(--color-border);
+}
+.dark input:not([data-slot])::placeholder,
+.dark textarea:not([data-slot])::placeholder {
+  color: var(--color-muted-foreground);
+}
+.dark input:not([data-slot]):focus,
+.dark textarea:not([data-slot]):focus,
+.dark select:not([data-slot]):focus {
+  border-color: var(--color-primary);
+}
+
+/* Backdrop panels follow the configured surface color. */
+.dark [class*="backdrop-blur"] {
+  background-color: color-mix(in oklab, var(--color-background) 85%, transparent);
+}

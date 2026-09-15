@@ -1,0 +1,102 @@
+{
+  "page": {
+    "eyebrow": "Conta",
+    "heading": "Configurações",
+    "description": "Gerencie seu perfil, dados de acesso e preferências de aprendizagem."
+  },
+  "profile": {
+    "eyebrow": "Identidade",
+    "heading": "Perfil",
+    "photo": "Foto de perfil",
+    "photoHelp": "JPG, PNG ou WebP · até {maxSize} MB",
+    "changePhoto": "Alterar foto",
+    "displayName": "Nome de exibição",
+    "namePlaceholder": "Seu nome"
+  },
+  "email": {
+    "eyebrow": "Contato",
+    "heading": "E-mail",
+    "currentAddress": "Endereço de e-mail atual",
+    "newAddress": "Novo endereço de e-mail",
+    "sendConfirmation": "Enviar confirmação"
+  },
+  "password": {
+    "eyebrow": "Segurança",
+    "heading": "Senha",
+    "label": "Senha de acesso",
+    "description": "Escolha uma nova senha para sua conta.",
+    "newPassword": "Nova senha (mínimo de {minLength} caracteres)",
+    "confirmPassword": "Confirme a nova senha",
+    "update": "Atualizar senha"
+  },
+  "language": {
+    "eyebrow": "Preferências",
+    "heading": "Idioma",
+    "description": "Escolha o idioma da interface para salvar na sua conta. Sua preferência também será aplicada ao entrar em outro dispositivo.",
+    "options": {
+      "en": "Inglês",
+      "pt": "Português",
+      "es": "Espanhol"
+    }
+  },
+  "playback": {
+    "eyebrow": "Reprodução",
+    "heading": "Preferências de vídeo",
+    "autoplay": "Reproduzir a próxima aula automaticamente",
+    "description": "Ao terminar uma aula, inicie a próxima automaticamente após uma breve contagem regressiva."
+  },
+  "session": {
+    "eyebrow": "Este dispositivo",
+    "heading": "Sessão",
+    "signOut": "Sair",
+    "description": "Saia da sua conta neste dispositivo."
+  },
+  "danger": {
+    "eyebrow": "Irreversível",
+    "heading": "Zona de perigo",
+    "deleteAccount": "Excluir conta",
+    "description": "Apague permanentemente seu perfil, progresso e dados. Essa ação não pode ser desfeita.",
+    "delete": "Excluir",
+    "irreversible": "Essa ação não pode ser desfeita",
+    "confirmDescription": "Seu perfil, progresso e dados serão excluídos permanentemente. Digite <strong>{word}</strong> para confirmar.",
+    "confirmWord": "EXCLUIR",
+    "confirmPlaceholder": "Digite {word} para confirmar",
+    "deleting": "Excluindo…"
+  },
+  "actions": {
+    "save": "Salvar",
+    "saving": "Salvando…",
+    "change": "Alterar",
+    "sending": "Enviando…",
+    "updating": "Atualizando…",
+    "cancel": "Cancelar"
+  },
+  "status": {
+    "photoUpdated": "Foto de perfil atualizada!",
+    "nameUpdated": "Nome atualizado!",
+    "emailSent": "E-mail de confirmação enviado",
+    "emailSentDescription": "Verifique sua caixa de entrada para confirmar o novo endereço.",
+    "passwordUpdated": "Senha atualizada!"
+  },
+  "errors": {
+    "notAuthenticated": "Entre novamente na sua conta para continuar.",
+    "invalidAvatar": "Essa foto de perfil não é válida. Envie outra imagem.",
+    "saveAvatar": "Não foi possível salvar sua foto de perfil. Tente novamente.",
+    "invalidName": "Digite um nome com 1 a 50 caracteres.",
+    "updateName": "Não foi possível atualizar seu nome. Tente novamente.",
+    "invalidEmail": "Digite um endereço de e-mail válido.",
+    "currentEmail": "Esse já é seu endereço de e-mail atual.",
+    "updateEmail": "Não foi possível solicitar a alteração de e-mail. Tente novamente.",
+    "invalidPassword": "Sua senha deve ter pelo menos 8 caracteres.",
+    "updatePassword": "Não foi possível atualizar sua senha. Tente novamente.",
+    "unsupportedLanguage": "Escolha inglês, português ou espanhol.",
+    "updateLanguage": "Não foi possível salvar sua preferência de idioma. Tente novamente.",
+    "updatePreference": "Não foi possível salvar sua preferência de vídeo. Tente novamente.",
+    "deleteAccount": "Não foi possível excluir sua conta. Tente novamente.",
+    "imageFile": "Selecione um arquivo de imagem.",
+    "imageTooLarge": "A imagem deve ter no máximo {maxSize} MB.",
+    "uploadImage": "Não foi possível enviar a imagem. Tente novamente.",
+    "passwordMismatch": "As senhas não coincidem.",
+    "unexpected": "Ocorreu um erro. Tente novamente."
+  }
+}

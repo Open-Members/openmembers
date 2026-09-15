@@ -1,0 +1,89 @@
+{
+  "title": "Suporte",
+  "subtitle": "Abra um chamado e nossa equipe responderá por e-mail.",
+  "newTicket": "Novo chamado",
+  "empty": {
+    "title": "Nenhum chamado ainda",
+    "description": "Quando você abrir um chamado de suporte, ele aparecerá aqui.",
+    "cta": "Abrir meu primeiro chamado"
+  },
+  "status": {
+    "open": "Aberto",
+    "in_progress": "Em andamento",
+    "closed": "Fechado"
+  },
+  "list": {
+    "columns": {
+      "subject": "Assunto",
+      "status": "Status",
+      "created": "Criado em"
+    }
+  },
+  "form": {
+    "title": "Abrir um chamado",
+    "description": "Nos conte do que você precisa de ajuda. Inclua o máximo de detalhes possível — você pode colocar links ou capturas de tela no corpo da mensagem.",
+    "subject": "Assunto",
+    "subjectPlaceholder": "Resumo curto do problema",
+    "message": "Mensagem",
+    "messagePlaceholder": "Descreva o problema em detalhes",
+    "submit": "Enviar chamado",
+    "submitting": "Enviando…",
+    "cancel": "Cancelar",
+    "successToast": "Chamado criado. Vamos responder por e-mail.",
+    "errorFallback": "Não foi possível criar o chamado. Tente novamente.",
+    "errors": {
+      "notAuthenticated": "Entre na sua conta para abrir um chamado.",
+      "accountInactive": "Sua conta não está ativa.",
+      "invalidInput": "Confira o assunto e a mensagem e tente novamente.",
+      "operationFailed": "Não foi possível criar o chamado. Tente novamente."
+    }
+  },
+  "detail": {
+    "back": "Voltar para chamados",
+    "createdOn": "Aberto em",
+    "messageLabel": "Sua mensagem"
+  },
+  "admin": {
+    "title": "Chamados de suporte",
+    "subtitle": "Todos os chamados enviados pela página de Suporte.",
+    "filter": {
+      "all": "Todos",
+      "open": "Abertos",
+      "in_progress": "Em andamento",
+      "closed": "Fechados",
+      "ariaLabel": "Filtrar chamados de suporte por status"
+    },
+    "columns": {
+      "subject": "Assunto",
+      "user": "Usuário",
+      "status": "Status",
+      "created": "Criado",
+      "updated": "Atualizado"
+    },
+    "empty": "Nenhum chamado corresponde ao filtro selecionado.",
+    "detail": {
+      "back": "Voltar para chamados",
+      "userLabel": "Enviado por",
+      "emailLabel": "E-mail",
+      "createdLabel": "Criado",
+      "updatedLabel": "Última atualização",
+      "messageLabel": "Mensagem do usuário",
+      "noteLabel": "Nota interna (não visível ao usuário)",
+      "notePlaceholder": "Adicione uma nota privada para o time",
+      "statusLabel": "Status",
+      "saveButton": "Salvar alterações",
+      "savingButton": "Salvando…",
+      "successToast": "Chamado atualizado.",
+      "errorFallback": "Não foi possível atualizar o chamado.",
+      "metadataFallback": "Chamado de suporte",
+      "errors": {
+        "notAuthenticated": "Entre novamente para atualizar este chamado.",
+        "accountInactive": "Sua conta não está ativa.",
+        "notAuthorized": "Você não tem permissão para atualizar este chamado.",
+        "invalidInput": "Confira o status e a nota e tente novamente.",
+        "notFound": "Este chamado não existe mais.",
+        "operationFailed": "Não foi possível atualizar o chamado."
+      }
+    }
+  }
+}

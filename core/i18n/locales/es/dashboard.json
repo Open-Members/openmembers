@@ -1,0 +1,28 @@
+{
+  "greeting": "Bienvenido de vuelta",
+  "dailyChallenge": {
+    "title": "Desafío de Hoy",
+    "cta": "Aceptar el desafío",
+    "completed": "¡Completado!",
+    "bonus": "+{xp} XP extra"
+  },
+  "streak": {
+    "title": "Racha Actual",
+    "days": "{count, plural, one {# día} other {# días}}",
+    "keepItUp": "¡Sigue así!"
+  },
+  "xp": {
+    "title": "XP Total",
+    "level": "Nivel {level}"
+  },
+  "recentRecordings": {
+    "title": "Grabaciones Recientes",
+    "empty": "Sin grabaciones aún. ¡Empieza a practicar!",
+    "viewAll": "Ver todas"
+  },
+  "practiceNow": "Practicar ahora",
+  "communityActivity": {
+    "title": "Comunidad",
+    "empty": "Sé el primero en compartir una grabación"
+  }
+}

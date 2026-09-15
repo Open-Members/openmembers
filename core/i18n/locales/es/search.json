@@ -1,0 +1,6 @@
+{
+  "title": "Búsqueda", "input": "Buscar cursos y lecciones", "placeholder": "Buscar cursos y lecciones…", "close": "Cerrar búsqueda",
+  "minimum": "Escribe al menos 2 caracteres para buscar.", "loading": "Buscando…", "empty": "No hay resultados para “{query}”.",
+  "failed": "No se pudo completar la búsqueda. Algunos resultados pueden no estar disponibles.", "retry": "Intentar de nuevo", "courses": "Cursos", "lessons": "Lecciones",
+  "course": "Curso", "lesson": "Lección", "locked": "Bloqueado", "navigate": "Navegar", "open": "Abrir", "closeHint": "Cerrar"
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cloudflare/workers-sdk/main/packages/wrangler/config-schema.json",
+  "name": "openmembers-website",
+  // Add your account_id and routes to an ignored wrangler.local.jsonc copy.
+  "main": "deploy/worker.mjs",
+  "compatibility_date": "2026-09-07",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [],
+  "assets": {
+    "directory": "./release",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page",
+    "run_worker_first": [
+      "/*",
+      "!/assets/*",
+      "!/style.css",
+      "!/site.js",
+      "!/locale.js",
+      "!/search.js",
+      "!/robots.txt",
+      "!/sitemap.xml",
+    ],
+  },
+  "observability": { "enabled": false },
+}

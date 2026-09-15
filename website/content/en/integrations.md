@@ -1,0 +1,33 @@
+Configured does not mean validated. This guide presents integration requirements and behavior. Each provider needs its own verification; configuration and local tests do not establish external operation.
+
+| Integration | Installation requirements | Behavior and limits |
+| --- | --- | --- |
+| Supabase Auth/DB | URL, anon key, service role; versioned migrations and initial administrator | Mandatory core. Without configuration, entry directs users to setup and dependent APIs return 503. |
+| Supabase Storage | Migration-defined buckets, session, and access rules | Private attachments; public branding and avatars. See limits, signed URLs, and cleanup in the [storage guide](storage.md). |
+| Stripe | `STRIPE_SECRET_KEY`, active configuration with a webhook secret in Admin or fallback `STRIPE_WEBHOOK_SECRET`, offers by Price ID | Client initializes on demand. Configure the same account/environment as the offers and validate checkout, renewal, refund, dispute, and retry in the test account. See [payments](payments.md). |
+| Guru | Active configuration, URL token, account identification required by the adapter, and product/package in Admin | The URL is a credential; do not publish it in access logs. Compare postbacks with the provider account's contract. |
+| Generic webhook | Bearer token in Admin and a purchase payload with transaction, product, or fallback package | Invalid requests do not grant access. The endpoint defines no generic signature, cancellation, or refund protocol. |
+| Hotmart | Compatibility adapter, outside the supported administrative catalog | The route's existence does not certify operational compatibility. Review the contract and test with the provider account before use. |
+| Local email | `EMAIL_TRANSPORT=mailpit`, loopback `MAILPIT_URL`, and Supabase | Explicit local capture, without fallback to external delivery. Local Auth uses separate SMTP. See [email and jobs](email-jobs.md). |
+| Resend | `RESEND_API_KEY`, own verified sender in Admin/env, and installation URL | Support and transactional messages share a transport. Sending returns unavailable without configured transport. Acceptance does not prove inbox delivery. |
+| Auth email hook | `SEND_EMAIL_HOOK_SECRET`, valid origin, transport, and hook enabled in Supabase | Validates the signature before rendering/sending. Does not replace local SMTP automatically; validate signup, recovery, email change, and reauthentication. |
+| Resend webhook | `RESEND_WEBHOOK_SECRET` and administrative Supabase | Signed input deduplicated by event identity. Validate delivery, bounce, and replay using events from the provider account. |
+| R2 | `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, private bucket, and origin CORS | Without configuration, UI upload is disabled and APIs are unavailable. The declared upload limit is not a quota on received bytes. See [storage](storage.md). |
+| Jobs | `CRON_SECRET`, Supabase, and own scheduler; email when the job sends a notice | Protected routes do not create a schedule automatically. Configure triggers, failure observation, and recovery using the [operations guide](../deployment/operations.md). |
+| AI chat | `COURSE_CHAT_ENABLED=true`, Gateway key, DB URL, Supabase, and authorized corpus | Disabled by default in UI and routes. Missing corpus prevents generation. Ingestion is not distributed; see [chat and features](../features/overview.md). |
+| Google/Apple OAuth | `OAUTH_PROVIDERS=google,apple`, credentials/providers enabled in Supabase | Server action disabled by default; social sign-in UI is not distributed. Only listed names are accepted; callback uses the trusted origin at `/api/auth/callback`. Implement the UI and validate sessions/account switching. |
+| YouTube/Vimeo | Video reference authorized by the administrator | Embed depends on network and video policy, without an API key. Vimeo accepts ID/URL and private hash, uses `dnt=1`, and has no dedicated upload/API integration. Check origin, resume, and completion in the [player guide](../features/player.md). |
+| GA4 | Own build-time `NEXT_PUBLIC_GA4_MEASUREMENT_ID`, formed by `G-` and uppercase letters/numbers | Without a valid ID, no script renders. When configured, it loads after interactivity. Validate events and consent according to installation policy. |
+| Meta Pixel | Own numeric build-time `NEXT_PUBLIC_META_PIXEL_ID` | Script and tracker are disabled without a valid ID. `PurchaseTracker` reads value/currency from the thank-you page query; this visitor-controlled event does not prove payment. Validate consent and deduplication. |
+| Sentry | Public/server DSN; own token, organization, and project for sourcemap upload | Node/edge prefer nonempty `NEXT_PUBLIC_SENTRY_DSN` over `SENTRY_DSN`; the client uses only the public DSN, on demand on authenticated paths. No initialization without DSN. Traces at 10%, replay disabled. Validate reception, personal data, and sourcemaps; never publish the token. |
+| Push/PWA | Configurable manifest; worker, UI registration, and sender not distributed | New push subscriptions are disabled; authenticated removal remains available. `NEXT_PUBLIC_VAPID_PUBLIC_KEY` alone does not enable delivery. A manifest does not prove installation/offline behavior; validate each platform before offering these features. |
+
+## Configuration and isolation
+
+Use `.env.example` for variable names and `openmembers.config.json` only for presentation. Webhook settings live in the panel and the installation's administrative database. Signing secrets are not public keys. The core uses offers by Price ID; `STRIPE_PRICE_MONTHLY` and `STRIPE_PRICE_ANNUAL` do not configure the active flow.
+
+`BREVO_API_KEY` does not enable sending. Old name/address aliases may remain as sender fallbacks, but do not represent Brevo provider support. New configurations should use `RESEND_SENDER_EMAIL`/`RESEND_SENDER_NAME` or the panel.
+
+The local runner removes inherited provider credentials, forces Mailpit capture, and disables AI/OAuth. Enabling an external service requires explicit configuration outside that isolated environment. Public variables enter the Next.js build: changing Supabase URL/anon key or analytics IDs requires rebuilding. Server secrets and operational flags are runtime configuration. Public branding configuration remains external to the artifact; see [customization](../customization.md).
+
+Host scheduling, external delivery, and provider behavior need verification on the infrastructure that runs them. A local attachment, email capture, or job execution test does not certify R2, Resend, or a remote scheduler.

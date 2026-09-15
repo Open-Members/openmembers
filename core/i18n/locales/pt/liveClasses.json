@@ -1,0 +1,50 @@
+{
+  "schedule": "Agenda",
+  "upcoming": "Próximas aulas ao vivo",
+  "upcomingClass": "Próxima aula ao vivo",
+  "live": "Ao vivo",
+  "liveNow": "Ao vivo agora",
+  "starts": "Começa",
+  "join": "Entrar agora",
+  "openMeeting": "Abrir link da aula",
+  "openLink": "Abrir link",
+  "addCalendar": "Adicionar ao calendário",
+  "viewCourse": "Ver curso",
+  "browseCourses": "Explorar cursos",
+  "browseCatalog": "Explorar catálogo",
+  "duration": "{minutes, number} min",
+  "scheduled": "Duração prevista: {minutes, number} min",
+  "elapsed": "{time} decorridos",
+  "elapsedHours": "{hours, number}h {minutes}min",
+  "localTime": "{time} · seu horário local",
+  "localTimeShort": "{time} no seu horário",
+  "coursesMore": "{title} + mais {count, number}",
+  "countdown": {
+    "starting": "Começa em {time}",
+    "daysHours": "em {days, number}d {hours, number}h",
+    "hoursMinutes": "em {hours, number}h {minutes, number}min",
+    "minutesSeconds": "em {minutes, number}min {seconds}s",
+    "weeks": "{count, plural, one {Em # semana} other {Em # semanas}}",
+    "days": "{count, plural, one {Em # dia} other {Em # dias}}",
+    "tomorrow": "Amanhã",
+    "minutes": "em {count, number}min"
+  },
+  "strip": {
+    "emptyEnrolled": "Nenhuma aula agendada para os próximos {days, number} dias",
+    "emptyVisitor": "Ainda não há aulas ao vivo",
+    "window": "Próximos {days, number} dias · {timezone}"
+  },
+  "calendar": {
+    "title": "Próximas aulas ao vivo",
+    "description": "Veja todas as aulas ao vivo dos cursos em que você está inscrito em um calendário mensal.",
+    "enrollTitle": "Inscreva-se em um curso para acessar as aulas ao vivo.",
+    "enrollDescription": "O calendário reúne as sessões de perguntas e respostas, oficinas e aulas ao vivo do seu instrutor.",
+    "previous": "Mês anterior",
+    "next": "Próximo mês",
+    "today": "Hoje",
+    "grid": "Aulas ao vivo em {month}",
+    "dayEvents": "{date}, {count, plural, one {# evento} other {# eventos}}",
+    "more": "+{count, number} mais",
+    "empty": "Nenhuma aula ao vivo agendada para {month}."
+  }
+}

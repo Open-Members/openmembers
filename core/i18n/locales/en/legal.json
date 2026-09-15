@@ -1,0 +1,31 @@
+{
+  "common": {
+    "updatedLabel": "Status",
+    "backHome": "Back to home",
+    "publishedStatus": "Published by the organization",
+    "publishedIntro": "Read the document provided by the organization responsible for {siteName}.",
+    "openDocument": "Read document"
+  },
+  "terms": {
+    "title": "Terms of Use",
+    "updatedAt": "Not configured",
+    "intro": "The organization responsible for {siteName} has not yet published its Terms of Use.",
+    "sections": [
+      {
+        "title": "Terms for this installation",
+        "body": "Contact the organization responsible for {siteName} for information about account access, content, purchases and its applicable terms."
+      }
+    ]
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "updatedAt": "Not configured",
+    "intro": "The organization responsible for {siteName} has not yet published its Privacy Policy.",
+    "sections": [
+      {
+        "title": "Privacy information for this installation",
+        "body": "Contact the organization responsible for {siteName} for information about its use of personal data and how to submit a privacy request."
+      }
+    ]
+  }
+}

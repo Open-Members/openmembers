@@ -1,0 +1,89 @@
+{
+  "title": "Support",
+  "subtitle": "Open a ticket and our team will get back to you by email.",
+  "newTicket": "New ticket",
+  "empty": {
+    "title": "No tickets yet",
+    "description": "When you open a support ticket it will appear here.",
+    "cta": "Open your first ticket"
+  },
+  "status": {
+    "open": "Open",
+    "in_progress": "In progress",
+    "closed": "Closed"
+  },
+  "list": {
+    "columns": {
+      "subject": "Subject",
+      "status": "Status",
+      "created": "Created"
+    }
+  },
+  "form": {
+    "title": "Open a ticket",
+    "description": "Tell us what you need help with. Include as much detail as you can — screenshots or links are welcome in the message.",
+    "subject": "Subject",
+    "subjectPlaceholder": "Short summary of the issue",
+    "message": "Message",
+    "messagePlaceholder": "Describe the problem in detail",
+    "submit": "Send ticket",
+    "submitting": "Sending…",
+    "cancel": "Cancel",
+    "successToast": "Ticket created. We'll reply by email.",
+    "errorFallback": "Could not create the ticket. Please try again.",
+    "errors": {
+      "notAuthenticated": "Sign in to open a ticket.",
+      "accountInactive": "Your account is not active.",
+      "invalidInput": "Check the subject and message and try again.",
+      "operationFailed": "Could not create the ticket. Please try again."
+    }
+  },
+  "detail": {
+    "back": "Back to tickets",
+    "createdOn": "Opened on",
+    "messageLabel": "Your message"
+  },
+  "admin": {
+    "title": "Support tickets",
+    "subtitle": "All tickets submitted through the Support page.",
+    "filter": {
+      "all": "All",
+      "open": "Open",
+      "in_progress": "In progress",
+      "closed": "Closed",
+      "ariaLabel": "Filter support tickets by status"
+    },
+    "columns": {
+      "subject": "Subject",
+      "user": "User",
+      "status": "Status",
+      "created": "Created",
+      "updated": "Updated"
+    },
+    "empty": "No tickets match the selected filter.",
+    "detail": {
+      "back": "Back to tickets",
+      "userLabel": "Submitted by",
+      "emailLabel": "Email",
+      "createdLabel": "Created",
+      "updatedLabel": "Last update",
+      "messageLabel": "Message from user",
+      "noteLabel": "Internal note (not visible to user)",
+      "notePlaceholder": "Add a private note for your team",
+      "statusLabel": "Status",
+      "saveButton": "Save changes",
+      "savingButton": "Saving…",
+      "successToast": "Ticket updated.",
+      "errorFallback": "Could not update the ticket.",
+      "metadataFallback": "Support ticket",
+      "errors": {
+        "notAuthenticated": "Sign in again to update this ticket.",
+        "accountInactive": "Your account is not active.",
+        "notAuthorized": "You do not have permission to update this ticket.",
+        "invalidInput": "Check the status and note and try again.",
+        "notFound": "This ticket no longer exists.",
+        "operationFailed": "Could not update the ticket."
+      }
+    }
+  }
+}

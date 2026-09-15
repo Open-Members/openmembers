@@ -1,0 +1,27 @@
+{
+  "branding": {
+    "site_name": "Open Members",
+    "logo_light_url": null,
+    "logo_dark_url": null,
+    "favicon_url": "/icon.svg",
+    "og_image_url": null,
+    "primary_color": "#0235a8",
+    "accent_color": "#f20505",
+    "font_family": "system"
+  },
+  "public": {
+    "title": null,
+    "description": null
+  },
+  "metadata": {
+    "description": null,
+    "shortName": null
+  },
+  "links": {
+    "support": null,
+    "community": null,
+    "help": null,
+    "terms": null,
+    "privacy": null
+  }
+}

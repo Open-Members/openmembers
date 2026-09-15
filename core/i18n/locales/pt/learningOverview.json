@@ -1,0 +1,128 @@
+{
+  "dashboard": {
+    "greeting": "Bem-vindo de volta, {name}",
+    "title": "Boas-vindas a {siteName}",
+    "learner": "Estudante",
+    "resume": "Continuar assistindo",
+    "browse": "Explorar catálogo",
+    "viewCatalog": "Ver catálogo",
+    "empty": {
+      "eyebrow": "Aguardando conteúdo",
+      "title": "Ainda não há conteúdo aqui",
+      "description": "Ainda não há cursos para mostrar nesta página. Confira os materiais de estudo disponíveis no catálogo."
+    }
+  },
+  "catalog": {
+    "eyebrow": "Catálogo",
+    "title": "Explorar",
+    "description": "Explore o catálogo de cursos. Abra um curso para ver o conteúdo e as opções de acesso.",
+    "unpublished": "Ainda não há conteúdo publicado.",
+    "yourCourses": "Seus cursos",
+    "featured": "Destaques",
+    "newReleases": "Novidades",
+    "fullCatalog": "Catálogo completo",
+    "allCourses": "Todos os cursos",
+    "empty": {
+      "eyebrow": "Ainda não há conteúdo",
+      "title": "Ainda não há cursos para explorar",
+      "description": "Os cursos aparecerão aqui quando forem publicados."
+    }
+  },
+  "hero": {
+    "trailer": "Vídeo de destaque"
+  },
+  "cards": {
+    "instructor": "Com {name}"
+  },
+  "rows": {
+    "seeAll": "Ver todos",
+    "scrollLeft": "Rolar para a esquerda",
+    "scrollRight": "Rolar para a direita"
+  },
+  "badges": {
+    "free": "Gratuito",
+    "new": "Novo",
+    "comingSoon": "Em breve",
+    "featured": "Destaque",
+    "completed": "Concluído",
+    "locked": "Bloqueado",
+    "progress": "Progresso"
+  },
+  "duration": {
+    "hoursMinutes": "{hours, number}h {minutes, number}min",
+    "hours": "{hours, number}h",
+    "minutes": "{minutes, number}min",
+    "minutesSeconds": "{minutes, number}min {seconds, number}s",
+    "seconds": "{seconds, number}s"
+  },
+  "episode": {
+    "number": "Aula {number}",
+    "completed": "Concluída",
+    "watching": "Assistindo",
+    "preview": "Prévia gratuita",
+    "locked": "Bloqueada",
+    "unlocked": "Liberada",
+    "unlockDays": "{count, plural, one {Disponível em # dia} other {Disponível em # dias}}",
+    "unlockDate": "Disponível em {date}",
+    "markWatched": "Marcar como assistida",
+    "markUnwatched": "Marcar como não assistida"
+  },
+  "progress": {
+    "eyebrow": "Sua jornada",
+    "title": "Seu progresso",
+    "description": "Acompanhe os cursos em que você está inscrito: o que já concluiu e o que ainda falta.",
+    "inProgress": {
+      "eyebrow": "Em andamento",
+      "title": "Continue de onde parou",
+      "description": "{count, plural, one {# curso em andamento} other {# cursos em andamento}}"
+    },
+    "notStarted": {
+      "eyebrow": "Próximos passos",
+      "title": "Pronto para começar",
+      "description": "{count, plural, one {# curso que você ainda não começou} other {# cursos que você ainda não começou}}"
+    },
+    "completed": {
+      "eyebrow": "Concluídos",
+      "title": "Cursos que você concluiu",
+      "description": "{count, plural, one {# curso concluído — parabéns!} other {# cursos concluídos — parabéns!}}"
+    },
+    "course": {
+      "continue": "Continuar →",
+      "start": "Começar →",
+      "done": "Concluído",
+      "lessons": "{total, plural, one {{completed, number} de # aula} other {{completed, number} de # aulas}}",
+      "allDone": "Tudo concluído"
+    },
+    "empty": {
+      "eyebrow": "Ainda não há progresso",
+      "title": "Ainda não há cursos",
+      "description": "Inscreva-se em um curso para começar a acompanhar seu progresso aqui."
+    }
+  },
+  "activity": {
+    "period": "Últimas 12 semanas",
+    "title": "Atividade",
+    "empty": "Ainda não há atividade. Sua primeira aula vai iluminar este mapa.",
+    "summary": "{lessons, plural, one {# aula} other {# aulas}} em {days, plural, one {# dia} other {# dias}}",
+    "day": "{date} — {count, plural, one {# aula} other {# aulas}}",
+    "less": "Menos",
+    "more": "Mais"
+  },
+  "stats": {
+    "streak": "Sequência",
+    "days": "{count, plural, one {dia} other {dias}}",
+    "longest": "Maior sequência: {count, number}",
+    "keepGoing": "Continue assim",
+    "startStreak": "Comece sua sequência",
+    "week": "Nesta semana",
+    "minutes": "min",
+    "weekLessons": "{count, plural, =0 {Ainda não há aulas} one {# aula} other {# aulas}}",
+    "lessonsDone": "Aulas concluídas",
+    "total": "total",
+    "allTime": "Desde o início",
+    "overall": "Progresso geral",
+    "acrossEnrolled": "Nos cursos inscritos",
+    "activeCourse": "Curso em andamento",
+    "pickCourse": "Escolha um curso"
+  }
+}

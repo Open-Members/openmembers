@@ -1,0 +1,19 @@
+{
+  "name": "openmembers-website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22 <23"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve.mjs",
+    "check": "node --test tests/*.test.mjs",
+    "release": "node scripts/build.mjs && node scripts/prepare-release.mjs",
+    "check:release": "node --test tests/deploy/*.test.mjs"
+  },
+  "dependencies": {
+    "marked": "15.0.12"
+  }
+}

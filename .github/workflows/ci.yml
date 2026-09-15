@@ -1,0 +1,114 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Typecheck, lint, test, and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
+    steps:
+      - name: Check out source
+        # https://github.com/actions/checkout/releases/tag/v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        # https://github.com/actions/setup-node/releases/tag/v7.0.0
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Verify committed source paths and known credential signatures
+        run: npm run verify:source
+
+      - name: Install locked dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Generate route types and check TypeScript
+        run: npm run check
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Check local tooling safeguards
+        run: npm run test:tooling
+
+      - name: Build without configured external services
+        run: npm run build
+
+      - name: Verify local material is absent from build tracing
+        run: npm run verify:artifact
+
+      - name: Install Chromium for browser checks
+        run: npx playwright install --with-deps chromium
+
+      - name: Test the unconfigured installation in desktop and mobile browsers
+        run: npm run test:e2e
+
+      - name: Test a second installation identity with the same build
+        run: npm run test:e2e:branding
+
+  database:
+    name: Reproduce the local database and test authenticated flows
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+      SUPABASE_TELEMETRY_DISABLED: '1'
+      DO_NOT_TRACK: '1'
+    steps:
+      - name: Check out source
+        # https://github.com/actions/checkout/releases/tag/v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        # https://github.com/actions/setup-node/releases/tag/v7.0.0
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install locked dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Start the isolated Supabase stack
+        run: npm run db:start
+
+      - name: Verify two clean installations and database access contracts
+        run: npm run db:verify
+
+      - name: Build against the local database
+        run: npm run build:local
+
+      - name: Install Chromium for authenticated browser checks
+        run: npx playwright install --with-deps chromium
+
+      - name: Test authenticated flows in desktop and mobile browsers
+        run: npm run test:e2e:db
+
+      - name: Stop the isolated Supabase stack
+        if: always()
+        run: npm run db:stop

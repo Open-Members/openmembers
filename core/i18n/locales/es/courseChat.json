@@ -1,0 +1,67 @@
+{
+  "title": "Pregúntale al curso",
+  "close": "Cerrar",
+  "thinking": "Pensando…",
+  "reading": "Leyendo las transcripciones",
+  "suggestions": {
+    "topics": "¿Cuáles son los temas principales de este curso?",
+    "summary": "Resume la primera lección para mí.",
+    "remember": "¿Qué ideas debo recordar?"
+  },
+  "citations": {
+    "jump": "Ir a este momento",
+    "missing": "Referencia no encontrada"
+  },
+  "history": {
+    "title": "Conversaciones anteriores",
+    "new": "Iniciar nueva conversación",
+    "back": "Volver",
+    "loading": "Cargando…",
+    "count": "{count, plural, one {# conversación} other {# conversaciones}}",
+    "empty": "Aún no hay conversaciones anteriores.",
+    "emptyHelp": "Tus conversaciones aparecerán aquí cuando empieces a preguntar.",
+    "untitled": "Nueva conversación",
+    "archived": "Archivada",
+    "active": "Activa",
+    "delete": "Eliminar conversación",
+    "deleteConfirm": "¿Eliminar esta conversación? Esta acción no se puede deshacer.",
+    "loadingConversation": "Cargando conversación…"
+  },
+  "empty": {
+    "title": "Pregunta cuando quieras",
+    "description": "Respuestas basadas en las lecciones del profesor. Toca una referencia para ir al momento exacto."
+  },
+  "input": {
+    "label": "Tu pregunta",
+    "placeholder": "Pregunta sobre este curso…",
+    "send": "Enviar",
+    "enter": "Enter",
+    "shiftEnter": "Mayús+Enter",
+    "toSend": "para enviar",
+    "newline": "nueva línea",
+    "remaining": "{count, plural, one {# pregunta restante esta hora} other {# preguntas restantes esta hora}}"
+  },
+  "time": {
+    "justNow": "Ahora mismo",
+    "unknown": "Fecha no disponible"
+  },
+  "errors": {
+    "notConfigured": "El chat del curso no está habilitado en esta instalación.",
+    "notAuthenticated": "Vuelve a iniciar sesión para usar el chat del curso.",
+    "accessDenied": "No tienes acceso al chat de este curso.",
+    "notFound": "Este curso o conversación ya no está disponible.",
+    "rateLimited": "Has alcanzado el límite de solicitudes. Inténtalo de nuevo más tarde.",
+    "contextUnavailable": "Aún no hay material preparado para las lecciones a las que tienes acceso.",
+    "secretDetected": "Tu mensaje parece contener un secreto o una clave de API. Elimínalo antes de enviarlo.",
+    "invalidQuestion": "Revisa tu pregunta e inténtalo de nuevo. Las preguntas pueden tener hasta 2.000 caracteres.",
+    "unavailable": "El chat del curso no está disponible temporalmente. Inténtalo de nuevo más tarde.",
+    "sendFailed": "No se pudo enviar tu pregunta. Inténtalo de nuevo.",
+    "noResponse": "No se recibió ninguna respuesta. Inténtalo de nuevo.",
+    "interrupted": "La respuesta se interrumpió. Inténtalo de nuevo.",
+    "resumeFailed": "No se pudo retomar tu conversación anterior. Intenta abrirla desde el historial.",
+    "historyFailed": "No se pudo cargar tu historial de conversaciones. Inténtalo de nuevo.",
+    "loadFailed": "No se pudo abrir esta conversación. Inténtalo de nuevo.",
+    "deleteFailed": "No se pudo eliminar esta conversación. Inténtalo de nuevo.",
+    "archiveFailed": "No se pudo iniciar una nueva conversación. Inténtalo de nuevo."
+  }
+}

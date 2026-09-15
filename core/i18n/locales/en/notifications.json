@@ -1,0 +1,62 @@
+{
+  "title": "Notifications",
+  "inbox": "Inbox",
+  "markAll": "Mark all as read",
+  "markRead": "Mark as read",
+  "delete": "Delete notification",
+  "close": "Close notifications",
+  "open": "Open notification",
+  "unread": "Unread",
+  "unreadCount": "{count, plural, one {# unread notification} other {# unread notifications}}",
+  "badgeOverflow": "99+",
+  "loading": "Loading notifications…",
+  "retry": "Try again",
+  "viewAll": "View all notifications",
+  "emptyTitle": "Nothing to show",
+  "emptyDescription": "You haven’t received any notifications yet.",
+  "emptyCategory": "No notifications in this category.",
+  "bellEmptyTitle": "Nothing yet",
+  "bellEmptyDescription": "Updates about your courses, replies, and announcements will appear here.",
+  "today": "Today",
+  "yesterday": "Yesterday",
+  "justNow": "Just now",
+  "unknownDate": "Date unavailable",
+  "automatic": {
+    "enrollment": {
+      "singleCourse": { "title": "Welcome to {levelName}", "message": "Your access is active. Jump into {courseTitle} to get started." },
+      "dashboard": { "title": "Welcome to {levelName}", "message": "Your access is active. Start exploring your dashboard." }
+    },
+    "content": {
+      "coursePublished": { "title": "New course: {courseTitle}", "message": "{courseTitle} is live. Tap to jump in." },
+      "lessonPublished": { "title": "New lesson in {courseTitle}", "message": "{lessonTitle} just dropped. Tap to watch." },
+      "dripLesson": { "title": "Unlocked: {contentTitle}", "message": "A new lesson is now available in {courseTitle}." },
+      "dripModule": { "title": "Unlocked: {contentTitle}", "message": "A new module is now available in {courseTitle}." },
+      "dripCourse": { "title": "New content in {courseTitle}", "message": "Fresh content is waiting for you in {courseTitle}." }
+    },
+    "engagement": {
+      "commentReply": { "title": "{replierName} replied to you", "message": "{excerpt}" },
+      "commentReplyAnonymous": { "title": "Someone replied to you", "message": "{excerpt}" },
+      "certificateEarned": { "title": "You earned a certificate", "message": "Congrats on finishing {courseTitle}. Your certificate is ready to download." }
+    }
+  },
+  "filters": {
+    "all": "All",
+    "announcement": "Announcements",
+    "new_course": "New courses",
+    "new_lesson": "New lessons",
+    "drip_unlock": "Unlocks",
+    "comment_reply": "Replies",
+    "certificate": "Certificates",
+    "enrollment": "Enrollments"
+  },
+  "errors": {
+    "invalidInput": "This notification is not valid.",
+    "notAuthenticated": "Sign in to manage notifications.",
+    "unavailable": "This notification is no longer available.",
+    "readFailed": "Could not mark this notification as read. Try again.",
+    "readAllFailed": "Could not mark notifications as read. Try again.",
+    "deleteFailed": "Could not delete this notification. Try again.",
+    "loadFailed": "Could not load notifications. Try again.",
+    "countFailed": "Could not refresh unread notifications."
+  }
+}

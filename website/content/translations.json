@@ -1,0 +1,42 @@
+{
+  "overview": {
+    "sha256": "f88ee4f6532ea8c91b46255eece0e186820d0e665e428324ace2ecf8c54b590d",
+    "curatedSha256": "32ee5ccf175078de41f71abc9b5d7ed4db517c6e8b5ed8b5ea8afd1850854f88"
+  },
+  "development": {
+    "sha256": "fd8c393587f654eb105ebb4ad40f4fa8eb7ad4017d9a200c17e85d5dea1f207d",
+    "curatedSha256": "32daf16e1dfee28dd1dba9b5f91180de9c385c19884d265042dcade9f519b46d"
+  },
+  "customization": {
+    "sha256": "05bcaaa5ecd840de371c478e650c18b3715f9cc34479821c357d6fc910707a61",
+    "curatedSha256": "9016b219c813cebb42d9bad808fb198895f851651d5d114a85bf5e2a11baf91e"
+  },
+  "installation": {
+    "sha256": "f9fc0f60beb3d83546eae53964cfdb9aca17ddd086ebdf4fdf4d2440afc7314f",
+    "curatedSha256": "7777e76f22396198d0dba9b88af4895bda8da673a67f1e79382754e1af94d4b4"
+  },
+  "operations": {
+    "sha256": "b09e468ecc412a27944e5dcd8ef9adcd72b73ed7216a27dab30321f4d29b4946",
+    "curatedSha256": "26006f39366e78100eaadd3ad67ae1b83ef2711bd668d62db00ca5957d44091e"
+  },
+  "features": {
+    "sha256": "d4e46072ab5cf3593bd9771606863f44fde4758b6aa053550211ef43ff99af17",
+    "curatedSha256": "5e486a6830e9ed2480c5ddc5b7a456f3401569c936a0456ae869fdd7d6cff6f5"
+  },
+  "integrations": {
+    "sha256": "8d14382aba96574d635f25d5cd34fb84c5d7b5d8ace2cd8f0eb0d9bc1dc45514",
+    "curatedSha256": "88a11f63dbf9b16238f1f4c9d999ef5648c7231db883ff3804090b066d467f22"
+  },
+  "contributing": {
+    "sha256": "b2577823029c6ff7ff5dd65c03fccb749e4ebe4efd668c7da41bbba12578b0a9",
+    "curatedSha256": "f74aab19767fa09946d18d215320a44af6b439b8b747d3f8574a4dbe2f867943"
+  },
+  "source-verification": {
+    "sha256": "eb97151e6ac05d71339dd8e17373a22b21668c2b76b9553ffee7a558abff6703",
+    "curatedSha256": "05d201170a43f0c43725ed7252befbfb13a23960a93159ef13bbbba9cababae3"
+  },
+  "security": {
+    "sha256": "6af526a2f312f3d3229e9278e5af3f84a08b66533e64e53f9cc43392a7ad7a2c",
+    "curatedSha256": "197ef3e0dfeedc9b46ac27d4cee4950f76f46dc87e58203bd4be39a3a0e10d70"
+  }
+}

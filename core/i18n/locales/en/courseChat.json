@@ -1,0 +1,67 @@
+{
+  "title": "Ask the course",
+  "close": "Close",
+  "thinking": "Thinking…",
+  "reading": "Reading the transcripts",
+  "suggestions": {
+    "topics": "What are the main topics in this course?",
+    "summary": "Summarize the first lesson for me.",
+    "remember": "Which ideas should I remember?"
+  },
+  "citations": {
+    "jump": "Jump to this moment",
+    "missing": "Citation not found"
+  },
+  "history": {
+    "title": "Past conversations",
+    "new": "Start new conversation",
+    "back": "Back",
+    "loading": "Loading…",
+    "count": "{count, plural, one {# conversation} other {# conversations}}",
+    "empty": "No past conversations yet.",
+    "emptyHelp": "Your chats will appear here once you start asking.",
+    "untitled": "New conversation",
+    "archived": "Archived",
+    "active": "Active",
+    "delete": "Delete conversation",
+    "deleteConfirm": "Delete this conversation? This cannot be undone.",
+    "loadingConversation": "Loading conversation…"
+  },
+  "empty": {
+    "title": "Ready when you are",
+    "description": "Grounded in the teacher’s own lessons. Tap a citation to jump to the exact moment."
+  },
+  "input": {
+    "label": "Your question",
+    "placeholder": "Ask anything in this course…",
+    "send": "Send",
+    "enter": "Enter",
+    "shiftEnter": "Shift+Enter",
+    "toSend": "to send",
+    "newline": "new line",
+    "remaining": "{count, plural, one {# question left this hour} other {# questions left this hour}}"
+  },
+  "time": {
+    "justNow": "Just now",
+    "unknown": "Date unavailable"
+  },
+  "errors": {
+    "notConfigured": "Course chat is not enabled for this installation.",
+    "notAuthenticated": "Sign in again to use course chat.",
+    "accessDenied": "You do not have access to this course chat.",
+    "notFound": "This course or conversation is no longer available.",
+    "rateLimited": "You have reached the request limit. Please try again later.",
+    "contextUnavailable": "There is no prepared material for your accessible lessons yet.",
+    "secretDetected": "Your message appears to contain a secret or API key. Remove it before sending.",
+    "invalidQuestion": "Check your question and try again. Questions can contain up to 2,000 characters.",
+    "unavailable": "Course chat is temporarily unavailable. Please try again later.",
+    "sendFailed": "Could not send your question. Please try again.",
+    "noResponse": "No response was received. Please try again.",
+    "interrupted": "The reply was interrupted. Please try again.",
+    "resumeFailed": "Could not resume your previous conversation. Please try opening it from the history.",
+    "historyFailed": "Could not load your conversation history. Please try again.",
+    "loadFailed": "Could not open this conversation. Please try again.",
+    "deleteFailed": "Could not delete this conversation. Please try again.",
+    "archiveFailed": "Could not start a new conversation. Please try again."
+  }
+}

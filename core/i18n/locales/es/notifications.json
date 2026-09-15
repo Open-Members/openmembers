@@ -1,0 +1,62 @@
+{
+  "title": "Notificaciones",
+  "inbox": "Bandeja de entrada",
+  "markAll": "Marcar todas como leídas",
+  "markRead": "Marcar como leída",
+  "delete": "Eliminar notificación",
+  "close": "Cerrar notificaciones",
+  "open": "Abrir notificación",
+  "unread": "No leída",
+  "unreadCount": "{count, plural, one {# notificación no leída} other {# notificaciones no leídas}}",
+  "badgeOverflow": "99+",
+  "loading": "Cargando notificaciones…",
+  "retry": "Volver a intentar",
+  "viewAll": "Ver todas las notificaciones",
+  "emptyTitle": "Nada que mostrar",
+  "emptyDescription": "Aún no has recibido notificaciones.",
+  "emptyCategory": "No hay notificaciones en esta categoría.",
+  "bellEmptyTitle": "Sin novedades",
+  "bellEmptyDescription": "Aquí aparecerán actualizaciones sobre tus cursos, respuestas y anuncios.",
+  "today": "Hoy",
+  "yesterday": "Ayer",
+  "justNow": "Ahora mismo",
+  "unknownDate": "Fecha no disponible",
+  "automatic": {
+    "enrollment": {
+      "singleCourse": { "title": "Te damos la bienvenida a {levelName}", "message": "Tu acceso está activo. Empieza por {courseTitle}." },
+      "dashboard": { "title": "Te damos la bienvenida a {levelName}", "message": "Tu acceso está activo. Empieza a explorar tu panel." }
+    },
+    "content": {
+      "coursePublished": { "title": "Nuevo curso: {courseTitle}", "message": "{courseTitle} ya está disponible. Toca para empezar." },
+      "lessonPublished": { "title": "Nueva lección en {courseTitle}", "message": "{lessonTitle} acaba de publicarse. Toca para verla." },
+      "dripLesson": { "title": "Desbloqueado: {contentTitle}", "message": "Ya hay una nueva lección disponible en {courseTitle}." },
+      "dripModule": { "title": "Desbloqueado: {contentTitle}", "message": "Ya hay un nuevo módulo disponible en {courseTitle}." },
+      "dripCourse": { "title": "Nuevo contenido en {courseTitle}", "message": "Hay contenido nuevo esperándote en {courseTitle}." }
+    },
+    "engagement": {
+      "commentReply": { "title": "{replierName} te respondió", "message": "{excerpt}" },
+      "commentReplyAnonymous": { "title": "Alguien te respondió", "message": "{excerpt}" },
+      "certificateEarned": { "title": "Has conseguido un certificado", "message": "Enhorabuena por completar {courseTitle}. Tu certificado está listo para descargar." }
+    }
+  },
+  "filters": {
+    "all": "Todas",
+    "announcement": "Anuncios",
+    "new_course": "Nuevos cursos",
+    "new_lesson": "Nuevas lecciones",
+    "drip_unlock": "Desbloqueos",
+    "comment_reply": "Respuestas",
+    "certificate": "Certificados",
+    "enrollment": "Inscripciones"
+  },
+  "errors": {
+    "invalidInput": "Esta notificación no es válida.",
+    "notAuthenticated": "Inicia sesión para gestionar notificaciones.",
+    "unavailable": "Esta notificación ya no está disponible.",
+    "readFailed": "No se pudo marcar esta notificación como leída. Vuelve a intentarlo.",
+    "readAllFailed": "No se pudieron marcar las notificaciones como leídas. Vuelve a intentarlo.",
+    "deleteFailed": "No se pudo eliminar esta notificación. Vuelve a intentarlo.",
+    "loadFailed": "No se pudieron cargar las notificaciones. Vuelve a intentarlo.",
+    "countFailed": "No se pudieron actualizar las notificaciones no leídas."
+  }
+}

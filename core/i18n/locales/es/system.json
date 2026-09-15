@@ -1,0 +1,36 @@
+{
+  "componentError": {
+    "title": "Se produjo un error",
+    "description": "Actualiza la página para volver a intentarlo.",
+    "refresh": "Actualizar"
+  },
+  "pageError": {
+    "eyebrow": "Error 500",
+    "title": "Algo salió mal",
+    "description": "La página encontró un error inesperado. Inténtalo de nuevo o vuelve al panel si el problema continúa.",
+    "reference": "Referencia: {digest}",
+    "retry": "Intentar de nuevo",
+    "back": "Volver al panel"
+  },
+  "notFound": {
+    "eyebrow": "Error 404",
+    "title": "No encontramos esta página",
+    "description": "Es posible que el enlace sea incorrecto o que la página haya cambiado de lugar.",
+    "back": "Volver al panel",
+    "courses": "Ver cursos"
+  },
+  "globalError": {
+    "eyebrow": "Error crítico",
+    "title": "La aplicación no pudo terminar de cargar",
+    "description": "La aplicación encontró un error al iniciarse. Intenta cargarla de nuevo.",
+    "reference": "Referencia: {digest}",
+    "retry": "Intentar de nuevo"
+  },
+  "accountUnavailable": {
+    "eyebrow": "Servicio no disponible",
+    "title": "No pudimos cargar tu cuenta",
+    "description": "Los datos de tu cuenta no están disponibles temporalmente. Inténtalo de nuevo en unos instantes.",
+    "retry": "Intentar de nuevo",
+    "home": "Ir al inicio"
+  }
+}

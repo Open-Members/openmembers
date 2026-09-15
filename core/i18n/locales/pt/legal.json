@@ -1,0 +1,31 @@
+{
+  "common": {
+    "updatedLabel": "Situação",
+    "backHome": "Voltar ao início",
+    "publishedStatus": "Publicado pela organização",
+    "publishedIntro": "Consulte o documento fornecido pela organização responsável por {siteName}.",
+    "openDocument": "Ler documento"
+  },
+  "terms": {
+    "title": "Termos de Uso",
+    "updatedAt": "Não configurados",
+    "intro": "A organização responsável por {siteName} ainda não publicou seus Termos de Uso.",
+    "sections": [
+      {
+        "title": "Termos desta instalação",
+        "body": "Entre em contato com a organização responsável por {siteName} para informações sobre acesso à conta, conteúdos, compras e seus termos aplicáveis."
+      }
+    ]
+  },
+  "privacy": {
+    "title": "Política de Privacidade",
+    "updatedAt": "Não configurada",
+    "intro": "A organização responsável por {siteName} ainda não publicou sua Política de Privacidade.",
+    "sections": [
+      {
+        "title": "Privacidade nesta instalação",
+        "body": "Entre em contato com a organização responsável por {siteName} para informações sobre o uso de dados pessoais e como enviar uma solicitação de privacidade."
+      }
+    ]
+  }
+}

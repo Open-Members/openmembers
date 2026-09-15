@@ -1,0 +1,55 @@
+{
+  "login": {
+    "title": "Te damos la bienvenida de nuevo.",
+    "subtitle": "Inicia sesión para continuar tus cursos.",
+    "metadataTitle": "Iniciar sesión — {siteName}",
+    "metadataDescription": "Inicia sesión para acceder a tus cursos.",
+    "noAccount": "¿Aún no tienes una cuenta?",
+    "createAccount": "Crea tu cuenta",
+    "callbackError": "Este enlace de acceso no es válido o ha caducado, o no se pudo completar la autenticación. Intenta iniciar sesión de nuevo o solicita un nuevo enlace.",
+    "originUnavailable": {
+      "title": "El acceso no está disponible temporalmente.",
+      "description": "No se puede completar este enlace seguro ahora. Inténtalo de nuevo más tarde o comunícate con la administración del sitio.",
+      "codeLabel": "Código del error:",
+      "backToLogin": "Volver a iniciar sesión"
+    }
+  },
+  "register": {
+    "title": "Crea tu cuenta.",
+    "subtitle": "Tus cursos te esperan.",
+    "metadataTitle": "Crear cuenta — {siteName}",
+    "metadataDescription": "Crea tu cuenta para acceder a tus cursos.",
+    "hasAccount": "¿Ya tienes una cuenta?",
+    "signIn": "Iniciar sesión"
+  },
+  "forgotPassword": {
+    "title": "¿Olvidaste tu contraseña?",
+    "subtitle": "Te enviaremos un enlace seguro.",
+    "metadataTitle": "Olvidé mi contraseña — {siteName}",
+    "metadataDescription": "Restablece la contraseña de tu cuenta.",
+    "backToSignIn": "Volver a iniciar sesión"
+  },
+  "resetPassword": {
+    "title": "Establece una nueva contraseña.",
+    "subtitle": "Elige una contraseña que recuerdes.",
+    "metadataTitle": "Establecer nueva contraseña — {siteName}",
+    "metadataDescription": "Elige una nueva contraseña para tu cuenta.",
+    "backToSignIn": "Volver a iniciar sesión"
+  },
+  "changePassword": {
+    "title": "Te damos la bienvenida.",
+    "subtitle": "Elige una contraseña para reemplazar la contraseña temporal que enviamos.",
+    "metadataTitle": "Bienvenida — {siteName}",
+    "metadataDescription": "Establece una contraseña para tu cuenta."
+  },
+  "setup": {
+    "title": "Esta área de miembros se está configurando.",
+    "description": "El acceso y los cursos estarán disponibles cuando la administración del sitio complete la instalación.",
+    "backToHome": "Volver al inicio",
+    "metadataTitle": "Configuración en curso — {siteName}"
+  },
+  "suspended": {
+    "metadataTitle": "Cuenta suspendida — {siteName}",
+    "metadataDescription": "Tu cuenta está suspendida. Comunícate con la organización para obtener ayuda."
+  }
+}

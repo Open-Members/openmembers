@@ -1,0 +1,70 @@
+{
+  "video": {
+    "noSource": "No video source configured for this lesson.",
+    "title": "Video lesson",
+    "loading": "Loading video…",
+    "buffering": "Buffering video…",
+    "resume": "Resume",
+    "play": "Play",
+    "pause": "Pause",
+    "playLesson": "Play lesson",
+    "resumeFrom": "Resume from {time}",
+    "startOver": "Start from the beginning",
+    "enterPip": "Enter picture-in-picture",
+    "exitPip": "Exit picture-in-picture",
+    "enterFullscreen": "Enter fullscreen",
+    "exitFullscreen": "Exit fullscreen",
+    "seek": "Seek",
+    "seekValue": "{current} of {total}",
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "volume": "Volume",
+    "speed": "Playback speed",
+    "normalSpeed": "Normal",
+    "rate": "{rate}x",
+    "seekSeconds": "{seconds}s",
+    "errors": {
+      "unauthenticated": "Sign in again to play this video.",
+      "forbidden": "You do not have access to this video.",
+      "unavailable": "This video is unavailable. Please try again later.",
+      "failed": "Could not play this video. Please try again."
+    }
+  },
+  "reader": {
+    "library": "Library",
+    "preparing": "Preparing…",
+    "download": "Download",
+    "read": "✓ Read",
+    "saving": "Saving…",
+    "markRead": "Mark as read",
+    "ebook": "Ebook",
+    "preparingHelp": "Preparing your PDF — this can take a few seconds.",
+    "mobileHelp": "Tap below to download. Open with any PDF reader on your phone.",
+    "downloadPdf": "Download PDF",
+    "desktopHelp": "PDF not loading? Use the <download>Download</download> button above.",
+    "noPdf": "No PDF attached to this lesson.",
+    "inLibrary": "In this library",
+    "loading": "Loading PDF…",
+    "saveFailedTitle": "Could not save progress",
+    "saveFailed": "Your reading progress could not be saved. Please try again.",
+    "loadFailed": "Could not load the PDF. Try downloading it using the button above."
+  },
+  "library": {
+    "withInstructor": "With {name}",
+    "title": "Ebook library",
+    "resume": "Resume reading",
+    "start": "Start reading",
+    "getAccess": "Get access",
+    "ebooks": "{count, plural, one {# ebook} other {# ebooks}}",
+    "accessSchedule": "Materials follow your course access and release schedule.",
+    "collection": "Collection {number}",
+    "enrollHelp": "Sign in or enroll to open and download these ebooks."
+  },
+  "download": {
+    "title": "Could not download",
+    "unauthenticated": "Sign in again to download this file.",
+    "forbidden": "You do not have access to this file.",
+    "unavailable": "This file is unavailable. Please try again later.",
+    "failed": "Could not download the file. Please try again."
+  }
+}

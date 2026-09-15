@@ -1,0 +1,55 @@
+{
+  "login": {
+    "title": "Welcome back.",
+    "subtitle": "Sign in to continue your courses.",
+    "metadataTitle": "Sign in — {siteName}",
+    "metadataDescription": "Sign in to access your courses.",
+    "noAccount": "Don't have an account?",
+    "createAccount": "Create one",
+    "callbackError": "This sign-in link is invalid or has expired, or sign-in could not be completed. Try signing in again or request a new link.",
+    "originUnavailable": {
+      "title": "Sign-in is temporarily unavailable.",
+      "description": "This secure link cannot be completed right now. Try again later or contact the site administrator.",
+      "codeLabel": "Error code:",
+      "backToLogin": "Back to sign in"
+    }
+  },
+  "register": {
+    "title": "Create your account.",
+    "subtitle": "Your courses are waiting.",
+    "metadataTitle": "Create an account — {siteName}",
+    "metadataDescription": "Create your account to access your courses.",
+    "hasAccount": "Already have an account?",
+    "signIn": "Sign in"
+  },
+  "forgotPassword": {
+    "title": "Forgot your password?",
+    "subtitle": "We'll send you a secure link.",
+    "metadataTitle": "Forgot password — {siteName}",
+    "metadataDescription": "Reset your account password.",
+    "backToSignIn": "Back to sign in"
+  },
+  "resetPassword": {
+    "title": "Set a new password.",
+    "subtitle": "Choose something you'll remember.",
+    "metadataTitle": "Set a new password — {siteName}",
+    "metadataDescription": "Choose a new password for your account.",
+    "backToSignIn": "Back to sign in"
+  },
+  "changePassword": {
+    "title": "Welcome.",
+    "subtitle": "Choose a password to replace the temporary one we sent.",
+    "metadataTitle": "Welcome — {siteName}",
+    "metadataDescription": "Set a password for your account."
+  },
+  "setup": {
+    "title": "This members area is being set up.",
+    "description": "Sign-in and courses will be available when the site administrator finishes the installation.",
+    "backToHome": "Back to home",
+    "metadataTitle": "Setting up — {siteName}"
+  },
+  "suspended": {
+    "metadataTitle": "Account suspended — {siteName}",
+    "metadataDescription": "Your account is suspended. Contact the organization for help."
+  }
+}

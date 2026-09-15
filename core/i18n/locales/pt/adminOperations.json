@@ -1,0 +1,624 @@
+{
+  "errors": {
+    "loadFailed": "Não foi possível carregar estas informações. Tente novamente.",
+    "saveFailed": "Não foi possível salvar suas alterações. Tente novamente.",
+    "deleteFailed": "Não foi possível excluir este item. Tente novamente.",
+    "notFound": "Este item não existe mais. Recarregue a página.",
+    "invalidInput": "Revise os campos e tente novamente.",
+    "labelRequired": "Informe um nome.",
+    "labelTooLong": "Use no máximo 80 caracteres no nome.",
+    "invalidUrl": "Use um caminho interno, um endereço HTTPS ou um link simples de e-mail ou telefone.",
+    "operationFailed": "Não foi possível concluir esta operação. Tente novamente.",
+    "invalidEmail": "Informe um endereço de e-mail válido.",
+    "sendFailed": "Não foi possível enviar o e-mail. Verifique a configuração de envio e tente novamente.",
+    "unknownTemplate": "Este modelo de e-mail não é compatível.",
+    "renderFailed": "Não foi possível gerar a prévia do e-mail. Revise o modelo e tente novamente.",
+    "invalidProvider": "Este provedor de integração não é compatível.",
+    "nameRequired": "Informe um nome de exibição.",
+    "invalidExpiration": "Informe um número inteiro de dias maior ou igual a zero.",
+    "secretRequired": "Informe o segredo de assinatura deste provedor.",
+    "secretTooShort": "O segredo de assinatura deve ter pelo menos 16 caracteres.",
+    "testSucceeded": "O teste da integração foi concluído.",
+    "testFailed": "Não foi possível validar a integração.",
+    "networkFailed": "Não foi possível acessar o endpoint do webhook.",
+    "noActiveIntegration": "Ative e salve esta integração antes de testá-la.",
+    "titleRequired": "Informe o título do aviso.",
+    "messageRequired": "Informe a mensagem do aviso.",
+    "titleTooLong": "Use no máximo 120 caracteres no título.",
+    "messageTooLong": "Use no máximo 600 caracteres na mensagem.",
+    "noAudience": "O público selecionado não tem destinatários.",
+    "invalidActionUrl": "Use um caminho interno seguro ou uma URL HTTPS."
+  },
+  "shared": {
+    "colorPicker": {
+      "open": "Abrir seletor de cor para {label}",
+      "hex": "Cor hexadecimal de {label}",
+      "preset": "Definir a cor como {color}"
+    },
+    "imageUpload": {
+      "dimensionWarning": "A imagem tem {width}×{height}. Recomendado: {recommended}.",
+      "ratio": "proporção {ratio}",
+      "tooLarge": "O arquivo tem {size} MB. O tamanho máximo é {max} MB. Comprima a imagem e tente novamente.",
+      "uploaded": "Imagem enviada.",
+      "uploading": "Enviando imagem…",
+      "remove": "Remover {label}",
+      "dropOrClick": "Arraste ou clique para enviar",
+      "formats": "{formats} · até {max} MB",
+      "file": "Escolher arquivo para {label}",
+      "dropArea": "Enviar {label}",
+      "errors": {
+        "initialize": "Não foi possível preparar o envio. Tente novamente.",
+        "upload": "Não foi possível enviar a imagem. Tente novamente."
+      }
+    }
+  },
+  "branding": {
+    "header": {
+      "eyebrow": "Aparência",
+      "title": "Marca",
+      "description": "Personalize a identidade, as cores do tema e o destaque da página inicial. As alterações salvas valem para todas as telas dos alunos."
+    },
+    "identity": {
+      "title": "Identidade",
+      "siteName": "Nome do site",
+      "logoLight": "Logo (tema claro)",
+      "logoLightHelp": "Exibido sobre fundos claros.",
+      "logoDark": "Logo (tema escuro)",
+      "logoDarkHelp": "Exibido sobre fundos escuros.",
+      "favicon": "Favicon",
+      "faviconHelp": "Ícone da aba do navegador. PNG ou ICO.",
+      "socialImage": "Imagem de compartilhamento",
+      "socialImageHelp": "Exibida quando sua plataforma é compartilhada nas redes sociais.",
+      "bodyFont": "Fonte do texto",
+      "bodyFontHelp": "Usa fontes já disponíveis no dispositivo. Os títulos mantêm o estilo serifado.",
+      "fonts": {
+        "system": "Sem serifa do sistema",
+        "serif": "Serifada do sistema",
+        "mono": "Monoespaçada do sistema"
+      }
+    },
+    "colors": {
+      "title": "Cores do tema",
+      "primary": "Primária",
+      "primaryHelp": "Usada em botões, links e superfícies principais da marca.",
+      "accent": "Destaque",
+      "accentHelp": "Realce secundário para selos e chamadas para ação.",
+      "preview": "Prévia",
+      "primaryAction": "Ação principal",
+      "accentAction": "Botão de destaque",
+      "newBadge": "NOVO",
+      "linkText": "Texto do link"
+    },
+    "hero": {
+      "title": "Destaque da página inicial",
+      "description": "O banner cinematográfico no topo do painel do aluno. Quando os dois estiverem definidos, o trailer tem prioridade sobre a imagem estática.",
+      "banner": "Imagem do banner",
+      "bannerHelp": "Alternativa estática quando não há trailer ou quando a economia de dados está ativada no celular.",
+      "trailer": "Trailer — URL do YouTube",
+      "trailerHelp": "Cole a URL completa; o ID será extraído automaticamente.",
+      "heroTitle": "Título do destaque",
+      "titlePlaceholder": "Boas-vindas à sua área de membros",
+      "heroSubtitle": "Subtítulo do destaque",
+      "subtitlePlaceholder": "Aprenda no seu ritmo com nossos instrutores",
+      "overlay": "Escurecimento da sobreposição",
+      "overlayHelp": "0 mantém o banner totalmente visível; 100 aplica uma sobreposição forte para melhorar a leitura.",
+      "showText": "Exibir título e subtítulo sobre o banner",
+      "showTextHelp": "Desative quando a arte do banner já comunicar a mensagem de boas-vindas.",
+      "errors": {
+        "youtube": "Não foi possível identificar a URL do YouTube usada no trailer."
+      }
+    },
+    "loading": {
+      "title": "Barra de carregamento",
+      "description": "Barra fina exibida no topo da tela enquanto os alunos navegam entre páginas.",
+      "style": "Estilo",
+      "gradient": "Gradiente",
+      "gradientHelp": "Animação com várias cores.",
+      "solid": "Sólida",
+      "solidHelp": "Uma cor, usando a cor primária acima.",
+      "stops": "Pontos do gradiente",
+      "stopsHelp": "Use entre 2 e 6 cores hexadecimais. A ordem define a direção da esquerda para a direita.",
+      "colorStop": "Cor {number} do gradiente",
+      "hexColorStop": "Valor hexadecimal da cor {number} do gradiente",
+      "removeColor": "Remover a cor {number}",
+      "addColor": "Adicionar cor",
+      "reset": "Restaurar padrão",
+      "preview": "Prévia ao vivo",
+      "previewHelp": "Esta é uma aproximação da animação da barra no topo de cada página."
+    },
+    "selected": "Selecionado",
+    "unsaved": "Você tem alterações não salvas.",
+    "allSaved": "Todas as alterações foram salvas.",
+    "discard": "Descartar",
+    "saving": "Salvando…",
+    "saved": "Salvo",
+    "save": "Salvar alterações",
+    "savedToast": "Marca salva. Recarregando para aplicar o tema…"
+  },
+  "home": {
+    "header": {
+      "eyebrow": "Layout",
+      "title": "Faixas da página inicial",
+      "description": "Reordene, ative, desative e renomeie as faixas. Os alunos as veem exatamente nesta ordem."
+    },
+    "softLimit": "Você tem {count} faixas. Painéis muito longos podem ficar cansativos.",
+    "addRow": "Adicionar faixa",
+    "empty": {
+      "title": "Nenhuma faixa configurada",
+      "description": "Seu painel ficará vazio. Adicione uma faixa para começar."
+    },
+    "system": "Sistema",
+    "courseCount": "{count, plural, one {# curso} other {# cursos}}",
+    "types": {
+      "continue_watching": {
+        "source": "Automática · continuar aulas"
+      },
+      "enrolled": {
+        "source": "Automática · matrículas do usuário"
+      },
+      "featured": {
+        "source": "Automática · cursos em destaque"
+      },
+      "new": {
+        "source": "Automática · cursos novos"
+      },
+      "free": {
+        "source": "Automática · cursos gratuitos"
+      },
+      "manual": {
+        "source": "Selecionada por um administrador"
+      }
+    },
+    "actions": {
+      "moveUp": "Mover para cima",
+      "moveDown": "Mover para baixo",
+      "hide": "Ocultar do painel",
+      "show": "Exibir no painel",
+      "edit": "Editar coleção"
+    }
+  },
+  "menu": {
+    "header": {
+      "eyebrow": "Navegação",
+      "title": "Menu do usuário",
+      "description": "Adicione links ao menu do avatar do aluno e arraste-os para definir a ordem."
+    },
+    "addItem": "Adicionar item",
+    "created": "Item criado.",
+    "saved": "Item salvo.",
+    "deleteConfirm": "Excluir “{label}”?",
+    "empty": {
+      "eyebrow": "Nada por aqui",
+      "title": "Nenhum item personalizado",
+      "description": "Adicione um link de suporte, um atalho para o WhatsApp ou uma rota para um curso em destaque."
+    },
+    "actions": {
+      "drag": "Arrastar {label} para reordenar",
+      "hide": "Ocultar do menu",
+      "show": "Exibir no menu",
+      "edit": "Editar",
+      "delete": "Excluir"
+    },
+    "drag": {
+      "instructions": "Pressione espaço para pegar um item. Use as setas para movê-lo e pressione espaço novamente para soltá-lo. Pressione escape para cancelar.",
+      "started": "O item {label} foi selecionado.",
+      "over": "{label} está sobre {target}.",
+      "ended": "{label} foi movido para a posição de {target}.",
+      "noTarget": "O item não está sobre uma posição de destino.",
+      "cancelled": "Reordenação cancelada."
+    },
+    "dialog": {
+      "editTitle": "Editar item do menu",
+      "createTitle": "Adicionar item ao menu",
+      "close": "Fechar",
+      "label": "Nome",
+      "labelPlaceholder": "Suporte",
+      "url": "URL",
+      "urlHelp": "Links HTTPS, de e-mail e de telefone abrem em uma nova aba. Caminhos iniciados por / abrem dentro do aplicativo.",
+      "icon": "Ícone",
+      "enabled": "Exibir no menu do usuário",
+      "enabledHelp": "Desative para manter a configuração sem mostrar o item.",
+      "cancel": "Cancelar",
+      "saving": "Salvando…",
+      "save": "Salvar"
+    },
+    "iconPicker": {
+      "group": "Escolher um ícone",
+      "none": "Sem ícone",
+      "choose": "Usar o ícone {name}"
+    }
+  },
+  "email": {
+    "page": {
+      "eyebrow": "Comunicação",
+      "title": "E-mails",
+      "description": "Configure o remetente e edite os modelos usados em boas-vindas, confirmação de compra e avisos de vencimento."
+    },
+    "sender": {
+      "saved": "Configurações do remetente salvas.",
+      "testCaptured": "E-mail de teste capturado localmente para {email}.",
+      "testAccepted": "E-mail de teste aceito para envio a {email}.",
+      "title": "Remetente de e-mail",
+      "description": "Usado em mensagens de boas-vindas, confirmação de compra e acompanhamento.",
+      "transport": {
+        "mailpit": "A captura local está ativa; as mensagens de teste ficam no Mailpit.",
+        "resend": "Verifique o domínio do remetente no Resend antes de enviar."
+      },
+      "notConfiguredTitle": "O envio de e-mails não está configurado.",
+      "notConfiguredDescription": "Configure um transporte antes de testar.",
+      "fields": {
+        "fromAddress": "Endereço do remetente",
+        "fromName": "Nome do remetente",
+        "fromNamePlaceholder": "Área de membros",
+        "replyTo": "Endereço de resposta (opcional)",
+        "replyToPlaceholder": "Usa o endereço do remetente quando vazio",
+        "supportInbox": "Caixa de suporte (opcional)",
+        "supportInboxHint": "Destino das notificações quando um membro abre um chamado de suporte. Deixe vazio para não enviar essas notificações."
+      },
+      "actions": {
+        "saving": "Salvando…",
+        "save": "Salvar remetente",
+        "sending": "Enviando…",
+        "sendTest": "Enviar teste"
+      },
+      "testTitle": "Enviar e-mail de teste",
+      "testDescription": "Usa dados fictícios para testar o transporte de e-mail configurado."
+    },
+    "templates": {
+      "saved": "Modelo salvo.",
+      "resetConfirm": "Restaurar o conteúdo padrão deste modelo?",
+      "testSent": "E-mail de teste enviado para {email}.",
+      "title": "Modelos de e-mail",
+      "description": "Edite o texto da mensagem e insira as <code>variáveis</code> disponíveis quando necessário.",
+      "globalOverrideNotice": "Somente os campos que você editar viram substituições globais e são usados para destinatários em todos os idiomas.",
+      "insertVariable": "Inserir variável",
+      "insertVariableTitle": "Inserir {variable}",
+      "selectFieldFirst": "Selecione um campo antes de inserir uma variável",
+      "preview": "Prévia",
+      "subject": "Assunto",
+      "rendering": "Gerando prévia…",
+      "previewTitle": "Prévia de {name}",
+      "unsaved": "Você tem alterações não salvas.",
+      "testPlaceholder": "Endereço de e-mail para o teste",
+      "actions": {
+        "saving": "Salvando…",
+        "save": "Salvar modelo",
+        "resetting": "Restaurando…",
+        "reset": "Restaurar padrão",
+        "sending": "Enviando…",
+        "sendTest": "Enviar teste"
+      },
+      "catalog": {
+        "welcome_with_password": {
+          "name": "Boas-vindas — novo aluno",
+          "description": "Enviado na primeira compra. Inclui a senha temporária gerada e o link de acesso.",
+          "fields": {
+            "subject": "Assunto",
+            "heading": "Título",
+            "intro": "Parágrafo de introdução",
+            "credentialsIntro": "Texto após as credenciais",
+            "ctaLabel": "Texto do botão",
+            "fallbackLinkNote": "Observação do link alternativo"
+          }
+        },
+        "purchase_confirmed": {
+          "name": "Compra confirmada — aluno existente",
+          "description": "Enviado quando um aluno existente recebe acesso a um novo curso por webhook.",
+          "fields": {
+            "subject": "Assunto",
+            "heading": "Título",
+            "body": "Texto",
+            "ctaLabel": "Texto do botão",
+            "fallbackLinkNote": "Observação do link alternativo"
+          }
+        },
+        "membership_welcome": {
+          "name": "Boas-vindas à assinatura — primeiros passos",
+          "description": "Enviado na compra da assinatura e usado na integração retroativa. Atualize aqui as datas dos encontros ao vivo sem fazer uma nova implantação.",
+          "fields": {
+            "subject": "Assunto",
+            "greeting": "Saudação",
+            "heading": "Título",
+            "intro": "Introdução",
+            "credentialsIntro": "Introdução das credenciais (somente novos compradores)",
+            "step1Title": "Etapa 1 — título",
+            "step1Body": "Etapa 1 — texto",
+            "step1Cta": "Etapa 1 — texto do botão",
+            "step2Title": "Etapa 2 — título",
+            "step2Body": "Etapa 2 — texto",
+            "step2Cta": "Etapa 2 — texto do botão",
+            "liveSessionsTitle": "Encontros ao vivo — título",
+            "liveSessionsBody": "Encontros ao vivo — texto",
+            "conversationClubTitle": "Conversation Club — título",
+            "conversationClubBody": "Conversation Club — texto e datas",
+            "feedbackClubTitle": "Feedback Club — título",
+            "feedbackClubBody": "Feedback Club — texto e datas",
+            "zoomNote": "Observação sobre os links do Zoom",
+            "personalHelpTitle": "Ajuda individual — título",
+            "personalHelpBody": "Ajuda individual — texto",
+            "personalHelpCta": "Ajuda individual — texto do botão",
+            "tipsTitle": "Dicas — título",
+            "tipsBody": "Dicas — texto",
+            "closing": "Encerramento",
+            "signoff": "Assinatura"
+          }
+        },
+        "expiration_warning_7d": {
+          "name": "Aviso de vencimento — faltam 7 dias",
+          "description": "Enviado uma vez pelo job noturno aos alunos cujo acesso vence nos próximos sete dias.",
+          "fields": {
+            "subject": "Assunto",
+            "heading": "Título",
+            "body": "Texto",
+            "ctaLabel": "Texto do botão",
+            "fallbackLinkNote": "Observação do link alternativo"
+          }
+        }
+      }
+    }
+  },
+  "integrations": {
+    "header": {
+      "eyebrow": "Automação",
+      "title": "Integrações",
+      "description": "Receba eventos de venda dos provedores de pagamento e gere matrículas. Configure um webhook e associe cada produto do provedor a uma oferta."
+    },
+    "anomalies": {
+      "title": "Atividade incomum detectada na última hora:",
+      "probing": "{count, plural, one {# falha de autenticação} other {# falhas de autenticação}} (possível tentativa de descobrir tokens ou uso de uma URL antiga)",
+      "retry_storm": "{count, plural, one {# requisição limitada} other {# requisições limitadas}} (possível excesso de tentativas do provedor)",
+      "hint": "Verifique os registros de webhook. As tentativas em uma URL antiga após a troca do token devem desaparecer sozinhas."
+    },
+    "tabs": {
+      "providers": "Provedores",
+      "logs": "Registros ({count})",
+      "retries": "Novas tentativas ({count})"
+    },
+    "logs": {
+      "empty": "Ainda não há registros de webhook.",
+      "errorSummary": "Os detalhes do processamento estão disponíveis nos logs do servidor.",
+      "columns": {
+        "provider": "Provedor",
+        "event": "Evento",
+        "status": "Status",
+        "error": "Erro",
+        "when": "Quando"
+      }
+    },
+    "status": {
+      "received": "Recebido",
+      "processed": "Processado",
+      "failed": "Falhou"
+    },
+    "providerStatus": {
+      "notConnected": "Não conectado",
+      "paused": "Pausado",
+      "errors": "Erros detectados",
+      "connected": "Conectado"
+    },
+    "actions": {
+      "configure": "Configurar",
+      "connect": "Conectar"
+    },
+    "providers": {
+      "stripe": {
+        "tagline": "Pagamentos avulsos e recorrentes — alcance mundial",
+        "description": "Conecte sua conta Stripe para receber pagamentos avulsos e assinaturas.",
+        "secretLabel": "Segredo de assinatura do webhook da Stripe",
+        "secretPlaceholder": "whsec_aBcDeFgH...",
+        "secretWhatIsIt": "É o segredo emitido pela Stripe ao cadastrar esta URL de webhook. Ele confirma que os eventos vieram da Stripe e é diferente do ID do produto configurado nas ofertas.",
+        "secretWhereToFind": "Stripe Dashboard → Developers → Webhooks → selecione o endpoint → Signing secret → Reveal. Cole aqui o valor whsec_... completo.",
+        "productIdLabel": "ID de preço da Stripe (price_...)",
+        "productIdPlaceholder": "price_1Abc...",
+        "productIdInstructions": "No Stripe Dashboard → Products, abra o produto e copie o Price ID. Crie uma oferta para cada preço vendido.",
+        "capabilities": {
+          "purchases": "Compras",
+          "subscriptions": "Assinaturas com renovação automática",
+          "refunds": "Reembolsos integrais e contestações",
+          "offerMapping": "Associação de oferta para cada item do Checkout"
+        }
+      },
+      "guru": {
+        "tagline": "Plataforma brasileira de infoprodutos",
+        "description": "Conecte o D. Manager Guru em Digital Manager → Integrações → Postback.",
+        "producerIdLabel": "Seu ID de produtor na Guru",
+        "producerIdPlaceholder": "123456",
+        "producerIdWhatIsIt": "É o ID numérico da sua conta Guru. Os eventos de compra incluem esse valor, e o Open Members o valida como sinal adicional de consistência. Mantenha a URL do webhook em segredo; o ID do produtor não é uma credencial.",
+        "producerIdWhereToFind": "No D. Manager Guru, abra Minha conta → Perfil e copie o ID do produtor. Ele também pode aparecer na URL da página de detalhes de um produto.",
+        "productIdLabel": "ID do produto na Guru",
+        "productIdPlaceholder": "1234567 ou XXXX-YYYY",
+        "productIdInstructions": "No D. Manager Guru, abra o produto e copie o ID numérico da URL ou dos detalhes do produto. Crie uma oferta para cada produto vendido.",
+        "capabilities": {
+          "purchases": "Compras",
+          "subscriptions": "Assinaturas",
+          "refunds": "Reembolsos e contestações",
+          "multiProduct": "Associação de vários produtos"
+        }
+      },
+      "generic": {
+        "name": "Webhook genérico",
+        "tagline": "Qualquer provedor que envie JSON por POST",
+        "description": "Endpoint geral para plataformas sem integração dedicada. O payload precisa conter pelo menos email e transaction_id; product_id é opcional.",
+        "secretLabel": "Token Bearer",
+        "secretPlaceholder": "Texto aleatório longo (pelo menos 16 caracteres)",
+        "secretWhatIsIt": "É um valor aleatório longo escolhido por você. O provedor deve enviá-lo no cabeçalho Authorization: Bearer de cada webhook para o Open Members autenticar a requisição.",
+        "secretWhereToFind": "Gere um valor localmente, por exemplo com `openssl rand -hex 32`, cole-o aqui e configure o provedor para enviar o mesmo valor no cabeçalho Authorization.",
+        "productIdLabel": "Identificador do produto (texto livre)",
+        "productIdPlaceholder": "sku-premium-annual",
+        "productIdInstructions": "Use exatamente o valor enviado pelo provedor como product_id. Se o payload não tiver product_id, deixe as associações vazias e configure um nível de acesso alternativo.",
+        "capabilities": {
+          "purchases": "Compras",
+          "manualMapping": "Associação manual de produtos",
+          "unsupportedProviders": "Provedores sem integração nativa"
+        }
+      }
+    },
+    "dialog": {
+      "copyFailed": "Não foi possível copiar a URL. Selecione-a manualmente.",
+      "updated": "Integração atualizada.",
+      "connected": "{provider} conectado.",
+      "tokenRotated": "Token trocado. Cole a nova URL no provedor.",
+      "paused": "Integração pausada.",
+      "activated": "Integração ativada.",
+      "removed": "Integração removida.",
+      "testSuccess": "Evento de teste entregue e validado.",
+      "close": "Fechar",
+      "connection": {
+        "title": "Conecte sua conta {provider}",
+        "subtitle": "Esta configuração precisa ser concluída apenas uma vez."
+      },
+      "webhookUrl": {
+        "label": "Sua URL de webhook",
+        "beforeSaveHint": "Uma URL exclusiva será gerada após salvar. O {provider} não fornece um segredo de assinatura para você colar.",
+        "tokenHint": "Esta URL é uma credencial. Mantenha-a em segredo e cole-a no {provider} como URL de postback.",
+        "signatureHint": "Copie esta URL no painel do {provider} ao criar o endpoint de webhook ou postback.",
+        "afterSave": "A URL com o token incorporado aparecerá aqui após salvar."
+      },
+      "rotationGrace": "A URL antiga permanece válida por cinco minutos.",
+      "keepSecret": "{label} — deixe vazio para manter o valor atual",
+      "optionalRecommended": "{label} (opcional, recomendado)",
+      "displayName": "Nome de exibição",
+      "advanced": {
+        "title": "Avançado (opcional)",
+        "recommendationTitle": "Recomendação:",
+        "recommendation": "Deixe estes campos vazios, a menos que todos os produtos desconhecidos devam receber o mesmo acesso.",
+        "fallbackLabel": "Nível de acesso alternativo",
+        "fallbackHint": "Concede este acesso quando uma venda tem um ID de produto não associado. Use somente quando todos os compradores devem receber o mesmo plano.",
+        "noFallback": "— nenhum; rejeitar vendas não associadas —",
+        "expirationLabel": "Prazo padrão (dias)",
+        "expirationHint": "Usado somente com o nível de acesso alternativo. As ofertas associadas mantêm seus próprios prazos.",
+        "expirationPlaceholder": "vazio = vitalício"
+      },
+      "test": {
+        "title": "Testar conexão",
+        "description": "Envia um evento fictício assinado para validar a URL e o segredo. O teste não cria matrículas nem compras.",
+        "send": "Enviar evento de teste",
+        "reachable": "Webhook acessível e assinatura validada",
+        "failed": "O teste do webhook falhou ({status})",
+        "noResponse": "sem resposta",
+        "successDetail": "O endpoint aceitou o evento de teste assinado sem criar registros.",
+        "failureDetail": "O endpoint não aceitou o evento de teste. Revise a configuração e tente novamente."
+      },
+      "offers": {
+        "title": "Suas ofertas",
+        "subtitle": "Associe cada produto do {provider} ao acesso que ele concede.",
+        "failClosedTitle": "Produtos não associados são rejeitados.",
+        "failClosedDescription": "Adicione pelo menos uma oferta antes de receber vendas reais ou configure deliberadamente um nível de acesso alternativo.",
+        "locked": "Salve a conexão com o {provider} antes de configurar ofertas."
+      },
+      "danger": {
+        "title": "Remover esta integração",
+        "description": "Exclui o segredo de assinatura e todas as ofertas. Os registros de webhook existentes são mantidos."
+      },
+      "actions": {
+        "copied": "Copiado",
+        "copy": "Copiar",
+        "openDashboard": "Abrir painel do {provider}",
+        "rotateToken": "Trocar token",
+        "rotate": "Trocar",
+        "cancel": "Cancelar",
+        "active": "Ativa — clique para pausar",
+        "inactive": "Pausada — clique para ativar",
+        "save": "Salvar",
+        "connect": "Conectar",
+        "confirm": "Confirmar",
+        "delete": "Excluir"
+      },
+      "help": {
+        "hide": "Ocultar ajuda",
+        "show": "O que é? Onde encontrar?",
+        "whatIsIt": "O que é?",
+        "whereToFind": "Onde encontrar:"
+      }
+    },
+    "retries": {
+      "retryQueued": "Nova tentativa agendada.",
+      "errorSummary": "Os detalhes da nova tentativa estão disponíveis nos logs do servidor.",
+      "deleted": "Tentativa removida.",
+      "filters": {
+        "all": "Todas ({count})",
+        "pending": "Pendentes ({count})",
+        "abandoned": "Abandonadas ({count})"
+      },
+      "empty": "Nenhuma tentativa corresponde ao filtro atual.",
+      "columns": {
+        "provider": "Provedor",
+        "event": "Evento",
+        "status": "Status",
+        "attempts": "Tentativas",
+        "lastError": "Último erro",
+        "nextAttempt": "Próxima tentativa",
+        "actions": "Ações"
+      },
+      "status": {
+        "pending": "Pendente",
+        "processed": "Processada",
+        "abandoned": "Abandonada"
+      },
+      "actions": {
+        "confirmDelete": "Excluir?",
+        "cancel": "Cancelar",
+        "retryNow": "Tentar novamente agora",
+        "retry": "Tentar novamente",
+        "delete": "Excluir"
+      }
+    }
+  },
+  "announcements": {
+    "success": "Aviso enviado para {count, plural, one {# membro} other {# membros}}.",
+    "header": {
+      "eyebrow": "Engajamento",
+      "title": "Avisos",
+      "description": "Envie uma notificação no aplicativo para todos os membros ou para um público selecionado. Ela aparece no sino e permanece no histórico de cada membro."
+    },
+    "compose": {
+      "title": "Mensagem",
+      "headline": {
+        "label": "Título",
+        "hint": "Use um texto curto. Ele aparece no topo do cartão da notificação.",
+        "placeholder": "Novo curso disponível"
+      },
+      "body": {
+        "label": "Texto",
+        "hint": "Use uma ou duas frases, sem Markdown.",
+        "placeholder": "Publicamos um novo curso. Abra para começar a aprender."
+      },
+      "actionUrl": {
+        "label": "URL da ação",
+        "hint": "Destino opcional quando o membro seleciona o cartão. Use uma URL completa ou um caminho interno, como /courses/my-course."
+      }
+    },
+    "audience": {
+      "title": "Público",
+      "all": {
+        "title": "Todos os membros",
+        "subtitle": "{count, plural, =0 {Nenhum membro} one {# membro} other {# membros}}"
+      },
+      "accessLevel": {
+        "title": "Por produto",
+        "subtitle": "Membros matriculados em um nível de acesso específico",
+        "empty": "Ainda não há níveis de acesso"
+      },
+      "course": {
+        "title": "Por curso",
+        "subtitle": "Membros com acesso a um curso específico",
+        "empty": "Ainda não há cursos publicados"
+      },
+      "option": "{name} · {count, plural, =0 {nenhum membro} one {# membro} other {# membros}}"
+    },
+    "preview": {
+      "title": "Prévia",
+      "headline": "Seu título aparece aqui",
+      "body": "O texto do aviso aparece aqui. Use uma mensagem curta e fácil de ler."
+    },
+    "reach": {
+      "title": "Alcance",
+      "description": "{count, plural, =0 {Nenhum membro receberá este aviso.} one {# membro receberá este aviso.} other {# membros receberão este aviso.}}"
+    },
+    "actions": {
+      "sending": "Enviando…",
+      "send": "Enviar aviso",
+      "warning": "O envio é imediato e não pode ser desfeito. Cada destinatário recebe uma cópia em sua caixa de notificações."
+    }
+  }
+}

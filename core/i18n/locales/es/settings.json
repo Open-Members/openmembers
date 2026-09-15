@@ -1,0 +1,102 @@
+{
+  "page": {
+    "eyebrow": "Cuenta",
+    "heading": "Configuración",
+    "description": "Gestiona tu perfil, datos de acceso y preferencias de aprendizaje."
+  },
+  "profile": {
+    "eyebrow": "Identidad",
+    "heading": "Perfil",
+    "photo": "Foto de perfil",
+    "photoHelp": "JPG, PNG o WebP · hasta {maxSize} MB",
+    "changePhoto": "Cambiar foto",
+    "displayName": "Nombre para mostrar",
+    "namePlaceholder": "Tu nombre"
+  },
+  "email": {
+    "eyebrow": "Contacto",
+    "heading": "Correo electrónico",
+    "currentAddress": "Dirección de correo actual",
+    "newAddress": "Nueva dirección de correo",
+    "sendConfirmation": "Enviar confirmación"
+  },
+  "password": {
+    "eyebrow": "Seguridad",
+    "heading": "Contraseña",
+    "label": "Contraseña de acceso",
+    "description": "Elige una nueva contraseña para tu cuenta.",
+    "newPassword": "Nueva contraseña (mínimo de {minLength} caracteres)",
+    "confirmPassword": "Confirma la nueva contraseña",
+    "update": "Actualizar contraseña"
+  },
+  "language": {
+    "eyebrow": "Preferencias",
+    "heading": "Idioma",
+    "description": "Elige el idioma de la interfaz para guardarlo en tu cuenta. Tu preferencia también se aplicará al iniciar sesión en otro dispositivo.",
+    "options": {
+      "en": "Inglés",
+      "pt": "Portugués",
+      "es": "Español"
+    }
+  },
+  "playback": {
+    "eyebrow": "Reproducción",
+    "heading": "Preferencias de vídeo",
+    "autoplay": "Reproducir la siguiente lección automáticamente",
+    "description": "Al terminar una lección, inicia la siguiente automáticamente tras una breve cuenta atrás."
+  },
+  "session": {
+    "eyebrow": "Este dispositivo",
+    "heading": "Sesión",
+    "signOut": "Cerrar sesión",
+    "description": "Cierra la sesión de tu cuenta en este dispositivo."
+  },
+  "danger": {
+    "eyebrow": "Irreversible",
+    "heading": "Zona de peligro",
+    "deleteAccount": "Eliminar cuenta",
+    "description": "Borra permanentemente tu perfil, progreso y datos. Esta acción no se puede deshacer.",
+    "delete": "Eliminar",
+    "irreversible": "Esta acción no se puede deshacer",
+    "confirmDescription": "Tu perfil, progreso y datos se eliminarán permanentemente. Escribe <strong>{word}</strong> para confirmar.",
+    "confirmWord": "ELIMINAR",
+    "confirmPlaceholder": "Escribe {word} para confirmar",
+    "deleting": "Eliminando…"
+  },
+  "actions": {
+    "save": "Guardar",
+    "saving": "Guardando…",
+    "change": "Cambiar",
+    "sending": "Enviando…",
+    "updating": "Actualizando…",
+    "cancel": "Cancelar"
+  },
+  "status": {
+    "photoUpdated": "¡Foto de perfil actualizada!",
+    "nameUpdated": "¡Nombre actualizado!",
+    "emailSent": "Correo de confirmación enviado",
+    "emailSentDescription": "Revisa tu bandeja de entrada para confirmar la nueva dirección.",
+    "passwordUpdated": "¡Contraseña actualizada!"
+  },
+  "errors": {
+    "notAuthenticated": "Vuelve a iniciar sesión para continuar.",
+    "invalidAvatar": "Esta foto de perfil no es válida. Sube otra imagen.",
+    "saveAvatar": "No se pudo guardar tu foto de perfil. Inténtalo de nuevo.",
+    "invalidName": "Escribe un nombre de entre 1 y 50 caracteres.",
+    "updateName": "No se pudo actualizar tu nombre. Inténtalo de nuevo.",
+    "invalidEmail": "Escribe una dirección de correo válida.",
+    "currentEmail": "Esa ya es tu dirección de correo actual.",
+    "updateEmail": "No se pudo solicitar el cambio de correo. Inténtalo de nuevo.",
+    "invalidPassword": "Tu contraseña debe tener al menos 8 caracteres.",
+    "updatePassword": "No se pudo actualizar tu contraseña. Inténtalo de nuevo.",
+    "unsupportedLanguage": "Elige inglés, portugués o español.",
+    "updateLanguage": "No se pudo guardar tu preferencia de idioma. Inténtalo de nuevo.",
+    "updatePreference": "No se pudo guardar tu preferencia de vídeo. Inténtalo de nuevo.",
+    "deleteAccount": "No se pudo eliminar tu cuenta. Inténtalo de nuevo.",
+    "imageFile": "Selecciona un archivo de imagen.",
+    "imageTooLarge": "La imagen debe tener como máximo {maxSize} MB.",
+    "uploadImage": "No se pudo subir la imagen. Inténtalo de nuevo.",
+    "passwordMismatch": "Las contraseñas no coinciden.",
+    "unexpected": "Se ha producido un error. Inténtalo de nuevo."
+  }
+}

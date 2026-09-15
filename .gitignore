@@ -1,0 +1,66 @@
+# Private audit material, source snapshots, local work and tool state
+/.private/
+/.work/
+/tmp/
+/.wrangler/
+/.mcp.json
+/.vercel/
+/.open-next/
+/openmembers.config.json
+
+# Local development tools and instructions, at any directory level
+.codex/
+.agents/
+.claude/
+.cursor/
+.gemini/
+.windsurf/
+.cursorrules
+.windsurfrules
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+copilot-instructions.md
+
+# Internal work notes; public guides belong in docs/
+HANDOFF*.md
+handoff*.md
+*-handoff.md
+PLAN.md
+PLANNING.md
+planning.md
+*-plan.md
+*-plano.md
+roadmap.md
+cronograma-execucao.md
+backlog-execucao.md
+planning/
+plans/
+
+# Credentials and local configuration; only explicit templates are distributable
+.env*
+*.env
+!.env.example
+!.env.*.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Dependencies, generated output and validation artifacts
+node_modules
+/.openmembers-notices/
+.next/
+next-env.d.ts
+out/
+dist/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+*.log
+
+# Operating system and editor files
+.DS_Store
+*.swp
+*.swo

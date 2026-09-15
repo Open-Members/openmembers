@@ -1,0 +1,25 @@
+{
+  "branding": {
+    "site_name": "Jardim Academy",
+    "logo_light_url": "/branding-example.svg",
+    "logo_dark_url": "/branding-example.svg",
+    "favicon_url": "/branding-example.svg",
+    "primary_color": "#0f766e",
+    "accent_color": "#b45309",
+    "font_family": "serif"
+  },
+  "public": {
+    "title": "Conhecimento que floresce",
+    "description": "Cursos para aprender no seu ritmo."
+  },
+  "metadata": {
+    "description": "Aprenda com a Jardim Academy.",
+    "shortName": "Jardim"
+  },
+  "links": {
+    "support": "mailto:support@jardim.example.test",
+    "terms": "https://policies.example.test/terms",
+    "privacy": "https://policies.example.test/privacy",
+    "community": "https://community.example.test/"
+  }
+}

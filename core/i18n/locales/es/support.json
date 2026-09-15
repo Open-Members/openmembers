@@ -1,0 +1,89 @@
+{
+  "title": "Soporte",
+  "subtitle": "Abra un ticket y nuestro equipo le responderá por correo.",
+  "newTicket": "Nuevo ticket",
+  "empty": {
+    "title": "Aún no hay tickets",
+    "description": "Cuando abra un ticket de soporte, aparecerá aquí.",
+    "cta": "Abrir mi primer ticket"
+  },
+  "status": {
+    "open": "Abierto",
+    "in_progress": "En progreso",
+    "closed": "Cerrado"
+  },
+  "list": {
+    "columns": {
+      "subject": "Asunto",
+      "status": "Estado",
+      "created": "Creado"
+    }
+  },
+  "form": {
+    "title": "Abrir un ticket",
+    "description": "Cuéntenos en qué necesita ayuda. Incluya todos los detalles posibles — puede agregar enlaces o capturas en el cuerpo del mensaje.",
+    "subject": "Asunto",
+    "subjectPlaceholder": "Resumen breve del problema",
+    "message": "Mensaje",
+    "messagePlaceholder": "Describa el problema con detalle",
+    "submit": "Enviar ticket",
+    "submitting": "Enviando…",
+    "cancel": "Cancelar",
+    "successToast": "Ticket creado. Le responderemos por correo.",
+    "errorFallback": "No se pudo crear el ticket. Inténtelo nuevamente.",
+    "errors": {
+      "notAuthenticated": "Inicie sesión para abrir un ticket.",
+      "accountInactive": "Su cuenta no está activa.",
+      "invalidInput": "Revise el asunto y el mensaje e inténtelo nuevamente.",
+      "operationFailed": "No se pudo crear el ticket. Inténtelo nuevamente."
+    }
+  },
+  "detail": {
+    "back": "Volver a los tickets",
+    "createdOn": "Abierto el",
+    "messageLabel": "Su mensaje"
+  },
+  "admin": {
+    "title": "Tickets de soporte",
+    "subtitle": "Todos los tickets enviados desde la página de Soporte.",
+    "filter": {
+      "all": "Todos",
+      "open": "Abiertos",
+      "in_progress": "En progreso",
+      "closed": "Cerrados",
+      "ariaLabel": "Filtrar tickets de soporte por estado"
+    },
+    "columns": {
+      "subject": "Asunto",
+      "user": "Usuario",
+      "status": "Estado",
+      "created": "Creado",
+      "updated": "Actualizado"
+    },
+    "empty": "Ningún ticket coincide con el filtro seleccionado.",
+    "detail": {
+      "back": "Volver a los tickets",
+      "userLabel": "Enviado por",
+      "emailLabel": "Correo",
+      "createdLabel": "Creado",
+      "updatedLabel": "Última actualización",
+      "messageLabel": "Mensaje del usuario",
+      "noteLabel": "Nota interna (no visible para el usuario)",
+      "notePlaceholder": "Agregar una nota privada para el equipo",
+      "statusLabel": "Estado",
+      "saveButton": "Guardar cambios",
+      "savingButton": "Guardando…",
+      "successToast": "Ticket actualizado.",
+      "errorFallback": "No se pudo actualizar el ticket.",
+      "metadataFallback": "Ticket de soporte",
+      "errors": {
+        "notAuthenticated": "Inicie sesión nuevamente para actualizar este ticket.",
+        "accountInactive": "Su cuenta no está activa.",
+        "notAuthorized": "No tiene permiso para actualizar este ticket.",
+        "invalidInput": "Revise el estado y la nota e inténtelo nuevamente.",
+        "notFound": "Este ticket ya no existe.",
+        "operationFailed": "No se pudo actualizar el ticket."
+      }
+    }
+  }
+}

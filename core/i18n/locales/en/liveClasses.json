@@ -1,0 +1,50 @@
+{
+  "schedule": "Schedule",
+  "upcoming": "Upcoming live sessions",
+  "upcomingClass": "Upcoming live class",
+  "live": "Live",
+  "liveNow": "Live now",
+  "starts": "Starts",
+  "join": "Join now",
+  "openMeeting": "Open meeting link",
+  "openLink": "Open link",
+  "addCalendar": "Add to calendar",
+  "viewCourse": "View course",
+  "browseCourses": "Browse courses",
+  "browseCatalog": "Browse catalog",
+  "duration": "{minutes, number} min",
+  "scheduled": "Scheduled {minutes, number} min",
+  "elapsed": "{time} elapsed",
+  "elapsedHours": "{hours, number}h {minutes}m",
+  "localTime": "{time} · your local time",
+  "localTimeShort": "{time} local",
+  "coursesMore": "{title} + {count, number} more",
+  "countdown": {
+    "starting": "Starting in {time}",
+    "daysHours": "in {days, number}d {hours, number}h",
+    "hoursMinutes": "in {hours, number}h {minutes, number}m",
+    "minutesSeconds": "in {minutes, number}m {seconds}s",
+    "weeks": "{count, plural, one {In # week} other {In # weeks}}",
+    "days": "{count, plural, one {In # day} other {In # days}}",
+    "tomorrow": "Tomorrow",
+    "minutes": "in {count, number}m"
+  },
+  "strip": {
+    "emptyEnrolled": "Nothing scheduled in the next {days, number} days",
+    "emptyVisitor": "No live sessions yet",
+    "window": "Next {days, number} days · {timezone}"
+  },
+  "calendar": {
+    "title": "Upcoming live classes",
+    "description": "A month-at-a-glance view of every live session across your enrolled courses.",
+    "enrollTitle": "Enroll in a course to unlock live sessions.",
+    "enrollDescription": "The calendar lights up with every scheduled Q&A, workshop and live lesson from your instructor.",
+    "previous": "Previous month",
+    "next": "Next month",
+    "today": "Today",
+    "grid": "Live classes in {month}",
+    "dayEvents": "{date}, {count, plural, one {# event} other {# events}}",
+    "more": "+{count, number} more",
+    "empty": "No live classes scheduled for {month}."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "greeting": "Welcome back",
+  "dailyChallenge": {
+    "title": "Today's Challenge",
+    "cta": "Take the challenge",
+    "completed": "Completed!",
+    "bonus": "+{xp} XP bonus"
+  },
+  "streak": {
+    "title": "Current Streak",
+    "days": "{count, plural, one {# day} other {# days}}",
+    "keepItUp": "Keep it up!"
+  },
+  "xp": {
+    "title": "Total XP",
+    "level": "Level {level}"
+  },
+  "recentRecordings": {
+    "title": "Recent Recordings",
+    "empty": "No recordings yet. Start practising!",
+    "viewAll": "View all"
+  },
+  "practiceNow": "Practice now",
+  "communityActivity": {
+    "title": "Community",
+    "empty": "Be the first to share a recording"
+  }
+}

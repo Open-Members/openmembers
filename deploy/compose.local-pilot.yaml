@@ -1,0 +1,62 @@
+name: openmembers-e6-pilot-app
+
+services:
+  pilot-app:
+    image: openmembers:e6-local-pilot
+    container_name: openmembers-e6-pilot-app
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_SITE_URL: http://localhost:3201
+        NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:56431
+        NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY:?Set the pilot public key}
+        NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ""
+        NEXT_PUBLIC_SENTRY_DSN: ""
+        NEXT_PUBLIC_GA4_MEASUREMENT_ID: ""
+        NEXT_PUBLIC_META_PIXEL_ID: ""
+    env_file:
+      - ../.private/e6-local-pilot/application.env
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      HOSTNAME: 0.0.0.0
+      NEXT_PUBLIC_SITE_URL: http://localhost:3201
+      NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:56431
+      SUPABASE_INTERNAL_URL: http://host.docker.internal:56431
+      OPENMEMBERS_INTERNAL_URL: http://127.0.0.1:3000
+      AUTH_ALLOWED_ORIGINS: http://localhost:3201
+      OPENMEMBERS_CONFIG_FILE: /app/config/installation.json
+      OPENMEMBERS_JOB_ORIGIN: http://127.0.0.1:3000
+    volumes:
+      - type: bind
+        source: ../.private/e6-local-pilot/installation.json
+        target: /app/config/installation.json
+        read_only: true
+        bind:
+          create_host_path: false
+    ports:
+      - "127.0.0.1:3201:3000"
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    networks: [pilot]
+    init: true
+    restart: unless-stopped
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    stop_grace_period: 30s
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:3000/api/health', {signal: AbortSignal.timeout(5000)}).then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
+      interval: 30s
+      timeout: 6s
+      start_period: 30s
+      retries: 3
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+
+networks:
+  pilot:
+    name: openmembers-e6-pilot-app-network

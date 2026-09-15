@@ -1,0 +1,11 @@
+[Unit]
+Description=Open Members job %i
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/openmembers
+ExecStart=/usr/bin/docker compose --env-file /etc/openmembers/application.env -f /opt/openmembers/deploy/compose.yaml exec -T app node scripts/run-job.mjs %i
+TimeoutStartSec=150
+UMask=0077

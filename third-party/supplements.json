@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "package": "@next/env",
+      "version": "16.3.5",
+      "sourceUrl": "https://raw.githubusercontent.com/vercel/next.js/ca2c75eb7f8d9dd012a8bb83c06132149fe221f9/license.md",
+      "file": "licenses/next-16.3.5-license.md",
+      "sha256": "ee765244e2d59f5234d474f62e0766fa0c8b99af967fdd4c0cb8dcb0c76ea224"
+    },
+    {
+      "package": "@next/eslint-plugin-next",
+      "version": "16.3.5",
+      "sourceUrl": "https://raw.githubusercontent.com/vercel/next.js/ca2c75eb7f8d9dd012a8bb83c06132149fe221f9/license.md",
+      "file": "licenses/next-16.3.5-license.md",
+      "sha256": "ee765244e2d59f5234d474f62e0766fa0c8b99af967fdd4c0cb8dcb0c76ea224"
+    },
+    {
+      "package": "@supabase/functions-js",
+      "version": "2.100.0",
+      "sourceUrl": "https://raw.githubusercontent.com/supabase/supabase-js/9ee9997608ae9f6d28717dcda4c4a85a66208069/LICENSE",
+      "file": "licenses/supabase-js-2.100.0-LICENSE",
+      "sha256": "334dd6820e2eaeab2064e7c59001b810566728a28a41a7c1dbf69bbee17d0936"
+    },
+    {
+      "package": "@supabase/postgrest-js",
+      "version": "2.100.0",
+      "sourceUrl": "https://raw.githubusercontent.com/supabase/supabase-js/9ee9997608ae9f6d28717dcda4c4a85a66208069/LICENSE",
+      "file": "licenses/supabase-js-2.100.0-LICENSE",
+      "sha256": "334dd6820e2eaeab2064e7c59001b810566728a28a41a7c1dbf69bbee17d0936"
+    },
+    {
+      "package": "@supabase/realtime-js",
+      "version": "2.100.0",
+      "sourceUrl": "https://raw.githubusercontent.com/supabase/supabase-js/9ee9997608ae9f6d28717dcda4c4a85a66208069/LICENSE",
+      "file": "licenses/supabase-js-2.100.0-LICENSE",
+      "sha256": "334dd6820e2eaeab2064e7c59001b810566728a28a41a7c1dbf69bbee17d0936"
+    },
+    {
+      "package": "@supabase/storage-js",
+      "version": "2.100.0",
+      "sourceUrl": "https://raw.githubusercontent.com/supabase/supabase-js/9ee9997608ae9f6d28717dcda4c4a85a66208069/LICENSE",
+      "file": "licenses/supabase-js-2.100.0-LICENSE",
+      "sha256": "334dd6820e2eaeab2064e7c59001b810566728a28a41a7c1dbf69bbee17d0936"
+    },
+    {
+      "package": "@supabase/supabase-js",
+      "version": "2.100.0",
+      "sourceUrl": "https://raw.githubusercontent.com/supabase/supabase-js/9ee9997608ae9f6d28717dcda4c4a85a66208069/LICENSE",
+      "file": "licenses/supabase-js-2.100.0-LICENSE",
+      "sha256": "334dd6820e2eaeab2064e7c59001b810566728a28a41a7c1dbf69bbee17d0936"
+    },
+    {
+      "package": "eslint-config-next",
+      "version": "16.3.5",
+      "sourceUrl": "https://raw.githubusercontent.com/vercel/next.js/ca2c75eb7f8d9dd012a8bb83c06132149fe221f9/license.md",
+      "file": "licenses/next-16.3.5-license.md",
+      "sha256": "ee765244e2d59f5234d474f62e0766fa0c8b99af967fdd4c0cb8dcb0c76ea224"
+    }
+  ]
+}

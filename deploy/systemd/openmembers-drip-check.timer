@@ -1,0 +1,11 @@
+[Unit]
+Description=Schedule Open Members drip-check
+
+[Timer]
+OnCalendar=*-*-* *:10:00 UTC
+AccuracySec=1s
+Persistent=true
+Unit=openmembers-job@drip-check.service
+
+[Install]
+WantedBy=timers.target

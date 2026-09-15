@@ -1,0 +1,624 @@
+{
+  "errors": {
+    "loadFailed": "Could not load this information. Try again.",
+    "saveFailed": "Could not save your changes. Try again.",
+    "deleteFailed": "Could not delete this item. Try again.",
+    "notFound": "This item no longer exists. Reload the page.",
+    "invalidInput": "Review the fields and try again.",
+    "labelRequired": "Enter a label.",
+    "labelTooLong": "Use no more than 80 characters for the label.",
+    "invalidUrl": "Use an internal path, an HTTPS address, or a simple email or phone link.",
+    "operationFailed": "Could not complete this operation. Try again.",
+    "invalidEmail": "Enter a valid email address.",
+    "sendFailed": "Could not send the email. Check the delivery configuration and try again.",
+    "unknownTemplate": "This email template is not supported.",
+    "renderFailed": "Could not generate the email preview. Review the template and try again.",
+    "invalidProvider": "This integration provider is not supported.",
+    "nameRequired": "Enter a display name.",
+    "invalidExpiration": "Enter a whole number of days greater than or equal to zero.",
+    "secretRequired": "Enter the signing secret for this provider.",
+    "secretTooShort": "The signing secret must contain at least 16 characters.",
+    "testSucceeded": "The integration test succeeded.",
+    "testFailed": "Could not verify the integration.",
+    "networkFailed": "Could not reach the webhook endpoint.",
+    "noActiveIntegration": "Activate and save this integration before testing it.",
+    "titleRequired": "Enter an announcement title.",
+    "messageRequired": "Enter an announcement message.",
+    "titleTooLong": "Use no more than 120 characters for the title.",
+    "messageTooLong": "Use no more than 600 characters for the message.",
+    "noAudience": "The selected audience has no recipients.",
+    "invalidActionUrl": "Use a safe internal path or an HTTPS URL."
+  },
+  "shared": {
+    "colorPicker": {
+      "open": "Open color picker for {label}",
+      "hex": "Hex color for {label}",
+      "preset": "Set color to {color}"
+    },
+    "imageUpload": {
+      "dimensionWarning": "Image is {width}×{height}. Recommended: {recommended}.",
+      "ratio": "{ratio} ratio",
+      "tooLarge": "File is {size} MB. Maximum size is {max} MB. Compress the image and try again.",
+      "uploaded": "Image uploaded.",
+      "uploading": "Uploading image…",
+      "remove": "Remove {label}",
+      "dropOrClick": "Drop or click to upload",
+      "formats": "{formats} · up to {max} MB",
+      "file": "Choose file for {label}",
+      "dropArea": "Upload {label}",
+      "errors": {
+        "initialize": "Could not prepare the upload. Try again.",
+        "upload": "Could not upload the image. Try again."
+      }
+    }
+  },
+  "branding": {
+    "header": {
+      "eyebrow": "Look & feel",
+      "title": "Branding",
+      "description": "Customize identity, theme colors, and the home hero. Saved changes apply to every student surface."
+    },
+    "identity": {
+      "title": "Identity",
+      "siteName": "Site name",
+      "logoLight": "Logo (light theme)",
+      "logoLightHelp": "Shown on light backgrounds.",
+      "logoDark": "Logo (dark theme)",
+      "logoDarkHelp": "Shown on dark backgrounds.",
+      "favicon": "Favicon",
+      "faviconHelp": "Browser tab icon. PNG or ICO.",
+      "socialImage": "Social preview image",
+      "socialImageHelp": "Shown when your platform is shared on social media.",
+      "bodyFont": "Body font",
+      "bodyFontHelp": "Uses fonts already available on the device. Display headings retain their serif style.",
+      "fonts": {
+        "system": "System sans-serif",
+        "serif": "System serif",
+        "mono": "System monospace"
+      }
+    },
+    "colors": {
+      "title": "Theme colors",
+      "primary": "Primary",
+      "primaryHelp": "Used for buttons, links, and key brand surfaces.",
+      "accent": "Accent",
+      "accentHelp": "Secondary highlight for badges and calls to action.",
+      "preview": "Preview",
+      "primaryAction": "Primary action",
+      "accentAction": "Accent button",
+      "newBadge": "NEW",
+      "linkText": "Link text"
+    },
+    "hero": {
+      "title": "Home hero",
+      "description": "The cinematic banner at the top of the student dashboard. The trailer takes precedence over the static image when both are set.",
+      "banner": "Hero banner image",
+      "bannerHelp": "Static fallback when no trailer is set, or when a mobile user has data saver enabled.",
+      "trailer": "Trailer — YouTube URL",
+      "trailerHelp": "Paste the full URL; the ID is extracted automatically.",
+      "heroTitle": "Hero title",
+      "titlePlaceholder": "Welcome to your members area",
+      "heroSubtitle": "Hero subtitle",
+      "subtitlePlaceholder": "Learn at your own pace with our instructors",
+      "overlay": "Overlay darkness",
+      "overlayHelp": "0 keeps the banner fully visible; 100 applies a heavy overlay for legibility.",
+      "showText": "Show title and subtitle over banner",
+      "showTextHelp": "Turn this off when the banner artwork already communicates the welcome message.",
+      "errors": {
+        "youtube": "Could not read that YouTube URL for the hero trailer."
+      }
+    },
+    "loading": {
+      "title": "Loading bar",
+      "description": "Thin progress bar shown at the top of the viewport while students navigate between pages.",
+      "style": "Style",
+      "gradient": "Gradient",
+      "gradientHelp": "Animated wash of multiple colors.",
+      "solid": "Solid",
+      "solidHelp": "One color, using the primary color above.",
+      "stops": "Gradient stops",
+      "stopsHelp": "Use between 2 and 6 hex colors. Their order sets the direction from left to right.",
+      "colorStop": "Color stop {number}",
+      "hexColorStop": "Hex value for color stop {number}",
+      "removeColor": "Remove color {number}",
+      "addColor": "Add color",
+      "reset": "Reset to default",
+      "preview": "Live preview",
+      "previewHelp": "This is approximately how the bar animates at the top of each page."
+    },
+    "selected": "Selected",
+    "unsaved": "You have unsaved changes.",
+    "allSaved": "All changes saved.",
+    "discard": "Discard",
+    "saving": "Saving…",
+    "saved": "Saved",
+    "save": "Save changes",
+    "savedToast": "Branding saved. Reloading to apply the theme…"
+  },
+  "home": {
+    "header": {
+      "eyebrow": "Layout",
+      "title": "Home rows",
+      "description": "Reorder, enable, disable, and rename rows. Students see them in this exact order."
+    },
+    "softLimit": "You have {count} rows. Long dashboards can feel overwhelming.",
+    "addRow": "Add row",
+    "empty": {
+      "title": "No rows configured",
+      "description": "Your dashboard will be empty. Add a row to get started."
+    },
+    "system": "System",
+    "courseCount": "{count, plural, one {# course} other {# courses}}",
+    "types": {
+      "continue_watching": {
+        "source": "Automatic · resume lessons"
+      },
+      "enrolled": {
+        "source": "Automatic · user enrollments"
+      },
+      "featured": {
+        "source": "Automatic · featured courses"
+      },
+      "new": {
+        "source": "Automatic · new courses"
+      },
+      "free": {
+        "source": "Automatic · free courses"
+      },
+      "manual": {
+        "source": "Selected by an administrator"
+      }
+    },
+    "actions": {
+      "moveUp": "Move up",
+      "moveDown": "Move down",
+      "hide": "Hide from dashboard",
+      "show": "Show on dashboard",
+      "edit": "Edit collection"
+    }
+  },
+  "menu": {
+    "header": {
+      "eyebrow": "Navigation",
+      "title": "User menu",
+      "description": "Add links to the student avatar menu and drag them into the order you want."
+    },
+    "addItem": "Add item",
+    "created": "Item created.",
+    "saved": "Item saved.",
+    "deleteConfirm": "Delete “{label}”?",
+    "empty": {
+      "eyebrow": "Nothing yet",
+      "title": "No custom items",
+      "description": "Add a support link, a WhatsApp shortcut, or a route to a featured course."
+    },
+    "actions": {
+      "drag": "Drag {label} to reorder",
+      "hide": "Hide from menu",
+      "show": "Show in menu",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "drag": {
+      "instructions": "Press space to pick up an item. Use the arrow keys to move it, then press space again to drop it. Press escape to cancel.",
+      "started": "Picked up {label}.",
+      "over": "{label} is over {target}.",
+      "ended": "Moved {label} to the position of {target}.",
+      "noTarget": "The item is no longer over a drop target.",
+      "cancelled": "Reordering cancelled."
+    },
+    "dialog": {
+      "editTitle": "Edit menu item",
+      "createTitle": "Add menu item",
+      "close": "Close",
+      "label": "Label",
+      "labelPlaceholder": "Support",
+      "url": "URL",
+      "urlHelp": "External HTTPS, email, and phone links open in a new tab. Paths beginning with / open inside the app.",
+      "icon": "Icon",
+      "enabled": "Show in user menu",
+      "enabledHelp": "Disable this to keep the configuration without displaying the item.",
+      "cancel": "Cancel",
+      "saving": "Saving…",
+      "save": "Save"
+    },
+    "iconPicker": {
+      "group": "Choose an icon",
+      "none": "No icon",
+      "choose": "Use {name} icon"
+    }
+  },
+  "email": {
+    "page": {
+      "eyebrow": "Communications",
+      "title": "Emails",
+      "description": "Configure the sender and edit the templates used for welcome, purchase confirmation, and expiration reminders."
+    },
+    "sender": {
+      "saved": "Sender settings saved.",
+      "testCaptured": "Test email captured locally for {email}.",
+      "testAccepted": "Test email accepted for delivery to {email}.",
+      "title": "Email sender",
+      "description": "Used for welcome, purchase confirmation, and lifecycle emails.",
+      "transport": {
+        "mailpit": "Local capture is enabled; test messages stay in Mailpit.",
+        "resend": "Verify the sender domain in Resend before sending."
+      },
+      "notConfiguredTitle": "Email delivery is not configured.",
+      "notConfiguredDescription": "Configure a transport before testing.",
+      "fields": {
+        "fromAddress": "From address",
+        "fromName": "From name",
+        "fromNamePlaceholder": "Members area",
+        "replyTo": "Reply-to (optional)",
+        "replyToPlaceholder": "Falls back to the from address",
+        "supportInbox": "Support inbox (optional)",
+        "supportInboxHint": "Destination for notifications when a member opens a support ticket. Leave empty to skip these notifications."
+      },
+      "actions": {
+        "saving": "Saving…",
+        "save": "Save sender settings",
+        "sending": "Sending…",
+        "sendTest": "Send test"
+      },
+      "testTitle": "Send a test email",
+      "testDescription": "Uses fictitious data to test the configured email transport."
+    },
+    "templates": {
+      "saved": "Template saved.",
+      "resetConfirm": "Reset this template to its default content?",
+      "testSent": "Test email sent to {email}.",
+      "title": "Email templates",
+      "description": "Edit the message text and insert the available <code>variables</code> where needed.",
+      "globalOverrideNotice": "Only fields you edit become global overrides and are used for recipients in every language.",
+      "insertVariable": "Insert variable",
+      "insertVariableTitle": "Insert {variable}",
+      "selectFieldFirst": "Select a field before inserting a variable",
+      "preview": "Preview",
+      "subject": "Subject",
+      "rendering": "Generating preview…",
+      "previewTitle": "Preview of {name}",
+      "unsaved": "You have unsaved changes.",
+      "testPlaceholder": "Email address for the test",
+      "actions": {
+        "saving": "Saving…",
+        "save": "Save template",
+        "resetting": "Resetting…",
+        "reset": "Restore default",
+        "sending": "Sending…",
+        "sendTest": "Send test"
+      },
+      "catalog": {
+        "welcome_with_password": {
+          "name": "Welcome — new student",
+          "description": "Sent on the first purchase. Includes the generated temporary password and login link.",
+          "fields": {
+            "subject": "Subject",
+            "heading": "Heading",
+            "intro": "Intro paragraph",
+            "credentialsIntro": "After the credentials",
+            "ctaLabel": "Button label",
+            "fallbackLinkNote": "Fallback link note"
+          }
+        },
+        "purchase_confirmed": {
+          "name": "Purchase confirmed — existing student",
+          "description": "Sent when an existing student receives access to a new course through a webhook.",
+          "fields": {
+            "subject": "Subject",
+            "heading": "Heading",
+            "body": "Body",
+            "ctaLabel": "Button label",
+            "fallbackLinkNote": "Fallback link note"
+          }
+        },
+        "membership_welcome": {
+          "name": "Membership welcome — onboarding",
+          "description": "Sent when someone buys the membership and used for retroactive onboarding. Update live-session dates here without a new deployment.",
+          "fields": {
+            "subject": "Subject",
+            "greeting": "Greeting line",
+            "heading": "Heading",
+            "intro": "Intro",
+            "credentialsIntro": "Credentials intro (new buyers only)",
+            "step1Title": "Step 1 — title",
+            "step1Body": "Step 1 — body",
+            "step1Cta": "Step 1 — button label",
+            "step2Title": "Step 2 — title",
+            "step2Body": "Step 2 — body",
+            "step2Cta": "Step 2 — button label",
+            "liveSessionsTitle": "Live sessions — title",
+            "liveSessionsBody": "Live sessions — body",
+            "conversationClubTitle": "Conversation Club — title",
+            "conversationClubBody": "Conversation Club — body and dates",
+            "feedbackClubTitle": "Feedback Club — title",
+            "feedbackClubBody": "Feedback Club — body and dates",
+            "zoomNote": "Zoom links note",
+            "personalHelpTitle": "Personal help — title",
+            "personalHelpBody": "Personal help — body",
+            "personalHelpCta": "Personal help — button label",
+            "tipsTitle": "Tips — title",
+            "tipsBody": "Tips — body",
+            "closing": "Closing",
+            "signoff": "Sign-off"
+          }
+        },
+        "expiration_warning_7d": {
+          "name": "Expiration warning — 7 days out",
+          "description": "Sent once by the nightly job to students whose access expires in the next seven days.",
+          "fields": {
+            "subject": "Subject",
+            "heading": "Heading",
+            "body": "Body",
+            "ctaLabel": "Button label",
+            "fallbackLinkNote": "Fallback link note"
+          }
+        }
+      }
+    }
+  },
+  "integrations": {
+    "header": {
+      "eyebrow": "Automation",
+      "title": "Integrations",
+      "description": "Receive sales events from payment providers and turn them into enrollments. Configure a webhook and map each provider product to an offer."
+    },
+    "anomalies": {
+      "title": "Unusual activity detected in the last hour:",
+      "probing": "{count, plural, one {# authentication failure} other {# authentication failures}} (possible token probing or stale URL retries)",
+      "retry_storm": "{count, plural, one {# rate-limited request} other {# rate-limited requests}} (possible excessive retries by the provider)",
+      "hint": "Check the webhook logs. Retries to an old URL after token rotation should clear on their own."
+    },
+    "tabs": {
+      "providers": "Providers",
+      "logs": "Logs ({count})",
+      "retries": "Retries ({count})"
+    },
+    "logs": {
+      "empty": "No webhook logs yet.",
+      "errorSummary": "Processing details are available in the server logs.",
+      "columns": {
+        "provider": "Provider",
+        "event": "Event",
+        "status": "Status",
+        "error": "Error",
+        "when": "When"
+      }
+    },
+    "status": {
+      "received": "Received",
+      "processed": "Processed",
+      "failed": "Failed"
+    },
+    "providerStatus": {
+      "notConnected": "Not connected",
+      "paused": "Paused",
+      "errors": "Errors detected",
+      "connected": "Connected"
+    },
+    "actions": {
+      "configure": "Configure",
+      "connect": "Connect"
+    },
+    "providers": {
+      "stripe": {
+        "tagline": "One-time and subscription billing — worldwide",
+        "description": "Connect your Stripe account for one-time payments and subscriptions.",
+        "secretLabel": "Stripe webhook signing secret",
+        "secretPlaceholder": "whsec_aBcDeFgH...",
+        "secretWhatIsIt": "The secret Stripe issues when you register this webhook URL. It verifies that events came from Stripe; it is separate from the product ID configured in the offers section.",
+        "secretWhereToFind": "Stripe Dashboard → Developers → Webhooks → select the endpoint → Signing secret → Reveal. Paste the complete whsec_... value here.",
+        "productIdLabel": "Stripe Price ID (price_...)",
+        "productIdPlaceholder": "price_1Abc...",
+        "productIdInstructions": "In Stripe Dashboard → Products, open the product and copy its Price ID. Create one offer for each price you sell.",
+        "capabilities": {
+          "purchases": "Purchases",
+          "subscriptions": "Subscriptions with automatic renewal",
+          "refunds": "Full refunds and chargebacks",
+          "offerMapping": "Offer mapping for each Checkout item"
+        }
+      },
+      "guru": {
+        "tagline": "Brazilian infoproduct platform",
+        "description": "Connect D. Manager Guru through Digital Manager → Integrações → Postback.",
+        "producerIdLabel": "Your Guru producer ID",
+        "producerIdPlaceholder": "123456",
+        "producerIdWhatIsIt": "The numeric ID of your Guru account. Purchase events include it, and Open Members checks it as an additional consistency signal. Keep the webhook URL secret; the producer ID is not a credential.",
+        "producerIdWhereToFind": "In D. Manager Guru, open Minha conta → Perfil and copy the producer ID. It can also appear in the URL of a product details page.",
+        "productIdLabel": "Guru product ID",
+        "productIdPlaceholder": "1234567 or XXXX-YYYY",
+        "productIdInstructions": "In D. Manager Guru, open the product and copy its numeric ID from the URL or the product details. Create one offer for each product you sell.",
+        "capabilities": {
+          "purchases": "Purchases",
+          "subscriptions": "Subscriptions",
+          "refunds": "Refunds and chargebacks",
+          "multiProduct": "Multiple product mappings"
+        }
+      },
+      "generic": {
+        "name": "Generic webhook",
+        "tagline": "Any provider that can send JSON by POST",
+        "description": "A general endpoint for platforms without a dedicated integration. The payload needs at least email and transaction_id; product_id is optional.",
+        "secretLabel": "Bearer token",
+        "secretPlaceholder": "Long random string (at least 16 characters)",
+        "secretWhatIsIt": "A long random value chosen by you. The provider must send it in the Authorization: Bearer header on every webhook so Open Members can authenticate the request.",
+        "secretWhereToFind": "Generate a value locally, for example with `openssl rand -hex 32`, paste it here, and configure the provider to send the same value in the Authorization header.",
+        "productIdLabel": "Product identifier (free text)",
+        "productIdPlaceholder": "sku-premium-annual",
+        "productIdInstructions": "Use the exact value the provider sends as product_id. If the payload has no product_id, leave mappings empty and configure a fallback access level.",
+        "capabilities": {
+          "purchases": "Purchases",
+          "manualMapping": "Manual product mapping",
+          "unsupportedProviders": "Providers without a native integration"
+        }
+      }
+    },
+    "dialog": {
+      "copyFailed": "Could not copy the URL. Select it manually.",
+      "updated": "Integration updated.",
+      "connected": "{provider} connected.",
+      "tokenRotated": "Token rotated. Paste the new URL into the provider.",
+      "paused": "Integration paused.",
+      "activated": "Integration activated.",
+      "removed": "Integration removed.",
+      "testSuccess": "Test event delivered and verified.",
+      "close": "Close",
+      "connection": {
+        "title": "Connect your {provider} account",
+        "subtitle": "This setup only needs to be completed once."
+      },
+      "webhookUrl": {
+        "label": "Your webhook URL",
+        "beforeSaveHint": "A unique URL will be generated after you save. {provider} does not expose a signing secret for you to paste.",
+        "tokenHint": "This URL is a credential. Keep it secret and paste it into {provider} as the postback URL.",
+        "signatureHint": "Copy this URL into the {provider} dashboard when you create the webhook or postback endpoint.",
+        "afterSave": "The URL with the embedded token appears here after you save."
+      },
+      "rotationGrace": "The old URL remains valid for five minutes.",
+      "keepSecret": "{label} — leave blank to keep the current value",
+      "optionalRecommended": "{label} (optional, recommended)",
+      "displayName": "Display name",
+      "advanced": {
+        "title": "Advanced (optional)",
+        "recommendationTitle": "Recommendation:",
+        "recommendation": "Leave these fields empty unless every unknown product should receive the same access.",
+        "fallbackLabel": "Fallback access level",
+        "fallbackHint": "Grants this access when a sale has an unmapped product ID. Use only when every buyer should receive the same plan.",
+        "noFallback": "— none; reject unmapped sales —",
+        "expirationLabel": "Default expiration (days)",
+        "expirationHint": "Used only with the fallback access level. Mapped offers keep their own expiration.",
+        "expirationPlaceholder": "blank = lifetime"
+      },
+      "test": {
+        "title": "Test connection",
+        "description": "Sends a signed fictitious event to verify the URL and secret. It creates no enrollment or purchase.",
+        "send": "Send test event",
+        "reachable": "Webhook reachable and signature verified",
+        "failed": "Webhook test failed ({status})",
+        "noResponse": "no response",
+        "successDetail": "The endpoint accepted the signed test event without creating records.",
+        "failureDetail": "The endpoint did not accept the test event. Review the configuration and try again."
+      },
+      "offers": {
+        "title": "Your offers",
+        "subtitle": "Map each {provider} product to the access it grants.",
+        "failClosedTitle": "Unmapped products are rejected.",
+        "failClosedDescription": "Add at least one offer before receiving real sales, or deliberately configure a fallback access level.",
+        "locked": "Save the {provider} connection before configuring offers."
+      },
+      "danger": {
+        "title": "Remove this integration",
+        "description": "Deletes the signing secret and all offers. Existing webhook logs are retained."
+      },
+      "actions": {
+        "copied": "Copied",
+        "copy": "Copy",
+        "openDashboard": "Open {provider} dashboard",
+        "rotateToken": "Rotate token",
+        "rotate": "Rotate",
+        "cancel": "Cancel",
+        "active": "Active — click to pause",
+        "inactive": "Paused — click to activate",
+        "save": "Save",
+        "connect": "Connect",
+        "confirm": "Confirm",
+        "delete": "Delete"
+      },
+      "help": {
+        "hide": "Hide help",
+        "show": "What is this? Where do I find it?",
+        "whatIsIt": "What is this?",
+        "whereToFind": "Where to find it:"
+      }
+    },
+    "retries": {
+      "retryQueued": "Retry queued.",
+      "errorSummary": "Retry details are available in the server logs.",
+      "deleted": "Retry removed.",
+      "filters": {
+        "all": "All ({count})",
+        "pending": "Pending ({count})",
+        "abandoned": "Abandoned ({count})"
+      },
+      "empty": "No retries match the current filter.",
+      "columns": {
+        "provider": "Provider",
+        "event": "Event",
+        "status": "Status",
+        "attempts": "Attempts",
+        "lastError": "Last error",
+        "nextAttempt": "Next attempt",
+        "actions": "Actions"
+      },
+      "status": {
+        "pending": "Pending",
+        "processed": "Processed",
+        "abandoned": "Abandoned"
+      },
+      "actions": {
+        "confirmDelete": "Delete?",
+        "cancel": "Cancel",
+        "retryNow": "Retry now",
+        "retry": "Retry",
+        "delete": "Delete"
+      }
+    }
+  },
+  "announcements": {
+    "success": "Announcement sent to {count, plural, one {# member} other {# members}}.",
+    "header": {
+      "eyebrow": "Engagement",
+      "title": "Announcements",
+      "description": "Send an in-app notification to every member or a selected audience. It appears in the notification bell and remains in each member's history."
+    },
+    "compose": {
+      "title": "Message",
+      "headline": {
+        "label": "Headline",
+        "hint": "Keep it short. It appears at the top of the notification card.",
+        "placeholder": "New course available"
+      },
+      "body": {
+        "label": "Body",
+        "hint": "Use one or two sentences, without Markdown.",
+        "placeholder": "We just published a new course. Open it to start learning."
+      },
+      "actionUrl": {
+        "label": "Action URL",
+        "hint": "Optional destination when the member selects the card. Use a full URL or an internal path such as /courses/my-course."
+      }
+    },
+    "audience": {
+      "title": "Audience",
+      "all": {
+        "title": "All members",
+        "subtitle": "{count, plural, =0 {No members} one {# member} other {# members}}"
+      },
+      "accessLevel": {
+        "title": "By product",
+        "subtitle": "Members enrolled in a specific access level",
+        "empty": "No access levels yet"
+      },
+      "course": {
+        "title": "By course",
+        "subtitle": "Members with access to a specific course",
+        "empty": "No published courses yet"
+      },
+      "option": "{name} · {count, plural, =0 {no members} one {# member} other {# members}}"
+    },
+    "preview": {
+      "title": "Preview",
+      "headline": "Your headline appears here",
+      "body": "The announcement body appears here. Keep it short and easy to scan."
+    },
+    "reach": {
+      "title": "Reach",
+      "description": "{count, plural, =0 {No members will receive this announcement.} one {# member will receive this announcement.} other {# members will receive this announcement.}}"
+    },
+    "actions": {
+      "sending": "Sending…",
+      "send": "Send announcement",
+      "warning": "Sending is immediate and cannot be undone. Each recipient receives a copy in their notification inbox."
+    }
+  }
+}

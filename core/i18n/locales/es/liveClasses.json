@@ -1,0 +1,50 @@
+{
+  "schedule": "Agenda",
+  "upcoming": "Próximas clases en vivo",
+  "upcomingClass": "Próxima clase en vivo",
+  "live": "En vivo",
+  "liveNow": "En vivo ahora",
+  "starts": "Empieza",
+  "join": "Unirse ahora",
+  "openMeeting": "Abrir enlace de la clase",
+  "openLink": "Abrir enlace",
+  "addCalendar": "Añadir al calendario",
+  "viewCourse": "Ver curso",
+  "browseCourses": "Explorar cursos",
+  "browseCatalog": "Explorar catálogo",
+  "duration": "{minutes, number} min",
+  "scheduled": "Duración prevista: {minutes, number} min",
+  "elapsed": "{time} transcurridos",
+  "elapsedHours": "{hours, number}h {minutes}min",
+  "localTime": "{time} · tu hora local",
+  "localTimeShort": "{time} en tu horario",
+  "coursesMore": "{title} + {count, number} más",
+  "countdown": {
+    "starting": "Empieza en {time}",
+    "daysHours": "en {days, number}d {hours, number}h",
+    "hoursMinutes": "en {hours, number}h {minutes, number}min",
+    "minutesSeconds": "en {minutes, number}min {seconds}s",
+    "weeks": "{count, plural, one {En # semana} other {En # semanas}}",
+    "days": "{count, plural, one {En # día} other {En # días}}",
+    "tomorrow": "Mañana",
+    "minutes": "en {count, number}min"
+  },
+  "strip": {
+    "emptyEnrolled": "No hay clases programadas para los próximos {days, number} días",
+    "emptyVisitor": "Aún no hay clases en vivo",
+    "window": "Próximos {days, number} días · {timezone}"
+  },
+  "calendar": {
+    "title": "Próximas clases en vivo",
+    "description": "Consulta todas las clases en vivo de tus cursos en un calendario mensual.",
+    "enrollTitle": "Inscríbete en un curso para acceder a las clases en vivo.",
+    "enrollDescription": "El calendario reúne las sesiones de preguntas y respuestas, talleres y clases en vivo de tu instructor.",
+    "previous": "Mes anterior",
+    "next": "Mes siguiente",
+    "today": "Hoy",
+    "grid": "Clases en vivo en {month}",
+    "dayEvents": "{date}, {count, plural, one {# evento} other {# eventos}}",
+    "more": "+{count, number} más",
+    "empty": "No hay clases en vivo programadas para {month}."
+  }
+}

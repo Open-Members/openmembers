@@ -1,0 +1,128 @@
+{
+  "dashboard": {
+    "greeting": "Welcome back, {name}",
+    "title": "Welcome to {siteName}",
+    "learner": "Learner",
+    "resume": "Resume watching",
+    "browse": "Browse catalog",
+    "viewCatalog": "View catalog",
+    "empty": {
+      "eyebrow": "Waiting on content",
+      "title": "Nothing here yet",
+      "description": "There are no courses to show on this page yet. You can check the catalog for available learning materials."
+    }
+  },
+  "catalog": {
+    "eyebrow": "Catalog",
+    "title": "Browse",
+    "description": "Explore the course catalog. Open a course to see its content and access options.",
+    "unpublished": "Nothing has been published yet.",
+    "yourCourses": "Your courses",
+    "featured": "Featured",
+    "newReleases": "New releases",
+    "fullCatalog": "Full catalog",
+    "allCourses": "All courses",
+    "empty": {
+      "eyebrow": "Nothing yet",
+      "title": "Nothing to browse yet",
+      "description": "When courses are published they'll show up here."
+    }
+  },
+  "hero": {
+    "trailer": "Featured trailer"
+  },
+  "cards": {
+    "instructor": "With {name}"
+  },
+  "rows": {
+    "seeAll": "See all",
+    "scrollLeft": "Scroll left",
+    "scrollRight": "Scroll right"
+  },
+  "badges": {
+    "free": "Free",
+    "new": "New",
+    "comingSoon": "Coming soon",
+    "featured": "Featured",
+    "completed": "Completed",
+    "locked": "Locked",
+    "progress": "Progress"
+  },
+  "duration": {
+    "hoursMinutes": "{hours, number}h {minutes, number}min",
+    "hours": "{hours, number}h",
+    "minutes": "{minutes, number}min",
+    "minutesSeconds": "{minutes, number}min {seconds, number}s",
+    "seconds": "{seconds, number}s"
+  },
+  "episode": {
+    "number": "Lesson {number}",
+    "completed": "Completed",
+    "watching": "Watching",
+    "preview": "Free preview",
+    "locked": "Locked",
+    "unlocked": "Unlocked",
+    "unlockDays": "{count, plural, one {Unlocks in # day} other {Unlocks in # days}}",
+    "unlockDate": "Available on {date}",
+    "markWatched": "Mark as watched",
+    "markUnwatched": "Mark as not watched"
+  },
+  "progress": {
+    "eyebrow": "Your journey",
+    "title": "Your progress",
+    "description": "A running view of every course you're enrolled in — how far you've come and what's still waiting.",
+    "inProgress": {
+      "eyebrow": "In progress",
+      "title": "Pick up where you left off",
+      "description": "{count, plural, one {# course under way} other {# courses under way}}"
+    },
+    "notStarted": {
+      "eyebrow": "Up next",
+      "title": "Ready to begin",
+      "description": "{count, plural, one {# course you haven't started} other {# courses you haven't started}}"
+    },
+    "completed": {
+      "eyebrow": "Finished",
+      "title": "Courses you've completed",
+      "description": "{count, plural, one {# course fully completed — well done.} other {# courses fully completed — well done.}}"
+    },
+    "course": {
+      "continue": "Continue →",
+      "start": "Start →",
+      "done": "Done",
+      "lessons": "{total, plural, one {{completed, number} of # lesson} other {{completed, number} of # lessons}}",
+      "allDone": "All done"
+    },
+    "empty": {
+      "eyebrow": "Nothing to track yet",
+      "title": "No courses yet",
+      "description": "Enroll in a course to start tracking your progress here."
+    }
+  },
+  "activity": {
+    "period": "Last 12 weeks",
+    "title": "Activity",
+    "empty": "No activity yet — your first lesson lights this up.",
+    "summary": "{lessons, plural, one {# lesson} other {# lessons}} across {days, plural, one {# day} other {# days}}",
+    "day": "{date} — {count, plural, one {# lesson} other {# lessons}}",
+    "less": "Less",
+    "more": "More"
+  },
+  "stats": {
+    "streak": "Streak",
+    "days": "{count, plural, one {day} other {days}}",
+    "longest": "Longest: {count, number}",
+    "keepGoing": "Keep it going",
+    "startStreak": "Start your streak",
+    "week": "This week",
+    "minutes": "min",
+    "weekLessons": "{count, plural, =0 {No lessons yet} one {# lesson} other {# lessons}}",
+    "lessonsDone": "Lessons done",
+    "total": "total",
+    "allTime": "All time",
+    "overall": "Overall",
+    "acrossEnrolled": "Across enrolled",
+    "activeCourse": "Active course",
+    "pickCourse": "Pick a course"
+  }
+}

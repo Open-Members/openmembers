@@ -1,0 +1,16 @@
+{
+  "navbar": {
+    "login": "Iniciar sesión",
+    "startFree": "Crear cuenta",
+    "navigationLabel": "Navegación pública",
+    "toggleMenu": "Abrir o cerrar menú"
+  },
+  "home": {
+    "title": "Tu aprendizaje comienza aquí.",
+    "description": "Accede a tus cursos, materiales y progreso en un solo lugar. Inicia sesión para continuar o crea tu cuenta.",
+    "login": "Iniciar sesión",
+    "register": "Crear cuenta"
+  },
+  "metadataDescription": "Accede a tus cursos y materiales de aprendizaje.",
+  "homeLabel": "Página de inicio de {siteName}"
+}

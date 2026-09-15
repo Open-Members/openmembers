@@ -1,0 +1,55 @@
+{
+  "login": {
+    "title": "Boas-vindas de volta.",
+    "subtitle": "Entre para continuar seus cursos.",
+    "metadataTitle": "Entrar — {siteName}",
+    "metadataDescription": "Entre para acessar seus cursos.",
+    "noAccount": "Ainda não tem uma conta?",
+    "createAccount": "Crie sua conta",
+    "callbackError": "Este link de acesso é inválido ou expirou, ou não foi possível concluir a autenticação. Tente entrar novamente ou solicite um novo link.",
+    "originUnavailable": {
+      "title": "O acesso está temporariamente indisponível.",
+      "description": "Não é possível concluir este link seguro agora. Tente novamente mais tarde ou entre em contato com a administração do site.",
+      "codeLabel": "Código do erro:",
+      "backToLogin": "Voltar para entrar"
+    }
+  },
+  "register": {
+    "title": "Crie sua conta.",
+    "subtitle": "Seus cursos estão esperando.",
+    "metadataTitle": "Criar conta — {siteName}",
+    "metadataDescription": "Crie sua conta para acessar seus cursos.",
+    "hasAccount": "Já tem uma conta?",
+    "signIn": "Entrar"
+  },
+  "forgotPassword": {
+    "title": "Esqueceu sua senha?",
+    "subtitle": "Enviaremos um link seguro para você.",
+    "metadataTitle": "Esqueci minha senha — {siteName}",
+    "metadataDescription": "Redefina a senha da sua conta.",
+    "backToSignIn": "Voltar para entrar"
+  },
+  "resetPassword": {
+    "title": "Defina uma nova senha.",
+    "subtitle": "Escolha uma senha de que você se lembre.",
+    "metadataTitle": "Definir nova senha — {siteName}",
+    "metadataDescription": "Escolha uma nova senha para sua conta.",
+    "backToSignIn": "Voltar para entrar"
+  },
+  "changePassword": {
+    "title": "Boas-vindas.",
+    "subtitle": "Escolha uma senha para substituir a senha temporária que enviamos.",
+    "metadataTitle": "Boas-vindas — {siteName}",
+    "metadataDescription": "Defina uma senha para sua conta."
+  },
+  "setup": {
+    "title": "Esta área de membros está sendo configurada.",
+    "description": "O acesso e os cursos estarão disponíveis quando a administração do site concluir a instalação.",
+    "backToHome": "Voltar ao início",
+    "metadataTitle": "Configuração em andamento — {siteName}"
+  },
+  "suspended": {
+    "metadataTitle": "Conta suspensa — {siteName}",
+    "metadataDescription": "Sua conta está suspensa. Entre em contato com a organização para obter ajuda."
+  }
+}

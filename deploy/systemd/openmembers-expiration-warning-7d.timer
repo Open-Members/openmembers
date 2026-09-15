@@ -1,0 +1,11 @@
+[Unit]
+Description=Schedule Open Members expiration-warning-7d
+
+[Timer]
+OnCalendar=*-*-* *:05:00 UTC
+AccuracySec=1s
+Persistent=true
+Unit=openmembers-job@expiration-warning-7d.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Example leaf mark">
+  <rect width="64" height="64" rx="18" fill="#0f766e"/>
+  <path d="M17 40C17 22 32 13 49 15C51 34 42 48 25 47L17 40Z" fill="#d1fae5"/>
+  <path d="M17 49L40 25" fill="none" stroke="#0f766e" stroke-linecap="round" stroke-width="5"/>
+</svg>

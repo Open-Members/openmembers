@@ -1,0 +1,6 @@
+{
+  "title": "Busca", "input": "Buscar cursos e aulas", "placeholder": "Buscar cursos e aulas…", "close": "Fechar busca",
+  "minimum": "Digite pelo menos 2 caracteres para buscar.", "loading": "Buscando…", "empty": "Nenhum resultado para “{query}”.",
+  "failed": "Não foi possível concluir a busca. Alguns resultados podem estar indisponíveis.", "retry": "Tentar novamente", "courses": "Cursos", "lessons": "Aulas",
+  "course": "Curso", "lesson": "Aula", "locked": "Bloqueado", "navigate": "Navegar", "open": "Abrir", "closeHint": "Fechar"
+}

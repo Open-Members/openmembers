@@ -1,0 +1,36 @@
+{
+  "componentError": {
+    "title": "Something went wrong",
+    "description": "Refresh the page to try again.",
+    "refresh": "Refresh"
+  },
+  "pageError": {
+    "eyebrow": "Error 500",
+    "title": "Something went wrong on our end",
+    "description": "The page encountered an unexpected error. Try again, or return to the dashboard if the problem continues.",
+    "reference": "Reference: {digest}",
+    "retry": "Try again",
+    "back": "Back to dashboard"
+  },
+  "notFound": {
+    "eyebrow": "Error 404",
+    "title": "This page was not found",
+    "description": "The link may be broken, or the page may have moved.",
+    "back": "Back to dashboard",
+    "courses": "Browse courses"
+  },
+  "globalError": {
+    "eyebrow": "Critical error",
+    "title": "The app could not finish loading",
+    "description": "The app encountered an error while starting. Try loading it again.",
+    "reference": "Reference: {digest}",
+    "retry": "Try again"
+  },
+  "accountUnavailable": {
+    "eyebrow": "Service unavailable",
+    "title": "We could not load your account",
+    "description": "Your account details are temporarily unavailable. Try again in a moment.",
+    "retry": "Try again",
+    "home": "Go to home"
+  }
+}

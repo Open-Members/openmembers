@@ -1,0 +1,70 @@
+{
+  "video": {
+    "noSource": "Nenhum vídeo configurado para esta aula.",
+    "title": "Vídeo da aula",
+    "loading": "Carregando vídeo…",
+    "buffering": "Carregando reprodução…",
+    "resume": "Continuar",
+    "play": "Reproduzir",
+    "pause": "Pausar",
+    "playLesson": "Reproduzir aula",
+    "resumeFrom": "Continuar de {time}",
+    "startOver": "Recomeçar do início",
+    "enterPip": "Abrir imagem em imagem",
+    "exitPip": "Sair de imagem em imagem",
+    "enterFullscreen": "Entrar em tela cheia",
+    "exitFullscreen": "Sair da tela cheia",
+    "seek": "Posição do vídeo",
+    "seekValue": "{current} de {total}",
+    "mute": "Silenciar",
+    "unmute": "Ativar som",
+    "volume": "Volume",
+    "speed": "Velocidade de reprodução",
+    "normalSpeed": "Normal",
+    "rate": "{rate}x",
+    "seekSeconds": "{seconds}s",
+    "errors": {
+      "unauthenticated": "Entre novamente para reproduzir este vídeo.",
+      "forbidden": "Você não tem acesso a este vídeo.",
+      "unavailable": "Este vídeo está indisponível. Tente novamente mais tarde.",
+      "failed": "Não foi possível reproduzir este vídeo. Tente novamente."
+    }
+  },
+  "reader": {
+    "library": "Biblioteca",
+    "preparing": "Preparando…",
+    "download": "Baixar",
+    "read": "✓ Lido",
+    "saving": "Salvando…",
+    "markRead": "Marcar como lido",
+    "ebook": "Livro digital",
+    "preparingHelp": "Preparando seu PDF — isso pode levar alguns segundos.",
+    "mobileHelp": "Toque abaixo para baixar. Abra com qualquer leitor de PDF no celular.",
+    "downloadPdf": "Baixar PDF",
+    "desktopHelp": "O PDF não carregou? Use o botão <download>Baixar</download> acima.",
+    "noPdf": "Nenhum PDF anexado a esta aula.",
+    "inLibrary": "Nesta biblioteca",
+    "loading": "Carregando PDF…",
+    "saveFailedTitle": "Não foi possível salvar o progresso",
+    "saveFailed": "Seu progresso de leitura não pôde ser salvo. Tente novamente.",
+    "loadFailed": "Não foi possível carregar o PDF. Tente baixá-lo usando o botão acima."
+  },
+  "library": {
+    "withInstructor": "Com {name}",
+    "title": "Biblioteca digital",
+    "resume": "Continuar leitura",
+    "start": "Começar leitura",
+    "getAccess": "Obter acesso",
+    "ebooks": "{count, plural, one {# livro digital} other {# livros digitais}}",
+    "accessSchedule": "Os materiais seguem seu acesso ao curso e o cronograma de liberação.",
+    "collection": "Coleção {number}",
+    "enrollHelp": "Entre ou inscreva-se para abrir e baixar estes livros digitais."
+  },
+  "download": {
+    "title": "Não foi possível baixar",
+    "unauthenticated": "Entre novamente para baixar este arquivo.",
+    "forbidden": "Você não tem acesso a este arquivo.",
+    "unavailable": "Este arquivo está indisponível. Tente novamente mais tarde.",
+    "failed": "Não foi possível baixar o arquivo. Tente novamente."
+  }
+}

@@ -1,0 +1,9 @@
+
+.dist-building/
+.dist-previous/
+release/
+.release-building/
+.release-previous/
+.release-evidence/
+.wrangler/
+wrangler.local.jsonc
