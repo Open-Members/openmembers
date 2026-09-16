@@ -11,8 +11,8 @@ test('administrator creates, orders, publishes and removes fictitious course con
   if (process.env.NEXT_PUBLIC_SUPABASE_URL !== localApi) throw new Error('Use the guarded local database runner.');
   const admin = createClient(localApi, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false, autoRefreshToken: false } });
   const suffix = randomUUID();
-  const slug = `e5-admin-${suffix}`;
-  const title = `E5 Admin ${suffix}`;
+  const slug = `development-admin-${suffix}`;
+  const title = `Development Admin ${suffix}`;
   let courseId: string | undefined;
   async function login(email: string) {
     await page.goto('/login');
@@ -36,18 +36,18 @@ test('administrator creates, orders, publishes and removes fictitious course con
     }).toBe(true);
     await page.goto(`/admin/content/${slug}`);
     await page.getByRole('button', { name: 'Add module', exact: true }).click();
-    await page.getByPlaceholder('e.g. Getting started').fill('E5 module');
+    await page.getByPlaceholder('e.g. Getting started').fill('Development module');
     await page.getByRole('button', { name: 'Create', exact: true }).click();
-    await expect(page.getByRole('heading', { name: 'E5 module', exact: true })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Development module', exact: true })).toBeVisible();
     await page.getByRole('button', { name: 'Edit module', exact: true }).click();
     await page.getByRole('checkbox', { name: /Published/ }).check();
     await page.getByRole('button', { name: 'Save', exact: true }).click();
-    for (const [lessonTitle, lessonSlug] of [['E5 first lesson', 'first'], ['E5 second lesson', 'second']]) {
+    for (const [lessonTitle, lessonSlug] of [['Development first lesson', 'first'], ['Development second lesson', 'second']]) {
       await page.getByRole('button', { name: 'Add lesson', exact: true }).click();
       await page.getByPlaceholder('e.g. Welcome to the course').fill(lessonTitle);
       await page.getByPlaceholder('welcome', { exact: true }).fill(lessonSlug);
       await page.getByRole('button', { name: 'Text', exact: true }).click();
-      await page.getByPlaceholder('Lesson content…').fill(`Fictitious E5 body ${lessonSlug} ${suffix}`);
+      await page.getByPlaceholder('Lesson content…').fill(`Fictitious Development body ${lessonSlug} ${suffix}`);
       await page.getByRole('checkbox', { name: /Published/ }).check();
       await page.getByRole('checkbox', { name: /Free preview/ }).check();
       await page.getByRole('button', { name: 'Create', exact: true }).click();
@@ -64,9 +64,9 @@ test('administrator creates, orders, publishes and removes fictitious course con
     }).toEqual(['second', 'first']);
     await page.reload();
     await page.getByRole('button', { name: 'Edit lesson', exact: true }).first().click();
-    await page.getByPlaceholder('Lesson content…').fill(`Edited fictitious E5 body ${suffix}`);
+    await page.getByPlaceholder('Lesson content…').fill(`Edited fictitious Development body ${suffix}`);
     await page.getByRole('button', { name: 'Save', exact: true }).click();
-    await expect.poll(async () => (await admin.from('lessons').select('text_content').eq('module_id', moduleId).eq('slug', 'second').single()).data?.text_content).toBe(`Edited fictitious E5 body ${suffix}`);
+    await expect.poll(async () => (await admin.from('lessons').select('text_content').eq('module_id', moduleId).eq('slug', 'second').single()).data?.text_content).toBe(`Edited fictitious Development body ${suffix}`);
     await page.goto('/admin/content');
     const actions = page.locator(`a[href="/admin/content/${slug}"]`).locator('..');
     await actions.getByTitle('Publish', { exact: true }).click();
@@ -74,7 +74,7 @@ test('administrator creates, orders, publishes and removes fictitious course con
     await context.clearCookies();
     await login('visitor@example.test');
     await page.goto(`/courses/${slug}/second`);
-    await expect(page.getByText(`Edited fictitious E5 body ${suffix}`, { exact: true })).toBeVisible();
+    await expect(page.getByText(`Edited fictitious Development body ${suffix}`, { exact: true })).toBeVisible();
     await page.screenshot({ path: test.info().outputPath('created-preview.png'), fullPage: true });
     await context.clearCookies();
     await login('admin@example.test');

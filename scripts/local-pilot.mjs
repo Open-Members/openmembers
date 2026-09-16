@@ -317,9 +317,9 @@ export function validatePilotConfig(text) {
   if (redirects !== `["http://localhost:${PILOT_PORTS.application}/**"]`) {
     throw new Error('Pilot config has unexpected Auth redirect URLs.');
   }
-  for (const e5Port of ['55430', '55431', '55432', '55434']) {
-    if (new RegExp(`(^|[^0-9])${e5Port}([^0-9]|$)`).test(text)) {
-      throw new Error('Pilot config must not reference an E5 port.');
+  for (const developmentPort of ['55430', '55431', '55432', '55434']) {
+    if (new RegExp(`(^|[^0-9])${developmentPort}([^0-9]|$)`).test(text)) {
+      throw new Error('Pilot config must not reference a development port.');
     }
   }
   return true;

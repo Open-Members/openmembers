@@ -1,5 +1,5 @@
 # Isolated E6 pilot only. scripts/local-pilot.mjs copies this file into the
-# ignored pilot workdir; the root supabase/config.toml remains the E5 project.
+# ignored pilot workdir; the root supabase/config.toml remains the development project.
 project_id = "openmembers-e6-pilot"
 
 [api]

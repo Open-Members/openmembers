@@ -76,6 +76,8 @@ jobs:
       NEXT_TELEMETRY_DISABLED: '1'
       SUPABASE_TELEMETRY_DISABLED: '1'
       DO_NOT_TRACK: '1'
+      OPENMEMBERS_DATABASE_TEST_TARGET: development
+      OPENMEMBERS_BROWSER_TEST_TARGET: development
     steps:
       - name: Check out source
         # https://github.com/actions/checkout/releases/tag/v7.0.1

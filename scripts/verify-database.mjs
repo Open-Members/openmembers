@@ -9,10 +9,10 @@ import { getLocalStatus, projectRoot, cliEnv } from './local-environment.mjs';
 
 export function databaseVerificationEnvironment(env = cliEnv) {
   const target = env.OPENMEMBERS_DATABASE_TEST_TARGET;
-  if (target !== undefined && target !== 'e5') {
-    throw new Error('db:verify only supports the e5 target. Unset OPENMEMBERS_DATABASE_TEST_TARGET or set it to e5; use db:test for pilot/recovery.');
+  if (target !== undefined && target !== 'development') {
+    throw new Error('db:verify only supports the development target. Unset OPENMEMBERS_DATABASE_TEST_TARGET or set it to development; use db:test for pilot/recovery.');
   }
-  return { ...env, OPENMEMBERS_DATABASE_TEST_TARGET: 'e5' };
+  return { ...env, OPENMEMBERS_DATABASE_TEST_TARGET: 'development' };
 }
 
 async function verifyFirstAdmin(local, run) {
@@ -65,7 +65,7 @@ export async function verifyDatabase({
   function run(script, args = [], extraEnv = {}) {
     exec(process.execPath, [script, ...args], {
       cwd: projectRoot,
-      env: { ...verificationEnv, ...extraEnv, OPENMEMBERS_DATABASE_TEST_TARGET: 'e5' },
+      env: { ...verificationEnv, ...extraEnv, OPENMEMBERS_DATABASE_TEST_TARGET: 'development' },
       stdio: 'inherit',
     });
   }

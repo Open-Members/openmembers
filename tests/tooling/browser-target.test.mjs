@@ -13,7 +13,7 @@ import {
 } from '../../scripts/pilot-browser.mjs';
 
 const origins = {
-  e5: {
+  development: {
     appOrigin: 'http://localhost:3101',
     apiOrigin: 'http://127.0.0.1:55431',
     mailboxOrigin: 'http://127.0.0.1:55434',
@@ -46,11 +46,11 @@ const testIdentity = {
   repeatEachIndex: 0,
 };
 
-test('browser targets preserve E5 by default and select only the exact pilot name', () => {
-  assert.deepEqual(browserTestTarget({}), { name: 'e5', ...origins.e5 });
+test('browser targets default to development and require exact target names', () => {
+  assert.deepEqual(browserTestTarget({}), { name: 'development', ...origins.development });
   assert.deepEqual(
-    browserTestTarget({ OPENMEMBERS_BROWSER_TEST_TARGET: 'e5' }),
-    { name: 'e5', ...origins.e5 },
+    browserTestTarget({ OPENMEMBERS_BROWSER_TEST_TARGET: 'development' }),
+    { name: 'development', ...origins.development },
   );
   assert.deepEqual(
     browserTestTarget({ OPENMEMBERS_BROWSER_TEST_TARGET: 'pilot' }),
@@ -58,21 +58,26 @@ test('browser targets preserve E5 by default and select only the exact pilot nam
   );
   for (const target of [
     '',
+    'e5',
+    'E5',
     'production',
+    'Development',
+    'development ',
+    ' development',
     'Pilot',
     'pilot ',
     'http://localhost:3201',
-    'e5,pilot',
+    'development,pilot',
   ]) {
     assert.throws(
       () => browserTestTarget({ OPENMEMBERS_BROWSER_TEST_TARGET: target }),
-      /documented e5 or pilot target/,
+      /documented development or pilot target/,
     );
   }
 });
 
 test('browser identity accepts complete targets and routes only their app origin', () => {
-  for (const name of ['e5', 'pilot']) {
+  for (const name of ['development', 'pilot']) {
     const env = guardedEnvironment(name);
     const target = assertBrowserTestEnvironment(env, origins[name].appOrigin);
     assert.equal(target.name, name);
@@ -81,36 +86,36 @@ test('browser identity accepts complete targets and routes only their app origin
     assert.equal(context.headers['x-real-ip'], context.headers['x-forwarded-for']);
     assert.equal(context.matchesUrl(new URL(`${target.appOrigin}/login`)), true);
     assert.equal(
-      context.matchesUrl(new URL(name === 'e5' ? origins.pilot.appOrigin : origins.e5.appOrigin)),
+      context.matchesUrl(new URL(name === 'development' ? origins.pilot.appOrigin : origins.development.appOrigin)),
       false,
     );
   }
 });
 
 test('browser identity refuses remote, incomplete and mixed target environments', () => {
-  const e5 = guardedEnvironment('e5');
+  const development = guardedEnvironment('development');
   const invalid = [
-    { ...e5, OPENMEMBERS_LOCAL_BROWSER_TEST: '' },
-    { ...e5, NEXT_PUBLIC_SITE_URL: origins.pilot.appOrigin },
-    { ...e5, NEXT_PUBLIC_SUPABASE_URL: origins.pilot.apiOrigin },
-    { ...e5, NEXT_PUBLIC_SITE_URL: 'https://members.example.test' },
-    { ...e5, NEXT_PUBLIC_SUPABASE_URL: 'https://project.supabase.co' },
-    { ...e5, NEXT_PUBLIC_SUPABASE_ANON_KEY: '' },
-    { ...e5, SUPABASE_SERVICE_ROLE_KEY: 'invalid key' },
+    { ...development, OPENMEMBERS_LOCAL_BROWSER_TEST: '' },
+    { ...development, NEXT_PUBLIC_SITE_URL: origins.pilot.appOrigin },
+    { ...development, NEXT_PUBLIC_SUPABASE_URL: origins.pilot.apiOrigin },
+    { ...development, NEXT_PUBLIC_SITE_URL: 'https://members.example.test' },
+    { ...development, NEXT_PUBLIC_SUPABASE_URL: 'https://project.supabase.co' },
+    { ...development, NEXT_PUBLIC_SUPABASE_ANON_KEY: '' },
+    { ...development, SUPABASE_SERVICE_ROLE_KEY: 'invalid key' },
   ];
   for (const env of invalid) {
     assert.throws(
-      () => assertBrowserTestEnvironment(env, origins.e5.appOrigin),
+      () => assertBrowserTestEnvironment(env, origins.development.appOrigin),
       /guarded Open Members local test runner/,
     );
   }
   assert.throws(
-    () => assertBrowserTestEnvironment(e5, origins.pilot.appOrigin),
+    () => assertBrowserTestEnvironment(development, origins.pilot.appOrigin),
     /guarded Open Members local test runner/,
   );
   assert.throws(
     () => assertBrowserTestEnvironment(
-      { ...guardedEnvironment('pilot'), NEXT_PUBLIC_SUPABASE_URL: origins.e5.apiOrigin },
+      { ...guardedEnvironment('pilot'), NEXT_PUBLIC_SUPABASE_URL: origins.development.apiOrigin },
       origins.pilot.appOrigin,
     ),
     /guarded Open Members local test runner/,
@@ -129,7 +134,7 @@ test('pilot browser environment sanitizes inherited configuration and uses runti
     PATH: '/fixture/bin',
     DOCKER_HOST: 'unix:///fixture/docker.sock',
     DOCKER_CONTEXT: 'remote',
-    OPENMEMBERS_BROWSER_TEST_TARGET: 'e5',
+    OPENMEMBERS_BROWSER_TEST_TARGET: 'development',
     NEXT_PUBLIC_SITE_URL: 'https://customer.example.test',
     NEXT_PUBLIC_SUPABASE_URL: 'https://customer.supabase.co',
     NEXT_PUBLIC_SUPABASE_ANON_KEY: 'customer-public-key',

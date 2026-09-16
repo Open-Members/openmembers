@@ -298,7 +298,7 @@ The artifact check inspects build tracing for private/local material. Public bro
 On the dedicated local development stack, after creating the demo fixtures:
 
 ```sh
-OPENMEMBERS_DATABASE_TEST_TARGET=e5 npm run db:test
+OPENMEMBERS_DATABASE_TEST_TARGET=development npm run db:test
 npm run build:local
 npm run test:e2e:db
 ```

@@ -36,7 +36,7 @@ function svgFile(name: string, title: string, color: string, icon = false) {
   return {
     name,
     mimeType: 'image/svg+xml',
-    buffer: Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}"><title>${title}</title><rect width="${width}" height="${height}" rx="12" fill="${color}"/><text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" fill="white" font-family="sans-serif" font-size="${icon ? 22 : 38}">${icon ? 'E5' : title}</text></svg>`),
+    buffer: Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}"><title>${title}</title><rect width="${width}" height="${height}" rx="12" fill="${color}"/><text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" fill="white" font-family="sans-serif" font-size="${icon ? 22 : 38}">${icon ? 'OM' : title}</text></svg>`),
   };
 }
 
@@ -62,12 +62,12 @@ test('branding uploads persist, draft replacements can be discarded, and the stu
   expect(original.data!.length).toBeLessThanOrEqual(1);
   const originalSettings = original.data?.[0];
   const marker = randomUUID();
-  const siteName = `E5 Garden ${marker.slice(0, 8)}`;
+  const siteName = `Development Garden ${marker.slice(0, 8)}`;
   const files = {
-    light: svgFile(`e5-${marker}-light.svg`, 'Garden Light', '#0f766e'),
-    dark: svgFile(`e5-${marker}-dark.svg`, 'Garden Dark', '#4338ca'),
-    replacement: svgFile(`e5-${marker}-replacement.svg`, 'Garden Renewed', '#0369a1'),
-    favicon: svgFile(`e5-${marker}-favicon.svg`, 'Garden Icon', '#0f766e', true),
+    light: svgFile(`development-${marker}-light.svg`, 'Garden Light', '#0f766e'),
+    dark: svgFile(`development-${marker}-dark.svg`, 'Garden Dark', '#4338ca'),
+    replacement: svgFile(`development-${marker}-replacement.svg`, 'Garden Renewed', '#0369a1'),
+    favicon: svgFile(`development-${marker}-favicon.svg`, 'Garden Icon', '#0f766e', true),
   };
   const ownedNames = new Set(Object.values(files).map(file => file.name));
   const uploadedPaths = new Set<string>();

@@ -90,14 +90,14 @@ test('private PDF and text uploads finalize, download with authorization, and ar
   const lessonId = randomUUID();
   const levelId = randomUUID();
   const enrollmentId = randomUUID();
-  const slug = `e5-storage-${marker}`;
+  const slug = `development-storage-${marker}`;
   const lessonPath = `/courses/${slug}/materials`;
   const storagePrefix = `lessons/${lessonId}/`;
-  const privateBody = `E5 private material body ${marker}`;
-  const pdfMarker = `E5 PDF ${marker}`;
+  const privateBody = `Development private material body ${marker}`;
+  const pdfMarker = `Development PDF ${marker}`;
   const files: MaterialFile[] = [
     { name: `${slug}.pdf`, mimeType: 'application/pdf', buffer: await createPdf(pdfMarker) },
-    { name: `${slug}.txt`, mimeType: 'text/plain', buffer: Buffer.from(`E5 private TXT ${marker}\n`) },
+    { name: `${slug}.txt`, mimeType: 'text/plain', buffer: Buffer.from(`Development private TXT ${marker}\n`) },
   ];
   const ownedNames = new Set(files.map(file => file.name));
   const uploadedPaths = new Set<string>();
@@ -139,10 +139,10 @@ test('private PDF and text uploads finalize, download with authorization, and ar
   }
 
   try {
-    expect((await admin.from('courses').insert({ id: courseId, slug, title: `E5 Materials ${marker}`, is_published: true, is_free: false, content_format: 'video' })).error).toBeNull();
+    expect((await admin.from('courses').insert({ id: courseId, slug, title: `Development Materials ${marker}`, is_published: true, is_free: false, content_format: 'video' })).error).toBeNull();
     expect((await admin.from('modules').insert({ id: moduleId, course_id: courseId, title: 'Fictitious materials', is_published: true })).error).toBeNull();
     expect((await admin.from('lessons').insert({ id: lessonId, module_id: moduleId, slug: 'materials', title: 'Private materials', content_type: 'text', text_content: privateBody, is_published: true, is_free_preview: false })).error).toBeNull();
-    expect((await admin.from('access_levels').insert({ id: levelId, slug, name: `E5 Materials ${marker}` })).error).toBeNull();
+    expect((await admin.from('access_levels').insert({ id: levelId, slug, name: `Development Materials ${marker}` })).error).toBeNull();
     expect((await admin.from('access_level_courses').insert({ access_level_id: levelId, course_id: courseId })).error).toBeNull();
     expect((await admin.from('enrollments').insert({ id: enrollmentId, user_id: demoUsers[1].id, access_level_id: levelId, source: 'manual', is_active: true })).error).toBeNull();
 

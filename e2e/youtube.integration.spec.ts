@@ -25,8 +25,8 @@ test('official YouTube demo plays, persists position, resumes and completes thro
   }
   const admin = createClient(localApi, process.env.SUPABASE_SERVICE_ROLE_KEY, { auth: { persistSession: false, autoRefreshToken: false } });
   const ids = { course: randomUUID(), module: randomUUID(), lesson: randomUUID() };
-  const slug = `e5-youtube-${ids.course}`;
-  const email = `e5-youtube-${ids.course}@example.test`;
+  const slug = `development-youtube-${ids.course}`;
+  const email = `development-youtube-${ids.course}@example.test`;
   const password = 'OpenMembers-local-2026!';
   let userId: string | undefined;
   let stage = 'fixtures';
@@ -74,7 +74,7 @@ test('official YouTube demo plays, persists position, resumes and completes thro
     const user = await admin.auth.admin.createUser({ email, password, email_confirm: true, user_metadata: { display_name: 'YouTube Demo Learner' } });
     expect(user.error).toBeNull();
     userId = user.data.user!.id;
-    expect((await admin.from('courses').insert({ id: ids.course, slug, title: 'E5 YouTube demonstration', is_published: true, is_free: true })).error).toBeNull();
+    expect((await admin.from('courses').insert({ id: ids.course, slug, title: 'Development YouTube demonstration', is_published: true, is_free: true })).error).toBeNull();
     expect((await admin.from('modules').insert({ id: ids.module, course_id: ids.course, title: 'Provider integration', is_published: true })).error).toBeNull();
     expect((await admin.from('lessons').insert({ id: ids.lesson, module_id: ids.module, slug: 'iframe-demo', title: 'Official IFrame API demonstration', content_type: 'video', video_provider: 'youtube', video_external_id: videoId, is_published: true })).error).toBeNull();
     stage = 'login';

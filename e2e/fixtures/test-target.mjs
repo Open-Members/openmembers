@@ -1,6 +1,6 @@
 const TARGETS = Object.freeze({
-  e5: Object.freeze({
-    name: 'e5',
+  development: Object.freeze({
+    name: 'development',
     appOrigin: 'http://localhost:3101',
     apiOrigin: 'http://127.0.0.1:55431',
     mailboxOrigin: 'http://127.0.0.1:55434',
@@ -18,9 +18,9 @@ function validCredential(value) {
 }
 
 export function browserTestTarget(env = process.env) {
-  const name = env.OPENMEMBERS_BROWSER_TEST_TARGET ?? 'e5';
+  const name = env.OPENMEMBERS_BROWSER_TEST_TARGET ?? 'development';
   if (!Object.hasOwn(TARGETS, name)) {
-    throw new Error('Browser tests require the documented e5 or pilot target.');
+    throw new Error('Browser tests require the documented development or pilot target.');
   }
   return TARGETS[name];
 }

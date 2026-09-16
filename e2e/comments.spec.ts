@@ -28,7 +28,7 @@ async function login(page: Page, email: string) {
 
 test('student comments and replies, then an administrator moderates the persisted discussion', async ({ page, context }) => {
   const admin = localAdmin();
-  const marker = `E5 comment ${randomUUID()}`;
+  const marker = `Development comment ${randomUUID()}`;
   const reply = `${marker} reply`;
   const errors: string[] = [];
   // A textarea's current value can match getByText before submission finishes.

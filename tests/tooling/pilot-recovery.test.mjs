@@ -21,7 +21,7 @@ test('recovery destination accepts only exclusive loopback services', () => {
   ]) assert.throws(() => validateRecoveryStatus(altered), /Recovery/u);
 });
 
-test('recovery layout derives an exclusive config without E5 or pilot ports', () => {
+test('recovery layout derives an exclusive config without development or pilot ports', () => {
   const original = readFileSync('deploy/local-pilot/supabase.config.toml', 'utf8');
   const configured = recoveryConfig(original);
   assert.match(configured, /project_id = "openmembers-e6-restore"/u);

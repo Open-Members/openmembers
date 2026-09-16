@@ -51,12 +51,12 @@ test('manual invitation requires a new password and respects role changes and en
   const { admin, learner } = localClients();
   const suffix = randomUUID();
   const email = `enrollment-browser-${suffix}@example.test`;
-  const name = `E5 learner ${suffix}`;
-  const slug = `e5-enrollment-${suffix}`;
+  const name = `Development learner ${suffix}`;
+  const slug = `development-enrollment-${suffix}`;
   const own = { course: randomUUID(), module: randomUUID(), lesson: randomUUID(), draft: randomUUID(), level: randomUUID(), cohort: randomUUID() };
-  const body = `E5 own paid content ${suffix}`;
-  const draftBody = `E5 own unpublished content ${suffix}`;
-  const password = `E5-local-${randomUUID()}!`;
+  const body = `Development own paid content ${suffix}`;
+  const draftBody = `Development own unpublished content ${suffix}`;
+  const password = `Development-local-${randomUUID()}!`;
   const lessonPath = `/courses/${slug}/paid`;
   let userId: string | undefined;
   let enrollmentId = '';
@@ -79,13 +79,13 @@ test('manual invitation requires a new password and respects role changes and en
   }
 
   try {
-    expect((await admin.from('courses').insert({ id: own.course, slug, title: `E5 enrollment ${suffix}`, is_published: true })).error).toBeNull();
+    expect((await admin.from('courses').insert({ id: own.course, slug, title: `Development enrollment ${suffix}`, is_published: true })).error).toBeNull();
     expect((await admin.from('modules').insert({ id: own.module, course_id: own.course, title: 'Own enrollment module', is_published: true })).error).toBeNull();
     expect((await admin.from('lessons').insert([
       { id: own.lesson, module_id: own.module, title: 'Own paid lesson', slug: 'paid', content_type: 'text', text_content: body, is_published: true },
       { id: own.draft, module_id: own.module, title: 'Own unpublished lesson', slug: 'draft', content_type: 'text', text_content: draftBody, is_published: false },
     ])).error).toBeNull();
-    expect((await admin.from('access_levels').insert({ id: own.level, name: `E5 product ${suffix}`, slug })).error).toBeNull();
+    expect((await admin.from('access_levels').insert({ id: own.level, name: `Development product ${suffix}`, slug })).error).toBeNull();
     expect((await admin.from('access_level_courses').insert({ access_level_id: own.level, course_id: own.course })).error).toBeNull();
     expect((await admin.from('cohorts').insert({ id: own.cohort, course_id: own.course, name: 'Own enrollment cohort', slug: 'own' })).error).toBeNull();
 

@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { databaseVerificationEnvironment, verifyDatabase } from '../../scripts/verify-database.mjs';
 
-const local = { project: 'fictitious-local-e5' };
+const local = { project: 'fictitious-local-development' };
 const snapshot = { schemaHash: 'fictitious-schema-hash', counts: { profiles: 2 } };
 
 function fixture(env = {}) {
@@ -37,28 +37,28 @@ function fixture(env = {}) {
   return { options, events, commands };
 }
 
-test('verification accepts an absent or exact e5 target without changing the caller environment', () => {
-  for (const target of [undefined, 'e5']) {
+test('verification accepts an absent or exact development target without changing the caller environment', () => {
+  for (const target of [undefined, 'development']) {
     const env = Object.freeze({
       ...(target === undefined ? {} : { OPENMEMBERS_DATABASE_TEST_TARGET: target }),
       SUPABASE_TELEMETRY_DISABLED: '1', DO_NOT_TRACK: '1', SUPABASE_ACCESS_TOKEN: '',
       PATH: '/fictitious/toolchain',
     });
     assert.deepEqual(databaseVerificationEnvironment(env), {
-      ...env, OPENMEMBERS_DATABASE_TEST_TARGET: 'e5',
+      ...env, OPENMEMBERS_DATABASE_TEST_TARGET: 'development',
     });
     assert.equal(env.OPENMEMBERS_DATABASE_TEST_TARGET, target);
   }
 });
 
-test('non-e5 targets are rejected before services, commands, account provisioning or filesystem work', async t => {
-  for (const target of ['pilot', 'recovery', 'production', '', 'E5', 'e5 ', ' e5', 'http://localhost:55431']) {
+test('non-development targets are rejected before services, commands, account provisioning or filesystem work', async t => {
+  for (const target of ['e5', 'E5', 'pilot', 'recovery', 'production', '', 'Development', 'development ', ' development', 'http://localhost:55431']) {
     const spies = Object.fromEntries([
       'getStatus', 'exec', 'verifyAdmin', 'takeSnapshot', 'readTests', 'saveEvidence', 'log',
     ].map(name => [name, t.mock.fn(() => { throw new Error(`Unexpected ${name}`); })]));
     await assert.rejects(
       verifyDatabase({ env: { OPENMEMBERS_DATABASE_TEST_TARGET: target }, ...spies }),
-      /db:verify only supports the e5 target.*use db:test for pilot\/recovery/,
+      /db:verify only supports the development target.*use db:test for pilot\/recovery/,
     );
     for (const [name, spy] of Object.entries(spies)) {
       assert.equal(spy.mock.callCount(), 0, `${target}: ${name} must not run`);
@@ -66,8 +66,8 @@ test('non-e5 targets are rejected before services, commands, account provisionin
   }
 });
 
-test('both clean installations validate the local guard first and pin every child to e5', async () => {
-  for (const target of [undefined, 'e5']) {
+test('both clean installations validate the local guard first and pin every child to development', async () => {
+  for (const target of [undefined, 'development']) {
     const env = { OPENMEMBERS_DATABASE_TEST_TARGET: target, DO_NOT_TRACK: '1' };
     const { options, events, commands } = fixture(env);
     assert.deepEqual(await verifyDatabase(options), [snapshot, snapshot]);
@@ -79,7 +79,7 @@ test('both clean installations validate the local guard first and pin every chil
     assert.equal(commands.length, 10);
     for (const command of commands) {
       assert.equal(command.node, process.execPath);
-      assert.equal(command.options.env.OPENMEMBERS_DATABASE_TEST_TARGET, 'e5');
+      assert.equal(command.options.env.OPENMEMBERS_DATABASE_TEST_TARGET, 'development');
       assert.equal(command.options.env.DO_NOT_TRACK, '1');
       assert.equal(command.options.stdio, 'inherit');
       if (command.args[0] === 'scripts/create-admin.mjs') {
@@ -107,7 +107,7 @@ test('a changed caller environment or per-command override cannot switch an acce
   await verifyDatabase(options);
   assert.equal(env.OPENMEMBERS_DATABASE_TEST_TARGET, 'pilot');
   assert.equal(commands.length, 10);
-  for (const command of commands) assert.equal(command.options.env.OPENMEMBERS_DATABASE_TEST_TARGET, 'e5');
+  for (const command of commands) assert.equal(command.options.env.OPENMEMBERS_DATABASE_TEST_TARGET, 'development');
 });
 
 test('a failed socket or project guard stops before reset and evidence', async () => {

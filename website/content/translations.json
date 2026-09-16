@@ -1,11 +1,11 @@
 {
   "overview": {
-    "sha256": "f88ee4f6532ea8c91b46255eece0e186820d0e665e428324ace2ecf8c54b590d",
+    "sha256": "8c8e41c2feaff940733eb003edcc84225379ceeb57bb2c065d56f719f38e0829",
     "curatedSha256": "32ee5ccf175078de41f71abc9b5d7ed4db517c6e8b5ed8b5ea8afd1850854f88"
   },
   "development": {
-    "sha256": "fd8c393587f654eb105ebb4ad40f4fa8eb7ad4017d9a200c17e85d5dea1f207d",
-    "curatedSha256": "32daf16e1dfee28dd1dba9b5f91180de9c385c19884d265042dcade9f519b46d"
+    "sha256": "bed1a57bd0e21178fd93fa0178156fbf725e3708c7754189dabadbeebed973d1",
+    "curatedSha256": "b1fc5dcc84178f9aa4e5370cebbdb6e2166312125522faf9b1f5e9c19a009485"
   },
   "customization": {
     "sha256": "05bcaaa5ecd840de371c478e650c18b3715f9cc34479821c357d6fc910707a61",

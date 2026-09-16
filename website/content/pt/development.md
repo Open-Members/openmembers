@@ -71,7 +71,7 @@ Em uma pilha existente, revise novas migrações antes de aplicá-las com `npm r
 
 **`npm run db:reset` apaga o banco local deste projeto e reaplica migrações. `npm run db:verify` faz isso duas vezes.** Use-os apenas quando a pilha for descartável e nenhum outro trabalho depender dela. Leia o [procedimento de recriação e verificação](development/local-database.md#reset-e-reprodução-limpa) antes de executar. Recriar o banco não é uma recuperação para um serviço Docker indisponível.
 
-`db:verify` aceita somente o alvo de desenvolvimento chamado `e5` em `5543x`. Um `OPENMEMBERS_DATABASE_TEST_TARGET` herdado diferente de `e5` é recusado antes de acessar serviços ou alterar dados. O seletor separado de alvo de `db:test` não muda o banco que `db:verify` recria.
+`db:verify` aceita somente o alvo de desenvolvimento chamado `development` em `5543x`. Um `OPENMEMBERS_DATABASE_TEST_TARGET` herdado diferente de `development` é recusado antes de acessar serviços ou alterar dados. O seletor separado de alvo de `db:test` não muda o banco que `db:verify` recria.
 
 ## Verifique uma alteração
 
@@ -88,10 +88,10 @@ npm run test:tooling
 
 Após criar o commit, com a árvore rastreada limpa, execute `npm run verify:source`. Ele verifica o instantâneo exato do Git para caminhos documentados de materiais locais e padrões de credenciais; recusa alterações rastreadas preparadas/não preparadas e não inspeciona arquivos não rastreados ou histórico. Veja [verificação de fonte](source-verification.md) para seus limites e a revisão separada do pacote final.
 
-Os contratos de banco exigem a pilha dedicada e os dados de demonstração. Criam registros temporários e removem seus próprios dados; não são testes somente de leitura. Para a pilha de desenvolvimento, selecione o alvo de desenvolvimento `e5` antes de executá-los:
+Os contratos de banco exigem a pilha dedicada e os dados de demonstração. Criam registros temporários e removem seus próprios dados; não são testes somente de leitura. Para a pilha de desenvolvimento, selecione o alvo de desenvolvimento `development` antes de executá-los:
 
 ```sh
-OPENMEMBERS_DATABASE_TEST_TARGET=e5 npm run db:test
+OPENMEMBERS_DATABASE_TEST_TARGET=development npm run db:test
 ```
 
 Para testes autenticados de navegador, crie um build para a mesma pilha local e deixe a porta `3101` livre:

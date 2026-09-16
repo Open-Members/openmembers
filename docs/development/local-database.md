@@ -108,7 +108,7 @@ O guard verifica o identificador do projeto, as portas esperadas, a ausência de
 
 **`db:verify` também apaga o banco local, duas vezes.** Esse comando executa duas inicializações limpas. Em cada uma, verifica o primeiro administrador, remove essa conta temporária, aplica o seed duas vezes e roda os testes de banco. Ao final, compara a estrutura capturada e as contagens das fixtures.
 
-Esse comando aceita somente o alvo de desenvolvimento **`e5`** (`5543x`). Se `OPENMEMBERS_DATABASE_TEST_TARGET` estiver exportada como `pilot`, `recovery` ou qualquer outro valor diferente de `e5`, ele recusa a operação antes de consultar serviços ou reinicializar dados. Remova a variável com `unset OPENMEMBERS_DATABASE_TEST_TARGET` ou defina `e5` somente quando a intenção for reconstruir a pilha de desenvolvimento. `db:test` continua permitindo a seleção explícita de piloto/recuperação para seus contratos; essa seleção não transforma `db:verify` em ferramenta de reset desses destinos.
+Esse comando aceita somente o alvo de desenvolvimento **`development`** (`5543x`). Se `OPENMEMBERS_DATABASE_TEST_TARGET` estiver exportada como `pilot`, `recovery` ou qualquer outro valor diferente de `development`, ele recusa a operação antes de consultar serviços ou reinicializar dados. Remova a variável com `unset OPENMEMBERS_DATABASE_TEST_TARGET` ou defina `development` somente quando a intenção for reconstruir a pilha de desenvolvimento. `db:test` continua permitindo a seleção explícita de piloto/recuperação para seus contratos; essa seleção não transforma `db:verify` em ferramenta de reset desses destinos.
 
 ```sh
 npm run db:verify
@@ -124,7 +124,7 @@ Os comandos abaixo não iniciam pagamentos, envio de e-mail externo ou publicaç
 npm run check
 npm run lint
 npm test
-OPENMEMBERS_DATABASE_TEST_TARGET=e5 npm run db:test
+OPENMEMBERS_DATABASE_TEST_TARGET=development npm run db:test
 npm run build:local
 npx playwright install chromium
 npm run test:e2e:db
@@ -137,7 +137,7 @@ npm run test:e2e:db
 - `build:local`: cria um build usando exclusivamente a configuração da pilha local; use esse build para a suíte autenticada.
 - `test:e2e:db`: usa a configuração Playwright com banco e inicia um servidor próprio em `localhost:3101`. Requer o build local e as contas fictícias. Não deixe outro processo usando essa porta.
 
-Em um host Debian/Ubuntu Linux compatível sem as bibliotecas de sistema do navegador, use `npx playwright install --with-deps chromium` no lugar da instalação simples. A opção também instala dependências do sistema e pode solicitar `sudo`. O exemplo fixa `db:test` em `e5` para não herdar o alvo de um ensaio anterior de piloto/recuperação.
+Em um host Debian/Ubuntu Linux compatível sem as bibliotecas de sistema do navegador, use `npx playwright install --with-deps chromium` no lugar da instalação simples. A opção também instala dependências do sistema e pode solicitar `sudo`. O exemplo fixa `db:test` em `development` para não herdar o alvo de um ensaio anterior de piloto/recuperação.
 
 Para verificar o modo sem banco, use um build sem variáveis Supabase configuradas, seguido de `npm run test:e2e`. Essa suíte usa `localhost:3100`. Um build feito para a suíte autenticada não representa o estado sem configuração; reconstrua para o modo que pretende testar.
 

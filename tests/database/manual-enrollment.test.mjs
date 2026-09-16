@@ -107,8 +107,8 @@ test('a database failure after the replacement delete rolls back both enrollment
     await db.query('BEGIN');
     try {
       // Transaction-local fault injection; rolled back in finally, never installed permanently.
-      await db.query("CREATE FUNCTION public.e5_reject_manual_cohort() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN RAISE EXCEPTION 'Fictitious cohort insertion failure'; END $$");
-      await db.query('CREATE TRIGGER e5_manual_failure BEFORE INSERT ON public.enrollment_cohorts FOR EACH ROW EXECUTE FUNCTION public.e5_reject_manual_cohort()');
+      await db.query("CREATE FUNCTION public.development_reject_manual_cohort() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN RAISE EXCEPTION 'Fictitious cohort insertion failure'; END $$");
+      await db.query('CREATE TRIGGER development_manual_failure BEFORE INSERT ON public.enrollment_cohorts FOR EACH ROW EXECUTE FUNCTION public.development_reject_manual_cohort()');
       await db.query('SAVEPOINT before_grant');
       await assert.rejects(db.query('SELECT public.apply_manual_enrollment($1,$2,$3,$4,$5,$6,$7::jsonb)', [
         args.p_user_id, args.p_access_level_id, 'manual_admin_add', null, null, 'replace', JSON.stringify([{ cohort_id: replacement }]),

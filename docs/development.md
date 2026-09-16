@@ -73,7 +73,7 @@ For an existing stack, review new migration files before applying them with `npm
 
 **`npm run db:reset` deletes this project's local database and reapplies migrations. `npm run db:verify` does this twice.** Use them only when the stack is disposable and no other work depends on it. Read the [reset and verification procedure](development/local-database.md#reset-e-reprodução-limpa) before running either command. A reset is not a recovery step for an unavailable Docker daemon.
 
-`db:verify` accepts only the development target named `e5` on `5543x`. An inherited `OPENMEMBERS_DATABASE_TEST_TARGET` other than `e5` is rejected before service access or data changes. The separate `db:test` target selector does not change what `db:verify` resets.
+`db:verify` accepts only the development target named `development` on `5543x`. An inherited `OPENMEMBERS_DATABASE_TEST_TARGET` other than `development` is rejected before service access or data changes. The separate `db:test` target selector does not change what `db:verify` resets.
 
 ## Verify a change
 
@@ -90,10 +90,10 @@ npm run test:tooling
 
 For a clean tracked checkout after committing, run `npm run verify:source`. This checks the exact Git snapshot for documented local-material paths and credential signatures; it refuses staged/unstaged tracked changes and does not inspect untracked files or history. See [source verification](source-verification.md) for its limits and the separate final-package review.
 
-Database contracts require the dedicated stack and demo fixtures. They create temporary records and clean up their own fixtures; they are not read-only tests. For the development stack, select the development target `e5` before running them:
+Database contracts require the dedicated stack and demo fixtures. They create temporary records and clean up their own fixtures; they are not read-only tests. For the development stack, select the development target `development` before running them:
 
 ```sh
-OPENMEMBERS_DATABASE_TEST_TARGET=e5 npm run db:test
+OPENMEMBERS_DATABASE_TEST_TARGET=development npm run db:test
 ```
 
 For authenticated browser checks, create a build for that same local stack and leave port `3101` free:

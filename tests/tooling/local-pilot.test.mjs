@@ -64,12 +64,12 @@ test('tracked pilot config has its own exact identity, ports and Auth origin', (
     mailpit: 56434,
     application: 3201,
   });
-  for (const e5Port of ['55430', '55431', '55432', '55434']) {
-    assert.equal(template.includes(e5Port), false);
+  for (const developmentPort of ['55430', '55431', '55432', '55434']) {
+    assert.equal(template.includes(developmentPort), false);
   }
 });
 
-test('pilot config rejects E5 identity, ports and redirect destinations', () => {
+test('pilot config rejects development identity, ports and redirect destinations', () => {
   for (const changed of [
     template.replace('openmembers-e6-pilot', 'openmembers'),
     template.replace('56431', '55431'),
@@ -80,7 +80,7 @@ test('pilot config rejects E5 identity, ports and redirect destinations', () => 
       'additional_redirect_urls = ["http://localhost:3201/**"]',
       'additional_redirect_urls = ["http://localhost:3101/**"]',
     ),
-  ]) assert.throws(() => validatePilotConfig(changed), /Pilot config|E5 port/);
+  ]) assert.throws(() => validatePilotConfig(changed), /Pilot config|development port/);
 });
 
 test('pilot Compose fixes private inputs and keeps an isolated namespace', () => {
