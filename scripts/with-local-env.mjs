@@ -8,12 +8,13 @@ try {
     build: ['node_modules/next/dist/bin/next', 'build'],
     start: ['node_modules/next/dist/bin/next', 'start', '--hostname', 'localhost', '--port', '3101'],
     browser: ['node_modules/@playwright/test/cli.js', 'test', '--config', 'playwright.database.config.ts'],
+    'docs-browser': ['node_modules/@playwright/test/cli.js', 'test', '--config', 'playwright.documentation.config.ts'],
   };
-  if (!commands[mode] || process.argv.length !== 3) throw new Error('Expected dev, build, start, or browser.');
+  if (!commands[mode] || process.argv.length !== 3) throw new Error('Expected dev, build, start, browser, or docs-browser.');
   const status = getLocalStatus();
   const env = localAppEnv(status, mode === 'dev' ? '3000' : '3101');
-  // Only the guarded browser command may enable per-context test identities.
-  env.OPENMEMBERS_LOCAL_BROWSER_TEST = mode === 'browser' ? '1' : '';
+  // Only guarded browser commands may enable per-context test identities.
+  env.OPENMEMBERS_LOCAL_BROWSER_TEST = ['browser', 'docs-browser'].includes(mode) ? '1' : '';
   const child = spawn(process.execPath, commands[mode], {
     cwd: projectRoot, env, stdio: 'inherit',
   });

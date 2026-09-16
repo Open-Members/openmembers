@@ -25,6 +25,7 @@
     "dev:local": "node scripts/with-local-env.mjs dev",
     "build:local": "node scripts/with-local-env.mjs build",
     "test:e2e:db": "node scripts/with-local-env.mjs browser",
+    "test:e2e:docs": "node scripts/with-local-env.mjs docs-browser",
     "db:verify": "node scripts/verify-database.mjs",
     "pilot:prepare": "node scripts/local-pilot.mjs prepare",
     "pilot:preflight": "node scripts/local-pilot.mjs preflight",

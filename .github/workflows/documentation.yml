@@ -1,0 +1,76 @@
+name: Documentation screenshots
+
+on:
+  push:
+    paths:
+      - .github/workflows/documentation.yml
+      - playwright.documentation.config.ts
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    name: Capture documentation with fictitious local data
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+      SUPABASE_TELEMETRY_DISABLED: '1'
+      DO_NOT_TRACK: '1'
+      OPENMEMBERS_DATABASE_TEST_TARGET: development
+      OPENMEMBERS_BROWSER_TEST_TARGET: development
+    steps:
+      - name: Check out source
+        # https://github.com/actions/checkout/releases/tag/v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        # https://github.com/actions/setup-node/releases/tag/v7.0.0
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install locked dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Start the isolated Supabase stack
+        run: npm run db:start
+
+      - name: Verify two clean installations and database access contracts
+        run: npm run db:verify
+
+      - name: Build against the local database
+        run: npm run build:local
+
+      - name: Install Chromium for documentation captures
+        run: npx playwright install --with-deps chromium
+
+      - name: Test and capture desktop and mobile documentation
+        run: npm run test:e2e:docs
+
+      - name: Upload the six selected PNG captures
+        if: success()
+        # https://github.com/actions/upload-artifact/releases/tag/v7.0.1
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: documentation-screenshots
+          retention-days: 7
+          if-no-files-found: error
+          include-hidden-files: false
+          path: |
+            test-results/documentation/*-desktop/live-card-en.png
+            test-results/documentation/*-desktop/catalog-en.png
+            test-results/documentation/*-desktop/lesson-en.png
+            test-results/documentation/*-desktop/block-a-en.png
+            test-results/documentation/*-desktop/settings-en.png
+            test-results/documentation/*-mobile/lesson-en.png
+
+      - name: Stop the isolated Supabase stack
+        if: always()
+        run: npm run db:stop
