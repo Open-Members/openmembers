@@ -113,7 +113,7 @@ Consulte a [matriz de integrações](docs/integrations/README.md), o [guia de pa
 
 > **Software experimental.** O Open Members não possui lançamento estável nem versão com suporte de produção. A versão `0.1.0` do pacote é um metadado de desenvolvimento.
 
-A aplicação inclui marca configurável, demonstração local fictícia, migrações versionadas do banco e interfaces em inglês, português brasileiro e espanhol. As capturas ilustram uma revisão local anterior. Elas não certificam todos os recursos do código atual.
+A aplicação inclui marca configurável, demonstração local fictícia, migrações versionadas do banco e interfaces em inglês, português brasileiro e espanhol. As capturas documentam a revisão do código registrada nas [notas das imagens](docs/images/README.md). Elas não certificam todos os recursos do código atual.
 
 As limitações conhecidas incluem:
 

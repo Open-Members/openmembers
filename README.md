@@ -315,7 +315,7 @@ After committing, run `npm run verify:source` from a clean tracked Git checkout.
 
 > **Experimental software.** Open Members has no stable release or supported production version. The package version `0.1.0` is development metadata.
 
-The application includes configurable branding, a fictitious local demo, versioned database migrations, and English, Brazilian Portuguese, and Spanish interfaces. Screenshots illustrate an earlier local revision. They do not certify every feature in the current source.
+The application includes configurable branding, a fictitious local demo, versioned database migrations, and English, Brazilian Portuguese, and Spanish interfaces. Screenshots document the source revision recorded in the [image notes](docs/images/README.md). They do not certify every feature in the current source.
 
 Known limitations include:
 
