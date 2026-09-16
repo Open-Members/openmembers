@@ -120,13 +120,13 @@ As limitações conhecidas incluem:
 - Falhas intermitentes nos testes autenticados de marca envolvendo o nome da instalação após envio de imagem e consultas periódicas, além da navegação para o login; a causa permanece sem resolução.
 - Validação incompleta dos fluxos integrados de navegador, localização, download assinado e interface de recuperação.
 - Uma referência de implantação Linux ainda sem validação de ponta a ponta por um operador independente, incluindo tarefas agendadas reais, backup e recuperação.
-- Um canal privado de relato de vulnerabilidades que não está disponível atualmente como verificado; veja o procedimento de relato em [SECURITY.md](SECURITY.md).
+- Ausência de uma linha de versões com suporte de segurança ou compromisso de prazo de resposta; veja o procedimento de relato privado em [SECURITY.md](SECURITY.md).
 - Provedores opcionais que exigem configuração e testes específicos da instalação.
 
 Leia as [limitações conhecidas](docs/known-limitations.md) antes de escolher uma instalação ou ativar serviços opcionais. Verificações bem-sucedidas se aplicam à revisão e ao ambiente testados.
 
 ## Segurança e licença
 
-**Relatos de segurança:** Leia [SECURITY.md](SECURITY.md) para conferir a disponibilidade do GitHub Private Vulnerability Reporting e solicitar uma alternativa privada. O canal não está disponível atualmente como verificado. Não publique detalhes de vulnerabilidades em issues ou pull requests públicos; não há compromisso estabelecido de prazo de resposta nem de versões com suporte.
+**Relatos de segurança:** O GitHub Private Vulnerability Reporting está habilitado neste repositório. Siga [SECURITY.md](SECURITY.md) para enviar um relato privado. Não publique detalhes de vulnerabilidades em issues ou pull requests públicos; não há compromisso estabelecido de prazo de resposta nem de versões com suporte.
 
 **Licença:** o código do Open Members é fornecido sob a [licença MIT](LICENSE). Pacotes e assets de terceiros preservam suas próprias licenças e avisos; veja [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Revise a composição e os avisos aplicáveis separadamente antes de distribuir pacotes compilados, executáveis ou imagens de contêiner.

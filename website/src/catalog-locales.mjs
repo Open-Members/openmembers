@@ -108,11 +108,11 @@ const entries = {
   security: [
     [
       "Política de segurança",
-      "GitHub Private Vulnerability Reporting: procedimento de relato e estado da verificação.",
+      "GitHub Private Vulnerability Reporting: procedimento de relato e suporte de segurança.",
     ],
     [
       "Security policy",
-      "GitHub Private Vulnerability Reporting: procedure and verification status.",
+      "GitHub Private Vulnerability Reporting: procedure and security support.",
     ],
   ],
 };
