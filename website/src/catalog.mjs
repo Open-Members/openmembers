@@ -119,7 +119,7 @@ export const catalog = [
     lang: "en",
     source: "SECURITY.md",
     description:
-      "GitHub Private Vulnerability Reporting: procedure and verification status.",
+      "GitHub Private Vulnerability Reporting: procedure and security support.",
     sections: ["Supported versions", "Report a suspected vulnerability", "Credential exposure"],
   },
 ];

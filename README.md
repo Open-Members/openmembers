@@ -322,7 +322,7 @@ Known limitations include:
 - Intermittent authenticated branding-test failures around the installation name after upload/polling and navigation to login; their cause is unresolved.
 - Incomplete integrated browser, localization, signed-download, and recovery-interface validation.
 - A Linux deployment reference that still lacks end-to-end validation by an independent operator, including actual scheduled jobs, backup, and recovery.
-- A private vulnerability reporting channel that is not currently available as verified; see [SECURITY.md](SECURITY.md) for the reporting procedure.
+- No security-supported release line or response-time commitment; see [SECURITY.md](SECURITY.md) for the private reporting procedure.
 - Optional providers that require installation-specific configuration and tests.
 
 Read the [known limitations](docs/known-limitations.md) before choosing an installation or enabling optional services. Successful checks apply to the revision and environment tested.
@@ -351,6 +351,6 @@ Describe the intended behavior and scope in an issue or pull request, following 
 
 ## Security and license
 
-**Security reports:** Read [SECURITY.md](SECURITY.md) to check the availability of GitHub Private Vulnerability Reporting and request a private alternative. The channel is not currently available as verified. Do not post vulnerability details in public issues or pull requests; no response-time or supported-release commitment has been established.
+**Security reports:** GitHub Private Vulnerability Reporting is enabled for this repository. Follow [SECURITY.md](SECURITY.md) to submit a private report. Do not post vulnerability details in public issues or pull requests; no response-time or supported-release commitment has been established.
 
 **License:** Open Members source is provided under the [MIT License](LICENSE). Third-party packages and assets retain their own licenses and notices; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Review the composition and applicable notices separately before distributing compiled bundles, executables, or container images.

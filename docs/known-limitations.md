@@ -13,7 +13,7 @@ The installation model is **one independent application installation and one ded
 | Independent installation | The Docker/Linux reference deployment has not completed end-to-end validation by an independent operator on a dedicated hosted environment. |
 | Scheduled jobs and recovery | A job executor and systemd templates are included. Local checks and manual job invocations do not establish actual timer execution, backup, restore, or recovered application behavior on a hosted Linux installation. |
 | CI | Workflow results apply to the commit and environment tested. A passing run for another revision does not validate a changed checkout. |
-| Private security reports | GitHub Private Vulnerability Reporting is not currently available as a verified reporting channel. See [SECURITY.md](../SECURITY.md) for how to check availability and request a private alternative. |
+| Security support | No security-supported release line or response-time commitment has been established. GitHub Private Vulnerability Reporting is enabled; follow [SECURITY.md](../SECURITY.md) to submit a private report. |
 | Compiled distribution | Source notices do not establish complete coverage for compiled bundles, native components, or container layers. No application container image is published. |
 
 The [source package guide](deployment/source-package.md), [installation guide](deployment/installation.md), [operations guide](deployment/operations.md), and [deployment validation checklist](deployment/validation.md) describe the reference setup and its checks.

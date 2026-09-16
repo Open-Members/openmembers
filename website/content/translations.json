@@ -1,7 +1,7 @@
 {
   "overview": {
-    "sha256": "119d91b1c5190adab41acb689cb79a0a19231f64ce9d004fabbaac68cb50f41f",
-    "curatedSha256": "ffb3fe5ae4ad5e0288fffe352849222c9714619bc5518e09ce15b51b815c4fd9"
+    "sha256": "dbb3b327c6fddc15a36e5117888b7c45517886daffc4b60c999e1c7d07c6c672",
+    "curatedSha256": "1395b7abf41255b2fdda8d3d3021f34cbb0e2b260db574747c90d0a8e0881bf2"
   },
   "development": {
     "sha256": "bed1a57bd0e21178fd93fa0178156fbf725e3708c7754189dabadbeebed973d1",
@@ -36,7 +36,7 @@
     "curatedSha256": "05d201170a43f0c43725ed7252befbfb13a23960a93159ef13bbbba9cababae3"
   },
   "security": {
-    "sha256": "6af526a2f312f3d3229e9278e5af3f84a08b66533e64e53f9cc43392a7ad7a2c",
-    "curatedSha256": "197ef3e0dfeedc9b46ac27d4cee4950f76f46dc87e58203bd4be39a3a0e10d70"
+    "sha256": "660961afe8241ad84a67d3452a960aa70a46e2b4913798efad0f7995da60eb6c",
+    "curatedSha256": "f9bca46ed0645bcb945174313c8208097650baeb79e8605099a395c51d4fbf7e"
   }
 }

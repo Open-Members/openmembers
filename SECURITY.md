@@ -8,7 +8,7 @@ Open Members is experimental software. No stable release or security-supported r
 
 Do not post vulnerability details, exploit instructions, credentials, personal data, or authentication traces in a public issue, pull request, or discussion.
 
-**GitHub Private Vulnerability Reporting is not currently available as a verified reporting channel.** To check its availability, open **Security → Advisories** in the [Open Members repository](https://github.com/Open-Members/openmembers/security/advisories) and look for **Report a vulnerability**. Use that private form only when GitHub offers it for this repository. A missing button or unavailable page means the form cannot be used; a public issue is not an alternative for sensitive details.
+**GitHub Private Vulnerability Reporting is enabled for this repository.** Open [Report a vulnerability](https://github.com/Open-Members/openmembers/security/advisories/new), or select **Security → Advisories → Report a vulnerability** in the repository. Sign in to GitHub to submit a private report. Public issues and pull requests are not appropriate for sensitive details.
 
 If the private form is unavailable, use an established private contact with the maintainer to request a secure alternative. Confirm the recipient and channel before sharing sensitive material. If no such contact exists, request a private reporting channel without including vulnerability details. No project security email address has been designated.
 

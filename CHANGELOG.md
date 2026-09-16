@@ -33,7 +33,7 @@ Open Members is experimental software. No stable release or release date is anno
 - An independent installation by a new operator on Linux, real timer execution, and hosted backup/recovery acceptance remain pending.
 - Optional provider flows require explicit opt-in and their own operational tests. AI course chat is disabled by default and has no ingestion pipeline; OAuth has no delivered sign-in interface; Hotmart is a candidate adapter; push delivery and offline operation are not implemented.
 - Vite is pinned to `8.0.16`; an optional peer-dependency resolution conflict remains to be reviewed.
-- GitHub Private Vulnerability Reporting is not currently available as a verified reporting channel; see [SECURITY.md](SECURITY.md). No supported security release line is established.
+- No supported security release line or response-time commitment is established. Use GitHub Private Vulnerability Reporting as described in [SECURITY.md](SECURITY.md).
 - Distribution of binaries and container images requires review of their actual components and applicable notices. No published application container or hosted application demo is provided.
 
 See the [known limitations](docs/known-limitations.md) for current validation and operational boundaries and the [documentation index](docs/README.md) for configuration and operating guides. Source is [MIT-licensed](LICENSE); dependencies and assets retain the attributions and terms in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
