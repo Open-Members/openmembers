@@ -43,18 +43,18 @@ export function layout({
 export function captureNote(locale) {
   return t(
     locale,
-    "Capturas reais do ambiente local · Dados fictícios · 13/09/2026 · Marca anterior. Os textos dentro das imagens preservam o idioma original.",
-    "Real local application captures · Fictitious data · September 13, 2026 · Previous branding. Text within the images keeps its original language.",
+    "Capturas reais da aplicação · Dados fictícios · 16/09/2026 (UTC) · Identidade atual. Os textos dentro das imagens preservam o idioma original.",
+    "Real application captures · Fictitious data · September 16, 2026 (UTC) · Current identity. Text within the images keeps its original language.",
   );
 }
 export function screenshot(file, alt, cls = "", eager = false, locale = "pt") {
   const dims = {
-    dashboard: [1280, 1470],
-    "course-catalog": [1280, 1696],
-    "lesson-workspace": [1280, 1388],
-    "admin-reports": [1280, 1423],
-    "language-settings": [1280, 2106],
-    "mobile-lesson": [1082, 4418],
+    dashboard: [1280, 1465],
+    "course-catalog": [1280, 1691],
+    "lesson-workspace": [1280, 1384],
+    "admin-reports": [1280, 1516],
+    "language-settings": [1280, 2100],
+    "mobile-lesson": [1082, 4407],
   };
   const [w, h] = dims[file];
   return `<a class="screenshot ${cls}" href="/assets/${file}.png" data-enlarge data-title="${esc(alt)}" aria-label="${t(locale, "Ampliar", "Enlarge")}: ${esc(alt)}"><picture>${file === "lesson-workspace" ? '<source media="(max-width: 580px)" srcset="/assets/mobile-lesson.png">' : ""}<img src="/assets/${file}.png" alt="${esc(alt)}" width="${w}" height="${h}" loading="${eager ? "eager" : "lazy"}" decoding="async"${eager ? ' fetchpriority="high"' : ""}></picture><span class="enlarge">${t(locale, "Ampliar tela", "Enlarge screenshot")} ${arrow}</span></a>`;

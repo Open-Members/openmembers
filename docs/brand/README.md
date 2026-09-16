@@ -27,7 +27,7 @@ The core inks are **near-black `#101010`** and **off-white `#F5F3EE`**. Master v
 
 The default wordmark appears in authentication, navigation and the footer only when the installation has no configured logo and retains the name “Open Members”. A configured logo or custom name takes precedence. A custom favicon remains supported. See [customization](../customization.md).
 
-The brand artwork does not set the application's content fonts or semantic theme colors. The [product screenshots](../images/README.md) predate this identity and retain their original pixels.
+The brand artwork does not set the application's content fonts or semantic theme colors. The [product screenshots](../images/README.md) show this identity in the running application with fictitious data.
 
 ## Typography and license
 

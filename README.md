@@ -69,7 +69,7 @@ Open Members brings learning, member access, progress, and administration togeth
 
 </details>
 
-These application screenshots use fictitious accounts and content. They were captured on **September 13, 2026**, before the current monochrome identity, so the previous logo appears. See the [image notes](docs/images/README.md) for their source and scope.
+These application screenshots show the current Open Members identity with fictitious accounts and content. See the [image notes](docs/images/README.md) for capture details and scope.
 
 ## Website and Help Center
 
