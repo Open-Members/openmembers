@@ -13,6 +13,7 @@ Build an independent home for your courses and learning community. These guides 
 | Operate, back up, or update an installation | [Operations](deployment/operations.md) | Portuguese |
 | Understand what still needs validation | [Known limitations](known-limitations.md) | English |
 | Contribute a change | [Contributing](../CONTRIBUTING.md) · [Source verification](source-verification.md) | English |
+| Review the proposed appearance extension | [Advanced appearance proposal](proposals/advanced-appearance.md) (draft; implementation pending) | English |
 | Report a security concern | [Security policy](../SECURITY.md) | English |
 
 The [Help Center](https://openmembers.club/en/help/) offers curated English and Portuguese editions of selected guides. Interface language is a separate setting: members can choose English, Brazilian Portuguese, or Spanish in their profile. Course content and administrator-written text retain their authored language.
