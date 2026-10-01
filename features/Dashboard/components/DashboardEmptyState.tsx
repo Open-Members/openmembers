@@ -83,7 +83,7 @@ export function DashboardEmptyState() {
           transition={EASE.spring}
           className="inline-block"
         >
-          <Link
+          <Link data-brand-button
             href="/courses"
             className="inline-flex min-h-11 items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-[var(--color-primary-foreground)] transition-opacity hover:opacity-90"
             style={{ backgroundColor: 'var(--color-primary)' }}

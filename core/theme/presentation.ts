@@ -2,6 +2,7 @@ import type { Metadata, MetadataRoute } from 'next';
 import type { InstallationConfig } from '@/core/config/installation';
 import { FONT_CATALOG, resolveTenantSettings, type TenantSettings } from './branding';
 import { getReadableForeground } from './contrast';
+import { BUTTON_RADII } from './appearance';
 
 /** Every color value is normalized before it enters a style element. */
 export function createThemeCss(input: TenantSettings): string {
@@ -21,13 +22,20 @@ export function createThemeCss(input: TenantSettings): string {
   const colors = settings.loading_bar_colors;
   declarations.push(`--loading-bar-gradient:linear-gradient(90deg, ${[...colors, colors[0]].join(', ')})`);
   declarations.push(`--font-sans:${FONT_CATALOG[settings.font_family].css}`);
+  if (settings.heading_font_family) {
+    const heading = settings.heading_font_family === 'inherit' ? settings.font_family : settings.heading_font_family;
+    declarations.push(`--font-display:${FONT_CATALOG[heading].css}`);
+  }
+  if (settings.button_shape) declarations.push(`--brand-button-radius:${BUTTON_RADII[settings.button_shape]}`);
   declarations.push(`--color-secondary:${settings.secondary_color ?? settings.accent_color}`);
   const darkTints = (['primary', 'accent'] as const).flatMap((name) => [
     `--color-${name}-50:color-mix(in srgb, var(--color-${name}) 14%, var(--color-background))`,
     `--color-${name}-100:color-mix(in srgb, var(--color-${name}) 22%, var(--color-background))`,
     `--color-${name}-200:color-mix(in srgb, var(--color-${name}) 38%, var(--color-background))`,
   ]);
-  return `:root,.dark{${declarations.join(';')};}.dark{${darkTints.join(';')};}`;
+  const buttons = settings.button_shape ? ':root [data-brand-button]{border-radius:var(--brand-button-radius);}' : '';
+  const headings = settings.heading_font_family ? ':root :is(h1,h2,h3,h4,h5,h6){font-family:var(--font-display);}' : '';
+  return `:root,.dark{${declarations.join(';')};}.dark{${darkTints.join(';')};}${buttons}${headings}`;
 }
 
 export function createInstallationMetadata(settings: TenantSettings, config: InstallationConfig, metadataBase: URL, defaultDescription: string): Metadata {

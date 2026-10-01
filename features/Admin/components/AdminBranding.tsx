@@ -14,6 +14,8 @@ import {
   Trash2,
   RotateCcw,
 } from 'lucide-react';
+import { EntryAppearanceEditor } from './EntryAppearanceEditor';
+import type { EntryBackground, EntryScreen, FontFamily } from '@/core/theme/appearance';
 import { saveAdminBranding } from '../actions';
 import type { AdminBrandingSettings } from '../actions';
 import { ImageUpload } from '@/shared/components/ui/ImageUpload';
@@ -21,10 +23,22 @@ import { ColorPicker } from '@/shared/components/ui/ColorPicker';
 import { AdminPageHeader } from './AdminPageHeader';
 import { appToast } from '@/shared/lib/toast';
 import { extractYoutubeId } from '@/shared/lib/youtube';
-import { DEFAULT_LOADING_BAR_COLORS, DEFAULT_TENANT_SETTINGS, FONT_CATALOG } from '@/core/theme/branding';
+import {
+  DEFAULT_LOADING_BAR_COLORS,
+  DEFAULT_TENANT_SETTINGS,
+  FONT_CATALOG,
+} from '@/core/theme/branding';
 import { getReadableForeground } from '@/core/theme/contrast';
 
 type FormState = {
+  headingFontFamily: FontFamily | 'inherit' | null;
+  buttonShape: 'square' | 'rounded' | 'pill' | null;
+  publicHomeTitle: string | null;
+  publicHomeDescription: string | null;
+  publicHomeBackground: EntryBackground;
+  loginBackground: EntryBackground;
+  registerBackground: EntryBackground;
+
   siteName: string;
   logoLightUrl: string | null;
   logoDarkUrl: string | null;
@@ -49,6 +63,13 @@ const getServerHydration = () => false;
 
 function toFormState(initial: AdminBrandingSettings | null): FormState {
   return {
+    headingFontFamily: initial?.headingFontFamily ?? null,
+    buttonShape: initial?.buttonShape ?? null,
+    publicHomeTitle: initial?.publicHomeTitle ?? null,
+    publicHomeDescription: initial?.publicHomeDescription ?? null,
+    publicHomeBackground: initial?.publicHomeBackground ?? null,
+    loginBackground: initial?.loginBackground ?? null,
+    registerBackground: initial?.registerBackground ?? null,
     siteName: initial?.siteName ?? DEFAULT_TENANT_SETTINGS.site_name,
     logoLightUrl: initial?.logoLightUrl ?? null,
     logoDarkUrl: initial?.logoDarkUrl ?? null,
@@ -56,7 +77,10 @@ function toFormState(initial: AdminBrandingSettings | null): FormState {
     ogImageUrl: initial?.ogImageUrl ?? null,
     primaryColor: initial?.primaryColor ?? DEFAULT_TENANT_SETTINGS.primary_color,
     accentColor: initial?.accentColor ?? DEFAULT_TENANT_SETTINGS.accent_color,
-    fontFamily: initial?.fontFamily && initial.fontFamily in FONT_CATALOG ? initial.fontFamily as keyof typeof FONT_CATALOG : 'system',
+    fontFamily:
+      initial?.fontFamily && initial.fontFamily in FONT_CATALOG
+        ? (initial.fontFamily as keyof typeof FONT_CATALOG)
+        : 'system',
     homeHeroBannerUrl: initial?.homeHeroBannerUrl ?? null,
     homeHeroTrailerYoutubeId: initial?.homeHeroTrailerYoutubeId ?? null,
     homeHeroTitle: initial?.homeHeroTitle ?? null,
@@ -77,13 +101,39 @@ export function AdminBranding({
   initialSettings: AdminBrandingSettings | null;
 }) {
   const t = useTranslations('adminOperations.branding');
+  const appearance = useTranslations('adminOperations.branding.appearance');
+  const available = initialSettings?.appearanceAvailable !== false;
   const errors = useTranslations('adminOperations.errors');
   const baseline = useMemo(() => toFormState(initialSettings), [initialSettings]);
   const [form, setForm] = useState<FormState>(baseline);
   const [savedBaseline, setSavedBaseline] = useState<FormState>(baseline);
   const [pending, startTransition] = useTransition();
+  const [uploadState, setUploadState] = useState({ home: false, login: false, register: false });
+  const uploadCallbacks = useMemo(
+    () =>
+      Object.fromEntries(
+        (['home', 'login', 'register'] as const).map((screen) => [
+          screen,
+          (busy: boolean) => setUploadState((state) => ({ ...state, [screen]: busy })),
+        ]),
+      ) as Record<EntryScreen, (busy: boolean) => void>,
+    [],
+  );
+  const uploading = Object.values(uploadState).some(Boolean);
+  const backgrounds = {
+    home: form.publicHomeBackground,
+    login: form.loginBackground,
+    register: form.registerBackground,
+  };
+  const incomplete = Object.values(backgrounds).some(
+    (background) => background?.mode === 'image' && !background.imageUrl,
+  );
   const [justSaved, setJustSaved] = useState(false);
-  const hydrated = useSyncExternalStore(subscribeToHydration, getClientHydration, getServerHydration);
+  const hydrated = useSyncExternalStore(
+    subscribeToHydration,
+    getClientHydration,
+    getServerHydration,
+  );
 
   const dirty = useMemo(
     () => JSON.stringify(form) !== JSON.stringify(savedBaseline),
@@ -95,6 +145,7 @@ export function AdminBranding({
   }
 
   function handleSave() {
+    if (uploading || incomplete || pending) return;
     // Accept a full YouTube URL or a bare ID for the home hero trailer
     let heroTrailerId: string | null = null;
     if (form.homeHeroTrailerYoutubeId && form.homeHeroTrailerYoutubeId.trim()) {
@@ -109,22 +160,42 @@ export function AdminBranding({
     startTransition(async () => {
       try {
         const result = await saveAdminBranding({
-        siteName: form.siteName,
-        logoLightUrl: form.logoLightUrl,
-        logoDarkUrl: form.logoDarkUrl,
-        faviconUrl: form.faviconUrl,
-        ogImageUrl: form.ogImageUrl,
-        primaryColor: form.primaryColor,
-        accentColor: form.accentColor,
-        fontFamily: form.fontFamily,
-        homeHeroBannerUrl: form.homeHeroBannerUrl,
-        homeHeroTrailerYoutubeId: heroTrailerId,
-        homeHeroTitle: form.homeHeroTitle?.trim() || null,
-        homeHeroSubtitle: form.homeHeroSubtitle?.trim() || null,
-        homeHeroOverlayOpacity: form.homeHeroOverlayOpacity,
-        homeHeroShowText: form.homeHeroShowText,
-        loadingBarStyle: form.loadingBarStyle,
-        loadingBarColors: form.loadingBarColors,
+          ...(available
+            ? {
+                headingFontFamily: form.headingFontFamily,
+                buttonShape: form.buttonShape,
+                publicHomeTitle: form.publicHomeTitle?.trim() || null,
+                publicHomeDescription: form.publicHomeDescription?.trim() || null,
+                ...(JSON.stringify(form.publicHomeBackground) !==
+                  JSON.stringify(savedBaseline.publicHomeBackground) && {
+                  publicHomeBackground: form.publicHomeBackground,
+                }),
+                ...(JSON.stringify(form.loginBackground) !==
+                  JSON.stringify(savedBaseline.loginBackground) && {
+                  loginBackground: form.loginBackground,
+                }),
+                ...(JSON.stringify(form.registerBackground) !==
+                  JSON.stringify(savedBaseline.registerBackground) && {
+                  registerBackground: form.registerBackground,
+                }),
+              }
+            : {}),
+          siteName: form.siteName,
+          logoLightUrl: form.logoLightUrl,
+          logoDarkUrl: form.logoDarkUrl,
+          faviconUrl: form.faviconUrl,
+          ogImageUrl: form.ogImageUrl,
+          primaryColor: form.primaryColor,
+          accentColor: form.accentColor,
+          fontFamily: form.fontFamily,
+          homeHeroBannerUrl: form.homeHeroBannerUrl,
+          homeHeroTrailerYoutubeId: heroTrailerId,
+          homeHeroTitle: form.homeHeroTitle?.trim() || null,
+          homeHeroSubtitle: form.homeHeroSubtitle?.trim() || null,
+          homeHeroOverlayOpacity: form.homeHeroOverlayOpacity,
+          homeHeroShowText: form.homeHeroShowText,
+          loadingBarStyle: form.loadingBarStyle,
+          loadingBarColors: form.loadingBarColors,
         });
         if ('error' in result && result.error) {
           appToast.danger(errors(result.error === 'invalidInput' ? 'invalidInput' : 'saveFailed'));
@@ -149,7 +220,7 @@ export function AdminBranding({
   return (
     // The server preview must not accept edits before onChange can retain them.
     <fieldset
-      disabled={!hydrated}
+      disabled={!hydrated || pending}
       aria-label={t('header.title')}
       className="min-w-0 border-0 p-0 pb-24 space-y-8 max-w-5xl mx-auto w-full"
     >
@@ -214,16 +285,132 @@ export function AdminBranding({
           />
         </div>
 
-        <Field label={t('identity.bodyFont')} htmlFor="branding-font" hint={t('identity.bodyFontHelp')}>
+        <Field
+          label={t('identity.bodyFont')}
+          htmlFor="branding-font"
+          hint={t('identity.bodyFontHelp')}
+        >
           <select
             id="branding-font"
             value={form.fontFamily}
             onChange={(event) => set('fontFamily', event.target.value as keyof typeof FONT_CATALOG)}
             className="w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-muted)] px-3 py-2.5 text-sm text-[var(--color-foreground)]"
           >
-            {Object.keys(FONT_CATALOG).map((value) => <option key={value} value={value}>{t(`identity.fonts.${value}`)}</option>)}
+            {Object.keys(FONT_CATALOG).map((value) => (
+              <option key={value} value={value}>
+                {t(`identity.fonts.${value}`)}
+              </option>
+            ))}
           </select>
         </Field>
+        <fieldset
+          disabled={!available || pending}
+          className="grid min-w-0 gap-4 border-0 p-0 sm:grid-cols-2"
+        >
+          <Field label={appearance('headingFont')} htmlFor="branding-heading-font">
+            <select
+              id="branding-heading-font"
+              value={form.headingFontFamily ?? ''}
+              onChange={(event) =>
+                set('headingFontFamily', (event.target.value as FontFamily | 'inherit') || null)
+              }
+              className="w-full min-h-11 rounded-xl border border-[var(--color-border)] bg-[var(--color-muted)] px-3 text-sm"
+            >
+              <option value="">{appearance('current')}</option>
+              <option value="inherit">{appearance('inherit')}</option>
+              {Object.keys(FONT_CATALOG).map((value) => (
+                <option key={value} value={value}>
+                  {t(`identity.fonts.${value}`)}
+                </option>
+              ))}
+            </select>
+          </Field>
+          <Field label={appearance('buttonShape')} htmlFor="branding-button-shape">
+            <select
+              id="branding-button-shape"
+              value={form.buttonShape ?? ''}
+              onChange={(event) =>
+                set('buttonShape', (event.target.value as FormState['buttonShape']) || null)
+              }
+              className="w-full min-h-11 rounded-xl border border-[var(--color-border)] bg-[var(--color-muted)] px-3 text-sm"
+            >
+              <option value="">{appearance('current')}</option>
+              {(['square', 'rounded', 'pill'] as const).map((value) => (
+                <option key={value} value={value}>
+                  {appearance('buttons.' + value)}
+                </option>
+              ))}
+            </select>
+          </Field>
+        </fieldset>
+      </Section>
+
+      <Section icon={<Palette className="w-4 h-4" />} title={appearance('title')}>
+        <p className="text-sm text-[var(--color-muted-foreground)]">{appearance('description')}</p>
+        {!available && <p role="status">{appearance('migrationRequired')}</p>}
+        <fieldset
+          disabled={!available || pending}
+          className="grid min-w-0 gap-4 border-0 p-0 sm:grid-cols-2"
+        >
+          <Field
+            label={appearance('homeTitle')}
+            htmlFor="branding-public-title"
+            hint={appearance('copyHelp')}
+          >
+            <input
+              id="branding-public-title"
+              maxLength={180}
+              value={form.publicHomeTitle ?? ''}
+              onChange={(event) => set('publicHomeTitle', event.target.value || null)}
+              className="w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-muted)] px-3 py-2.5 text-sm"
+            />
+          </Field>
+          <Field
+            label={appearance('homeDescription')}
+            htmlFor="branding-public-description"
+            hint={appearance('copyHelp')}
+          >
+            <textarea
+              id="branding-public-description"
+              rows={3}
+              maxLength={1200}
+              value={form.publicHomeDescription ?? ''}
+              onChange={(event) => set('publicHomeDescription', event.target.value || null)}
+              className="w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-muted)] px-3 py-2.5 text-sm"
+            />
+          </Field>
+        </fieldset>
+        {(['home', 'login', 'register'] as const).map((screen) => (
+          <EntryAppearanceEditor
+            key={screen}
+            screen={screen}
+            value={backgrounds[screen]}
+            backgrounds={backgrounds}
+            onChange={(value) =>
+              set(
+                screen === 'home'
+                  ? 'publicHomeBackground'
+                  : screen === 'login'
+                    ? 'loginBackground'
+                    : 'registerBackground',
+                value,
+              )
+            }
+            onBusyChange={uploadCallbacks[screen]}
+            identity={form}
+            title={
+              form.publicHomeTitle?.trim() ||
+              initialSettings?.publicHomeDefaultTitle ||
+              appearance('defaultTitle')
+            }
+            description={
+              form.publicHomeDescription?.trim() ||
+              initialSettings?.publicHomeDefaultDescription ||
+              appearance('defaultDescription')
+            }
+            disabled={!available || pending || uploading}
+          />
+        ))}
       </Section>
 
       {/* ─── Section 2 — Colors ───────────────────────────────────────── */}
@@ -246,7 +433,10 @@ export function AdminBranding({
         {/* Live preview */}
         <div
           className="mt-2 rounded-xl overflow-hidden border border-[var(--color-border)]"
-          style={{ ['--preview-primary' as string]: form.primaryColor, ['--preview-accent' as string]: form.accentColor }}
+          style={{
+            ['--preview-primary' as string]: form.primaryColor,
+            ['--preview-accent' as string]: form.accentColor,
+          }}
         >
           <div className="p-6 bg-[var(--color-card)]">
             <p className="text-xs uppercase tracking-wider text-[var(--color-muted-foreground)] mb-3">
@@ -254,22 +444,33 @@ export function AdminBranding({
             </p>
             <div className="flex items-center gap-3 flex-wrap">
               <button
+                data-brand-button
                 type="button"
                 className="px-4 py-2 rounded-lg text-white text-sm font-semibold"
-                style={{ backgroundColor: form.primaryColor, color: getReadableForeground(form.primaryColor) }}
+                style={{
+                  backgroundColor: form.primaryColor,
+                  color: getReadableForeground(form.primaryColor),
+                }}
               >
                 {t('colors.primaryAction')}
               </button>
               <button
+                data-brand-button
                 type="button"
                 className="px-4 py-2 rounded-lg text-white text-sm font-semibold"
-                style={{ backgroundColor: form.accentColor, color: getReadableForeground(form.accentColor) }}
+                style={{
+                  backgroundColor: form.accentColor,
+                  color: getReadableForeground(form.accentColor),
+                }}
               >
                 {t('colors.accentAction')}
               </button>
               <span
                 className="px-2.5 py-1 rounded-md text-xs font-bold text-white"
-                style={{ backgroundColor: form.accentColor, color: getReadableForeground(form.accentColor) }}
+                style={{
+                  backgroundColor: form.accentColor,
+                  color: getReadableForeground(form.accentColor),
+                }}
               >
                 {t('colors.newBadge')}
               </span>
@@ -302,7 +503,11 @@ export function AdminBranding({
           helpText={t('hero.bannerHelp')}
         />
 
-        <Field label={t('hero.trailer')} htmlFor="branding-hero-trailer" hint={t('hero.trailerHelp')}>
+        <Field
+          label={t('hero.trailer')}
+          htmlFor="branding-hero-trailer"
+          hint={t('hero.trailerHelp')}
+        >
           <input
             id="branding-hero-trailer"
             value={form.homeHeroTrailerYoutubeId ?? ''}
@@ -355,7 +560,7 @@ export function AdminBranding({
           </div>
         </Field>
 
-          <ToggleRow
+        <ToggleRow
           label={t('hero.showText')}
           description={t('hero.showTextHelp')}
           checked={form.homeHeroShowText}
@@ -392,10 +597,7 @@ export function AdminBranding({
 
         {form.loadingBarStyle === 'gradient' && (
           <>
-            <Field
-              label={t('loading.stops')}
-              hint={t('loading.stopsHelp')}
-            >
+            <Field label={t('loading.stops')} hint={t('loading.stopsHelp')}>
               <div className="space-y-2">
                 {form.loadingBarColors.map((color, idx) => (
                   <div key={idx} className="flex items-center gap-2">
@@ -422,11 +624,10 @@ export function AdminBranding({
                     />
                     {form.loadingBarColors.length > 2 && (
                       <button
+                        data-brand-button
                         type="button"
                         onClick={() => {
-                          const next = form.loadingBarColors.filter(
-                            (_, i) => i !== idx,
-                          );
+                          const next = form.loadingBarColors.filter((_, i) => i !== idx);
                           set('loadingBarColors', next);
                         }}
                         className="grid place-items-center w-9 h-9 rounded-md text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] hover:bg-[var(--color-muted)] transition"
@@ -441,23 +642,18 @@ export function AdminBranding({
                 <div className="flex items-center gap-2 pt-1">
                   {form.loadingBarColors.length < 6 && (
                     <button
+                      data-brand-button
                       type="button"
-                      onClick={() =>
-                        set('loadingBarColors', [
-                          ...form.loadingBarColors,
-                          '#FFFFFF',
-                        ])
-                      }
+                      onClick={() => set('loadingBarColors', [...form.loadingBarColors, '#FFFFFF'])}
                       className="inline-flex items-center gap-1.5 rounded-md border border-[var(--color-border)] px-3 py-1.5 text-xs font-semibold text-[var(--color-foreground)] hover:bg-[var(--color-muted)] transition"
                     >
                       <Plus className="w-3.5 h-3.5" /> {t('loading.addColor')}
                     </button>
                   )}
                   <button
+                    data-brand-button
                     type="button"
-                    onClick={() =>
-                      set('loadingBarColors', [...DEFAULT_LOADING_BAR_COLORS])
-                    }
+                    onClick={() => set('loadingBarColors', [...DEFAULT_LOADING_BAR_COLORS])}
                     className="inline-flex items-center gap-1.5 rounded-md border border-[var(--color-border)] px-3 py-1.5 text-xs font-semibold text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] hover:bg-[var(--color-muted)] transition"
                   >
                     <RotateCcw className="w-3.5 h-3.5" /> {t('loading.reset')}
@@ -500,8 +696,9 @@ export function AdminBranding({
               {dirty ? t('unsaved') : t('allSaved')}
             </p>
             <div className="flex items-center gap-2">
-              {dirty && !pending && (
+              {dirty && !pending && !uploading && (
                 <button
+                  data-brand-button
                   type="button"
                   onClick={handleDiscard}
                   className="px-4 py-2 rounded-lg text-sm font-semibold text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)]"
@@ -510,9 +707,10 @@ export function AdminBranding({
                 </button>
               )}
               <button
+                data-brand-button
                 type="button"
                 onClick={handleSave}
-                disabled={!dirty || pending}
+                disabled={!dirty || pending || uploading || incomplete}
                 className="flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold text-white disabled:opacity-60 transition"
                 style={{ backgroundColor: 'var(--color-primary)' }}
               >
@@ -579,9 +777,7 @@ function Field({
         {label}
       </label>
       {children}
-      {hint && (
-        <p className="text-xs text-[var(--color-muted-foreground)]">{hint}</p>
-      )}
+      {hint && <p className="text-xs text-[var(--color-muted-foreground)]">{hint}</p>}
     </div>
   );
 }
@@ -613,11 +809,7 @@ function StyleChoice({
       }
       aria-pressed={active}
     >
-      <span
-        className="h-2 rounded-full"
-        style={{ background: previewBackground }}
-        aria-hidden
-      />
+      <span className="h-2 rounded-full" style={{ background: previewBackground }} aria-hidden />
       <span className="flex items-baseline justify-between gap-2">
         <span className="text-sm font-semibold text-[var(--color-foreground)]">{title}</span>
         {active && (

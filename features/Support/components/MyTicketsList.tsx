@@ -31,7 +31,7 @@ export async function MyTicketsList() {
         <p className="mt-1 text-sm text-[var(--color-muted-foreground)]">
           {t('empty.description')}
         </p>
-        <Link
+        <Link data-brand-button
           href="/support/new"
           className="mt-4 inline-flex rounded-lg bg-[var(--color-primary)] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[var(--color-primary-dark)]"
         >

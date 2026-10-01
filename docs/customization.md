@@ -50,16 +50,16 @@ Os domínios `.example.test` são demonstrativos. Substitua-os pelos destinos da
 
 | Grupo | O que configura |
 | --- | --- |
-| `branding` | Nome, logos, favicon, imagem social, cores, fonte, hero do dashboard e indicador de carregamento |
+| `branding` | Nome, logos, favicon, imagem social, cores, fontes, aparência das telas de entrada, hero do dashboard e indicador de carregamento |
 | `public` | Título e descrição da entrada pública; `null` usa as traduções neutras existentes |
 | `metadata` | Descrição para navegador/compartilhamento e nome curto do manifesto. `description: null` usa o texto padrão no idioma da conta/visitante; uma string personalizada é preservada em todos os idiomas |
 | `links` | Suporte, ajuda, comunidade, termos e privacidade; `null` mantém o fallback declarado ou omite o link |
 
 A ordem para os campos de marca é **defaults → arquivo → campos válidos salvos em `tenant_settings`**. A configuração administrativa existente tem prioridade, inclusive `null` em campos anuláveis; isso permite limpar um logo salvo. Valores malformados no banco não são usados e colunas desconhecidas não são propagadas pelo loader.
 
-Para uma instalação com banco, o painel **Admin → Branding** continua sendo o editor de nome, logos, cores, fonte, hero e indicador de carregamento. Textos de entrada, descrição/nome curto e destinos públicos são definidos no arquivo. O arquivo não sobrescreve automaticamente uma marca já salva no painel.
+Para uma instalação com banco, o painel **Admin → Branding** edita nome, logos, cores, fontes, formato de botões, fundos de entrada, textos da home pública, hero e indicador de carregamento. Descrição/nome curto de metadata e destinos públicos são definidos no arquivo. O arquivo não sobrescreve automaticamente uma marca já salva no painel.
 
-As fontes disponíveis são `system`, `serif` e `mono`, compostas por fontes do sistema. Nenhuma fonte externa é baixada. O seletor afeta o texto-base; estilos de títulos podem manter sua composição própria quando indicada pelo componente. Cores aceitam seis dígitos hexadecimais; variantes de hover e escalas são derivadas, e a cor de texto dos principais controles é escolhida pelo contraste.
+As fontes disponíveis são `system`, `serif`, `mono`, `inter`, `montserrat` e `lora`. O catálogo combina fontes do dispositivo com fontes locais licenciadas; os seletores de texto-base e títulos são independentes. Fundos da home pública, login e cadastro e formatos de botões são opt-in. Veja [aparência e atualização do banco](features/appearance.md). Cores aceitam seis dígitos hexadecimais; variantes de hover e escalas são derivadas, e a cor de texto dos principais controles é escolhida pelo contraste.
 
 Use URLs HTTPS ou caminhos locais iniciados por uma única `/`. HTTP é permitido somente em loopback para o desenvolvimento local. Links `support`/`help` também aceitam `mailto:` simples ou telefone `tel:`; não inclua parâmetros de envio. Links protocol-relative, esquemas executáveis, barras invertidas, credenciais na URL e caminhos ambíguos são recusados. O mesmo tratamento protege links personalizados no menu. URLs inválidas já armazenadas no menu são omitidas ao apresentar a navegação.
 

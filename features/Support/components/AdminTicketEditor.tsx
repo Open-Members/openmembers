@@ -99,7 +99,7 @@ export function AdminTicketEditor({
       )}
 
       <div className="flex justify-end">
-        <button
+        <button data-brand-button
           type="submit"
           disabled={isPending}
           className="rounded-lg bg-[var(--color-primary)] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[var(--color-primary-dark)] disabled:cursor-not-allowed disabled:opacity-60"

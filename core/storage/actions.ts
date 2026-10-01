@@ -1,6 +1,7 @@
 'use server';
 
 import { createClient } from '@/core/supabase/server';
+import { assertBackgroundUpload, BACKGROUND_FOLDER } from './backgrounds';
 import {
   createSignedUpload,
   deleteImage,
@@ -40,7 +41,8 @@ export async function createSignedUploadUrlAction(
   if (!folder || !fileName) return { error: 'Missing folder or file name' };
 
   try {
-    assertAllowed(mime, size);
+    if (folder === BACKGROUND_FOLDER) assertBackgroundUpload(mime, size);
+    else assertAllowed(mime, size);
     return await createSignedUpload(folder as UploadFolder, fileName);
   } catch (e) {
     return { error: e instanceof Error ? e.message : 'Could not start upload' };

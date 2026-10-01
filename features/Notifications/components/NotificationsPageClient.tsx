@@ -109,7 +109,7 @@ export function NotificationsPageClient({ initialNotifications, initialLoadFaile
     {error && <p role="alert" className="mb-4 text-sm text-red-700 dark:text-red-300">{t(`errors.${error}`)}</p>}
     {initialLoadFailed ? <div className="space-y-3">
       <p role="alert" className="text-sm text-red-700 dark:text-red-300">{t('errors.loadFailed')}</p>
-      <button type="button" disabled={pending} onClick={() => startTransition(() => router.refresh())} className="text-sm font-semibold text-[var(--color-primary)] disabled:opacity-60">{t('retry')}</button>
+      <button data-brand-button type="button" disabled={pending} onClick={() => startTransition(() => router.refresh())} className="text-sm font-semibold text-[var(--color-primary)] disabled:opacity-60">{t('retry')}</button>
     </div> : filtered.length === 0 ? <EmptyState icon={Bell} title={t('emptyTitle')} description={filter === 'all' ? t('emptyDescription') : t('emptyCategory')} />
       : <div className="space-y-8">{groups.map(group => <section key={group.key}>
         <h2 className="text-[11px] font-bold uppercase tracking-[0.25em] text-[var(--color-muted-foreground)] mb-3">{group.label}</h2>

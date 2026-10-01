@@ -31,7 +31,16 @@ export function ColorPicker({
   helpText,
 }: Props) {
   const t = useTranslations('adminOperations.shared.colorPicker');
-  const [text, setText] = useState(value);
+  const [draft, setDraft] = useState({ source: value, text: value });
+  const text = draft.source === value ? draft.text : value;
+
+  // Keep source and text atomic: a queued blur from the previous color must
+  // not revive stale text after copy/discard replaces the controlled value.
+  if (draft.source !== value) setDraft({ source: value, text: value });
+
+  function setText(next: string) {
+    setDraft({ source: value, text: next });
+  }
 
   function commitText() {
     const normalized = normalizeHex(text, value);
@@ -47,9 +56,7 @@ export function ColorPicker({
 
   return (
     <div className="flex flex-col gap-2">
-      <span className="text-sm font-medium text-[var(--color-foreground)]">
-        {label}
-      </span>
+      <span className="text-sm font-medium text-[var(--color-foreground)]">{label}</span>
 
       <div className="flex items-center gap-2">
         {/* Native color picker — opens system picker on click */}
@@ -104,11 +111,7 @@ export function ColorPicker({
         </div>
       </div>
 
-      {helpText && (
-        <p className="text-xs text-[var(--color-muted-foreground)]">
-          {helpText}
-        </p>
-      )}
+      {helpText && <p className="text-xs text-[var(--color-muted-foreground)]">{helpText}</p>}
     </div>
   );
 }

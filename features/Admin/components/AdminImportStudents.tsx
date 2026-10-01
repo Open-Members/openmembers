@@ -239,7 +239,7 @@ export function AdminImportStudents({ accessLevels }: Props) {
             </div>
           </div>
           <div className="flex items-center gap-2 shrink-0">
-            <button
+            <button data-brand-button
               type="button"
               onClick={resetAll}
               disabled={pending}
@@ -462,7 +462,7 @@ function PreviewStep({
 
       {/* Actions */}
       <div className="flex items-center justify-end gap-2">
-        <button
+        <button data-brand-button
           type="button"
           onClick={onCancel}
           disabled={pending}
@@ -588,7 +588,7 @@ function SummaryStep({
         >
           {t("backToStudents")}{" "}
         </Link>
-        <button
+        <button data-brand-button
           type="button"
           onClick={onReset}
           className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-white text-sm font-semibold"

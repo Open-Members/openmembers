@@ -112,7 +112,7 @@ function CommentItem({
           )}
           {/* Delete button — own comments or admin */}
           {(isOwn || isAdmin) && (
-            <button
+            <button data-brand-button
               type="button"
               onClick={() => onDelete(comment.id)}
               disabled={isPending}
@@ -214,7 +214,7 @@ function CommentForm({
         )}
         <div className="mt-2 flex items-center justify-end gap-2">
           {onCancel && (
-            <button
+            <button data-brand-button
               type="button"
               onClick={onCancel}
               className="px-3 py-1.5 text-xs font-medium text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] transition-colors"
@@ -222,7 +222,7 @@ function CommentForm({
               {t('cancel')}
             </button>
           )}
-          <button
+          <button data-brand-button
             type="button"
             onClick={handleSubmit}
             disabled={isPending || !content.trim()}
@@ -374,7 +374,7 @@ function LessonComments({ lessonId, currentUserId, isAdmin = false }: CommentSec
       {loadError ? (
         <div className="space-y-3">
           <p role="alert" className="text-sm text-red-700 dark:text-red-300">{t(`errors.${loadError}`)}</p>
-          <button type="button" disabled={isPending} onClick={() => startTransition(async () => { await loadComments(); })} className="text-sm font-medium text-[var(--color-primary)] disabled:opacity-50">
+          <button data-brand-button type="button" disabled={isPending} onClick={() => startTransition(async () => { await loadComments(); })} className="text-sm font-medium text-[var(--color-primary)] disabled:opacity-50">
             {t('retry')}
           </button>
         </div>

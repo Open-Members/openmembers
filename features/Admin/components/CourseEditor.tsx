@@ -177,7 +177,7 @@ export function CourseEditor({
               </p>
             </div>
             <div className="flex items-center gap-2">
-              <Link
+              <Link data-brand-button
                 href={`/admin/content/${course.slug}`}
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10"
               >
@@ -383,7 +383,7 @@ export function CourseEditor({
             <Group
               title={t('instructor')}
               action={
-                <button
+                <button data-brand-button
                   type="button"
                   onClick={() => setInstructorDialog({ mode: 'create' })}
                   className="text-xs font-semibold text-[var(--color-primary)] hover:underline flex items-center gap-1"
@@ -434,7 +434,7 @@ export function CourseEditor({
                         </p>
                       )}
                     </div>
-                    <button
+                    <button data-brand-button
                       type="button"
                       onClick={() =>
                         setInstructorDialog({
@@ -504,14 +504,14 @@ export function CourseEditor({
               {dirty ? t('youHaveUnsavedChanges') : t('noChanges')}
             </p>
             <div className="flex items-center gap-2">
-              <button
+              <button data-brand-button
                 type="button"
                 onClick={onClose}
                 className="px-4 py-2 rounded-lg text-sm font-semibold text-[var(--color-muted-foreground)] hover:bg-[var(--color-muted)]"
               >
                 {t('cancel')}{' '}
               </button>
-              <button
+              <button data-brand-button
                 type="button"
                 onClick={handleSave}
                 disabled={!dirty || pending}

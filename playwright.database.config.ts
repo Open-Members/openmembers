@@ -2,7 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './e2e',
-  testMatch: ['database.spec.ts', 'admin.spec.ts', 'comments.spec.ts', 'branding-database.spec.ts', 'enrollment-database.spec.ts', 'storage-database.spec.ts', 'localization.spec.ts', 'auth-localization.spec.ts', 'learning-localization.spec.ts', 'tools-localization.spec.ts'],
+  testMatch: ['database.spec.ts', 'admin.spec.ts', 'comments.spec.ts', 'branding-database.spec.ts', 'appearance-database.spec.ts', 'enrollment-database.spec.ts', 'storage-database.spec.ts', 'localization.spec.ts', 'auth-localization.spec.ts', 'auth-theme.spec.ts', 'learning-localization.spec.ts', 'tools-localization.spec.ts'],
   fullyParallel: false,
   workers: 1,
   retries: 0,

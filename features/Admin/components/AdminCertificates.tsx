@@ -283,7 +283,7 @@ export function AdminCertificates({
             </p>
             <div className="flex items-center gap-2">
               {dirty && !pending && (
-                <button
+                <button data-brand-button
                   type="button"
                   onClick={handleDiscard}
                   className="px-4 py-2 rounded-lg text-sm font-semibold text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)]"
@@ -291,7 +291,7 @@ export function AdminCertificates({
                   {t('discard')}
                 </button>
               )}
-              <button
+              <button data-brand-button
                 type="button"
                 onClick={handleSave}
                 disabled={!dirty || pending}

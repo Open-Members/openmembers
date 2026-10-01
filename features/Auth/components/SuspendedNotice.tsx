@@ -32,7 +32,7 @@ export function SuspendedNotice({ contactUrl }: { contactUrl: string | null }) {
         )}
         {error && <div className="mb-4"><AuthErrorBanner message={error} /></div>}
         <div>
-          <button
+          <button data-brand-button
             onClick={handleSignOut}
             disabled={isPending}
             className="min-h-11 rounded-xl bg-[var(--color-primary)] px-6 py-3 text-sm font-bold text-[var(--color-primary-foreground)] transition-opacity hover:opacity-90"

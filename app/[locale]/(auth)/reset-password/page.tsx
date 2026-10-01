@@ -1,3 +1,4 @@
+import { AuthPageFrame } from '@/features/Auth/components/shared/AuthPageFrame';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { ArrowLeft } from 'lucide-react';
@@ -17,6 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ResetPasswordPage() {
   const t = await getTranslations('authPages.resetPassword');
   return (
+    <AuthPageFrame screen="legacy">
     <AuthShell
       title={t('title')}
       subtitle={t('subtitle')}
@@ -32,5 +34,6 @@ export default async function ResetPasswordPage() {
     >
       <ResetPasswordForm />
     </AuthShell>
+    </AuthPageFrame>
   );
 }

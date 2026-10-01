@@ -307,7 +307,7 @@ export function AdminAddUserDialog({ onClose, onAdded }: Props) {
         </div>
 
         <div className="flex items-center justify-end gap-2 px-6 py-4 border-t border-[var(--color-border)]">
-          <button
+          <button data-brand-button
             type="button"
             onClick={onClose}
             disabled={pending || levelsLoading || cohortsLoading}
@@ -315,7 +315,7 @@ export function AdminAddUserDialog({ onClose, onAdded }: Props) {
           >
             {t("cancel")}{" "}
           </button>
-          <button
+          <button data-brand-button
             type="submit"
             disabled={pending || levels.length === 0}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-white text-sm font-semibold disabled:opacity-50"

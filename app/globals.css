@@ -1,6 +1,28 @@
 @import "tailwindcss";
 @import "@heroui/react/styles";
 
+@font-face {
+  font-family: "Open Members Inter";
+  src: url('/fonts/inter.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Open Members Montserrat";
+  src: url('/fonts/montserrat.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Open Members Lora";
+  src: url('/fonts/lora.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
 @theme inline {
   --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   /* Editorial serif — reserved for display headlines on hero / course
@@ -50,6 +72,10 @@
   --color-accent-dark:      var(--color-accent-600);
   --color-accent-hover:     var(--color-accent-700);
 
+  /* Error feedback stays readable independently of tenant brand colours. */
+  --color-error-text:       #b91c1c;
+  --color-error-surface:    #fef2f2;
+
   /* Score colours */
   --color-score-excellent: #16a34a;
   --color-score-good:      #65a30d;
@@ -81,6 +107,9 @@
   /* Accent adjustments — keep vivid on dark */
   --color-accent-50:  #3d1020;
   --color-accent-100: #5a1525;
+
+  --color-error-text:    #fca5a5;
+  --color-error-surface: #3b1717;
 
   /* Score colours — brighter on dark for contrast */
   --color-score-excellent: #34d399;
@@ -126,6 +155,28 @@
 
 * {
   box-sizing: border-box;
+}
+
+/* Keep scrollbars theme-aware; utility classes still own hidden content rows. */
+@layer base {
+  * {
+    scrollbar-color: var(--color-muted-foreground) var(--color-background);
+    scrollbar-width: auto;
+  }
+  @media (forced-colors: active) {
+    * { scrollbar-color: auto; }
+  }
+}
+
+@supports not (scrollbar-color: auto) {
+  ::-webkit-scrollbar { width: 12px; height: 12px; }
+  ::-webkit-scrollbar-track { background: var(--color-background); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-muted-foreground);
+    border: 3px solid var(--color-background);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-foreground); }
 }
 
 html {
@@ -305,7 +356,7 @@ summary:focus-visible,
 }
 
 /* Inputs and textareas in dark mode (non-HeroUI native inputs) */
-.dark input:not([data-slot]),
+.dark input:not([data-slot]):not([data-auth-input]),
 .dark textarea:not([data-slot]),
 .dark select:not([data-slot]) {
   background-color: var(--color-muted);
@@ -322,7 +373,40 @@ summary:focus-visible,
   border-color: var(--color-primary);
 }
 
+/* Browsers enforce an autofill background. Keep the wrapper surface visible
+   and use the current theme's text/caret colours on populated auth fields. */
+[data-auth-input]:is(:autofill, :-webkit-autofill) {
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: var(--color-foreground);
+  caret-color: var(--color-foreground);
+}
+
+@media (forced-colors: active) {
+  [data-auth-input]:is(:autofill, :-webkit-autofill) {
+    -webkit-text-fill-color: FieldText;
+    caret-color: FieldText;
+  }
+}
+
 /* Backdrop panels follow the configured surface color. */
 .dark [class*="backdrop-blur"] {
   background-color: color-mix(in oklab, var(--color-background) 85%, transparent);
+}
+
+/* Preserve readable navigation on an administrator-selected solid background. */
+[data-entry-solid-background] a:not([data-brand-button]) {
+  color: var(--color-foreground);
+  text-decoration-line: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* Solid entry surfaces choose readable artwork even when the app theme differs. */
+[data-entry-brand-surface="light"] [data-brand-logo-surface="light"],
+[data-entry-brand-surface="dark"] [data-brand-logo-surface="dark"] {
+  display: block;
+}
+[data-entry-brand-surface="light"] [data-brand-logo-surface="dark"],
+[data-entry-brand-surface="dark"] [data-brand-logo-surface="light"] {
+  display: none;
 }

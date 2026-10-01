@@ -8,7 +8,7 @@ import { requireAdmin, requireManageableUser } from '@/core/access/admin';
 
 import crypto from 'node:crypto';
 import { revalidatePath } from 'next/cache';
-import { getLocale } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { createClient as createSupabaseJsClient } from '@supabase/supabase-js';
 import { createAdminClient } from '@/core/supabase/admin';
 import { getAuthEmailsByIds } from '@/core/supabase/auth-user-lookup.server';
@@ -37,7 +37,10 @@ import {
 } from '@/lib/services/email/templates';
 import { loadTemplateContentForAdmin } from '@/lib/services/email/templates/load';
 import { getTenantSettings } from '@/core/theme/settings';
-import { resolveTenantSettings, TENANT_SETTINGS_COLUMNS } from '@/core/theme/branding';
+import { resolveTenantSettings } from '@/core/theme/branding';
+import { readTenantSettings } from '@/core/theme/settings-read';
+import { ENTRY_BACKGROUND_FIELDS, type EntryBackground, type FontFamily } from '@/core/theme/appearance';
+import { validateBackgroundAssets } from '@/core/storage/backgrounds';
 import { parseAdminBranding } from '@/core/theme/admin-branding';
 import { getInstallationConfig } from '@/core/config/installation.server';
 import { getEmailBranding, resolveMembershipEmailLinks } from '@/lib/services/email/branding';
@@ -1680,6 +1683,17 @@ export async function getAdminWebhookLogs(limit = 50): Promise<AdminWebhookLog[]
 // ─── Branding / Tenant settings ─────────────────────────────────────────────
 
 export interface AdminBrandingSettings {
+  appearanceAvailable?: boolean;
+  publicHomeDefaultTitle?: string;
+  publicHomeDefaultDescription?: string;
+  headingFontFamily?: FontFamily | 'inherit' | null;
+  buttonShape?: 'square' | 'rounded' | 'pill' | null;
+  publicHomeTitle?: string | null;
+  publicHomeDescription?: string | null;
+  publicHomeBackground?: EntryBackground;
+  loginBackground?: EntryBackground;
+  registerBackground?: EntryBackground;
+
   id: string;
   siteName: string;
   // Identity
@@ -1710,18 +1724,24 @@ export interface AdminBrandingSettings {
 export async function getAdminBranding(): Promise<AdminBrandingSettings | null> {
   const { supabase } = await requireAdmin();
   const configuration = await getInstallationConfig();
-  const { data, error } = await supabase
-    .from('tenant_settings')
-    .select(`id, ${TENANT_SETTINGS_COLUMNS}`)
-    .limit(1)
-    .maybeSingle()
-    .overrideTypes<Record<string, unknown>, { merge: false }>();
+  const { data, error, appearanceAvailable } = await readTenantSettings(supabase, true);
   if (error) throw new Error('brandingLoadFailed');
   const settings = resolveTenantSettings(configuration.branding, data);
+  const homeCopy = await getTranslations('landing.home');
 
   return {
     id: typeof data?.id === 'string' ? data.id : '',
     siteName: settings.site_name,
+    appearanceAvailable,
+    publicHomeDefaultTitle: configuration.public.title ?? homeCopy('title'),
+    publicHomeDefaultDescription: configuration.public.description ?? homeCopy('description'),
+    headingFontFamily: settings.heading_font_family,
+    buttonShape: settings.button_shape,
+    publicHomeTitle: settings.public_home_title,
+    publicHomeDescription: settings.public_home_description,
+    publicHomeBackground: settings.public_home_background,
+    loginBackground: settings.login_background,
+    registerBackground: settings.register_background,
     logoUrl: settings.logo_url,
     logoLightUrl: settings.logo_light_url ?? settings.logo_url,
     logoDarkUrl: settings.logo_dark_url ?? settings.logo_url,
@@ -1743,6 +1763,14 @@ export async function getAdminBranding(): Promise<AdminBrandingSettings | null> 
 }
 
 export interface SaveAdminBrandingInput {
+  headingFontFamily?: FontFamily | 'inherit' | null;
+  buttonShape?: 'square' | 'rounded' | 'pill' | null;
+  publicHomeTitle?: string | null;
+  publicHomeDescription?: string | null;
+  publicHomeBackground?: EntryBackground;
+  loginBackground?: EntryBackground;
+  registerBackground?: EntryBackground;
+
   siteName: string;
   // Identity
   logoLightUrl?: string | null;
@@ -1770,6 +1798,16 @@ export async function saveAdminBranding(settings: SaveAdminBrandingInput) {
   const parsed = parseAdminBranding(settings);
   if ('error' in parsed) return { error: 'invalidInput' } as const;
   const payload = parsed.data;
+  try {
+    const configuration = await getInstallationConfig();
+    const configuredImageUrls = new Set(Object.values(ENTRY_BACKGROUND_FIELDS).flatMap((field) => {
+      const background = configuration.branding[field];
+      return background?.mode === 'image' ? [background.imageUrl] : [];
+    }));
+    await validateBackgroundAssets(supabase, [payload.public_home_background, payload.login_background, payload.register_background], configuredImageUrls);
+  } catch {
+    return { error: 'invalidInput' } as const;
+  }
 
   const { data: existing, error: lookupError } = await supabase
     .from('tenant_settings')

@@ -24,6 +24,7 @@ export async function AuthLogo() {
           {logoLight && (
             <Image
               src={logoLight}
+              data-brand-logo-surface="light"
               alt={siteName}
               width={180}
               height={44}
@@ -35,6 +36,7 @@ export async function AuthLogo() {
           {logoDark && (
             <Image
               src={logoDark}
+              data-brand-logo-surface="dark"
               alt={siteName}
               width={180}
               height={44}

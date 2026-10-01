@@ -2,6 +2,7 @@
 
 import {
   useMemo,
+  useEffect,
   useRef,
   useState,
   useTransition,
@@ -12,6 +13,7 @@ import Image from 'next/image';
 import { Upload, X, AlertTriangle, Loader2 } from 'lucide-react';
 import { useFormatter, useTranslations } from 'next-intl';
 import { createSignedUploadUrlAction } from '@/core/storage/actions';
+import { BACKGROUND_FOLDER, BACKGROUND_MAX_BYTES, BACKGROUND_MIME_TYPES } from '@/core/storage/backgrounds';
 import { appToast } from '@/shared/lib/toast';
 
 const MAX_UPLOAD_BYTES = 50 * 1024 * 1024; // keep in sync with core/storage/server.ts
@@ -31,6 +33,8 @@ type Props = {
   /** Hint copy under the upload area. */
   helpText?: string;
   accept?: string;
+  disabled?: boolean;
+  onPendingChange?: (pending: boolean) => void;
 };
 
 function parseRatio(aspectRatio: string | undefined): number | null {
@@ -69,6 +73,8 @@ export function ImageUpload({
   ratioTolerance = 0.1,
   helpText,
   accept = 'image/png,image/jpeg,image/webp,image/svg+xml,image/gif',
+  onPendingChange,
+  disabled = false,
 }: Props) {
   const t = useTranslations('adminOperations.shared.imageUpload');
   const format = useFormatter();
@@ -76,7 +82,11 @@ export function ImageUpload({
   const [pending, startTransition] = useTransition();
   const [dragging, setDragging] = useState(false);
   const [warning, setWarning] = useState<string | null>(null);
+  const maxUploadBytes = folder === BACKGROUND_FOLDER ? BACKGROUND_MAX_BYTES : MAX_UPLOAD_BYTES;
+  useEffect(() => { onPendingChange?.(pending); }, [pending, onPendingChange]);
   const inputRef = useRef<HTMLInputElement>(null);
+  const uploadingRef = useRef(false);
+  function blocked() { return disabled || uploadingRef.current || Boolean(inputRef.current?.matches(':disabled')); }
 
   async function validateDimensions(file: File): Promise<string | null> {
     const expected = parseRatio(aspectRatio);
@@ -107,14 +117,21 @@ export function ImageUpload({
   }
 
   function handleFile(file: File) {
-    if (file.size > MAX_UPLOAD_BYTES) {
+    if (blocked()) return;
+    if (file.size > maxUploadBytes) {
       appToast.danger(t('tooLarge', {
         size: format.number(file.size / 1024 / 1024, { maximumFractionDigits: 1 }),
-        max: MAX_UPLOAD_BYTES / 1024 / 1024,
+        max: maxUploadBytes / 1024 / 1024,
       }));
       return;
     }
 
+    if (folder === BACKGROUND_FOLDER && !BACKGROUND_MIME_TYPES.some(mime => mime === file.type)) {
+      appToast.danger(t('errors.initialize'));
+      return;
+    }
+    uploadingRef.current = true;
+    onPendingChange?.(true);
     startTransition(async () => {
       try {
         setWarning(null);
@@ -149,6 +166,8 @@ export function ImageUpload({
         appToast.success(t('uploaded'));
       } catch {
         appToast.danger(t('errors.upload'));
+      } finally {
+        uploadingRef.current = false;
       }
     });
   }
@@ -187,17 +206,17 @@ export function ImageUpload({
 
       <div
         role={!value ? 'button' : undefined}
-        tabIndex={!value && !pending ? 0 : undefined}
+        tabIndex={!value && !pending && !disabled ? 0 : undefined}
         aria-label={!value ? t('dropArea', { label }) : undefined}
         onDragOver={(e) => {
           e.preventDefault();
-          setDragging(true);
+          if (!blocked()) setDragging(true);
         }}
         onDragLeave={() => setDragging(false)}
         onDrop={onDrop}
-        onClick={() => !value && !pending && inputRef.current?.click()}
+        onClick={() => !value && !blocked() && inputRef.current?.click()}
         onKeyDown={(event) => {
-          if (!value && !pending && (event.key === 'Enter' || event.key === ' ')) {
+          if (!value && !blocked() && (event.key === 'Enter' || event.key === ' ')) {
             event.preventDefault();
             inputRef.current?.click();
           }
@@ -222,13 +241,13 @@ export function ImageUpload({
               className="object-cover"
               unoptimized
             />
-            <button
+            <button data-brand-button
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 remove();
               }}
-              disabled={pending}
+              disabled={pending || disabled}
               className="absolute right-2 top-2 rounded-full bg-black/60 p-1.5 text-white hover:bg-black/80 disabled:opacity-50"
               aria-label={t('remove', { label })}
             >
@@ -249,7 +268,7 @@ export function ImageUpload({
             <p className="text-xs text-[var(--color-muted-foreground)]">
               {t('formats', {
                 formats: acceptedFormats,
-                max: MAX_UPLOAD_BYTES / 1024 / 1024,
+                max: maxUploadBytes / 1024 / 1024,
               })}
             </p>
           </div>
@@ -259,6 +278,7 @@ export function ImageUpload({
       <input
         ref={inputRef}
         type="file"
+        disabled={pending || disabled}
         aria-label={t('file', { label })}
         accept={accept}
         hidden

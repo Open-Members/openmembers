@@ -274,7 +274,7 @@ export function VideoUpload({
                 this exact case — it reliably opens the native dialog even
                 when .click() on a hidden input is intercepted by the
                 modal's event tree. Falls back to .click() for old Safari. */}
-            <button
+            <button data-brand-button
               type="button"
               onClick={(e) => {
                 e.preventDefault();

@@ -107,7 +107,7 @@ export function MarkCompleteButton({
     : 'bg-[var(--color-primary)] text-white hover:opacity-90';
 
   return (
-    <motion.button
+    <motion.button data-brand-button
       ref={buttonRef}
       type="button"
       onClick={handleClick}

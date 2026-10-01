@@ -35,6 +35,20 @@ describe('server settings loader', () => {
     expect((await getTenantSettings()).site_name).toBe('File school');
   });
 
+  it('retains the saved identity when the appearance migration is not installed', async () => {
+    mocks.result.mockResolvedValueOnce({ data: null, error: { code: '42703', message: 'column tenant_settings.login_background does not exist' } });
+    mocks.result.mockResolvedValueOnce({ data: { site_name: 'Saved Open Members', primary_color: '#112233', font_family: 'serif' }, error: null });
+    const settings = await getTenantSettings();
+    expect(settings).toMatchObject({ site_name: 'Saved Open Members', primary_color: '#112233', font_family: 'serif', login_background: null });
+    expect(mocks.select.mock.calls[1][0]).not.toContain('login_background');
+  });
+
+  it('does not retry unrelated database failures as an old schema', async () => {
+    mocks.result.mockResolvedValue({ data: null, error: { code: '42501', message: 'permission denied' } });
+    expect((await getTenantSettings()).site_name).toBe('File school');
+    expect(mocks.select).toHaveBeenCalledTimes(1);
+  });
+
   it('does not hide a broken explicit installation file behind database defaults', async () => {
     mocks.config.mockRejectedValue(new Error('Invalid installation configuration'));
     await expect(getTenantSettings()).rejects.toThrow('Invalid installation configuration');

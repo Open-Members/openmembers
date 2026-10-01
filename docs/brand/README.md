@@ -31,7 +31,7 @@ The brand artwork does not set the application's content fonts or semantic theme
 
 ## Typography and license
 
-The wordmark uses Montserrat Bold (weight 700), converted to vector outlines. The font is not an application dependency and is not downloaded at runtime.
+The wordmark uses Montserrat Bold (weight 700), converted to vector outlines. Rendering this artwork requires no font download. Optional application content fonts have separate pinned sources and preserved licenses in the [appearance guide](../features/appearance.md) and [font manifest](../../public/fonts/sources.json).
 
 Source: the official [Google Fonts Montserrat directory at revision `8b0a1d0`](https://github.com/google/fonts/tree/8b0a1d0f5983c89bc2b93f1b5fb55f9e252744b5/ofl/montserrat). The distributed files are the outlined artwork and the preserved [SIL Open Font License 1.1](Montserrat-OFL.txt).
 

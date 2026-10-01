@@ -54,7 +54,7 @@ export default function Error({
       )}
 
       <div className="flex items-center gap-3 flex-wrap justify-center">
-        <button
+        <button data-brand-button
           onClick={reset}
           className="inline-flex items-center gap-2 rounded-full bg-[var(--color-primary)] px-5 py-2.5 text-sm font-bold text-white shadow-[0_3px_0_var(--color-primary-dark)] transition-all active:translate-y-[2px] active:shadow-[0_1px_0_var(--color-primary-dark)]"
         >

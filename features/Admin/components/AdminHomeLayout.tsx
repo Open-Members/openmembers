@@ -144,7 +144,7 @@ export function AdminHomeLayout({ initialData }: Props) {
                 {t('softLimit', { count: rows.length })}
               </span>
             )}
-            <button
+            <button data-brand-button
               type="button"
               onClick={() => setDialog({ mode: 'create' })}
               className="flex items-center gap-2 px-4 py-2 rounded-xl text-white text-sm font-semibold"
@@ -246,7 +246,7 @@ export function AdminHomeLayout({ initialData }: Props) {
                   {row.isEnabled ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
                 </button>
 
-                <button
+                <button data-brand-button
                   type="button"
                   onClick={() => openEdit(row)}
                   className="p-2 rounded-lg text-[var(--color-muted-foreground)] hover:bg-[var(--color-muted)] hover:text-[var(--color-primary)]"

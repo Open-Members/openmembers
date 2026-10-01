@@ -203,7 +203,7 @@ export function AdminCustomMenu({ initialItems }: Props) {
         title={t('header.title')}
         description={t('header.description')}
         actions={
-          <button
+          <button data-brand-button
             onClick={() => setEditing('new')}
             className="flex items-center gap-2 px-4 py-2 rounded-xl text-white text-sm font-semibold"
             style={{ backgroundColor: 'var(--color-primary)' }}
@@ -337,7 +337,7 @@ function SortableRow({
         >
           {item.isEnabled ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
         </button>
-        <button
+        <button data-brand-button
           type="button"
           onClick={onEdit}
           disabled={disabled}
@@ -347,7 +347,7 @@ function SortableRow({
         >
           <Pencil className="w-4 h-4" />
         </button>
-        <button
+        <button data-brand-button
           type="button"
           onClick={onDelete}
           disabled={disabled}
@@ -478,14 +478,14 @@ function ItemDialog({
         </div>
 
         <div className="flex items-center justify-end gap-2 px-5 py-4 border-t border-[var(--color-border)] bg-[var(--color-muted)]/30">
-          <button
+          <button data-brand-button
             type="button"
             onClick={onClose}
             className="px-4 py-2 rounded-lg text-sm font-semibold text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)]"
           >
             {t('cancel')}
           </button>
-          <button
+          <button data-brand-button
             type="submit"
             disabled={!canSave}
             className="flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold text-white disabled:opacity-60 transition"

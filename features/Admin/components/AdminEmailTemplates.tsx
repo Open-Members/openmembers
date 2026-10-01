@@ -339,7 +339,7 @@ export function AdminEmailTemplates({ templates }: { templates: AdminEmailTempla
       {/* Actions */}
       <div className="border-t border-hairline pt-4 space-y-4">
         <div className="flex items-center flex-wrap gap-2">
-          <button
+          <button data-brand-button
             onClick={handleSave}
             disabled={isSaving || !hasUnsavedChanges}
             className="inline-flex items-center gap-2 rounded-xl bg-[var(--color-primary)] px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
@@ -347,7 +347,7 @@ export function AdminEmailTemplates({ templates }: { templates: AdminEmailTempla
             <Save className="h-4 w-4" />
             {isSaving ? t('email.templates.actions.saving') : t('email.templates.actions.save')}
           </button>
-          <button
+          <button data-brand-button
             onClick={handleReset}
             disabled={isResetting || !customized[activeTemplate.key]}
             className="inline-flex items-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-card)] px-4 py-2 text-sm font-semibold text-[var(--color-foreground)] hover:bg-[var(--color-muted)] disabled:opacity-60"
@@ -382,7 +382,7 @@ export function AdminEmailTemplates({ templates }: { templates: AdminEmailTempla
             placeholder={t('email.templates.testPlaceholder')}
             className="flex-1 border border-[var(--color-border)] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
           />
-          <button
+          <button data-brand-button
             onClick={handleSendTest}
             disabled={isTesting || !testEmail}
             className="inline-flex items-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-card)] px-4 py-2.5 text-sm font-semibold text-[var(--color-foreground)] hover:bg-[var(--color-muted)] disabled:opacity-60"

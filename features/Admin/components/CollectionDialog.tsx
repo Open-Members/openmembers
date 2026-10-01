@@ -374,14 +374,14 @@ export function CollectionDialog({
                 <span className="text-xs text-[var(--color-muted-foreground)]">
                   {t('deleteThisCollection')}{' '}
                 </span>
-                <button
+                <button data-brand-button
                   onClick={handleDelete}
                   disabled={pending}
                   className="px-3 py-1.5 rounded-lg bg-[var(--color-accent)] text-white text-xs font-semibold"
                 >
                   {t('confirm')}{' '}
                 </button>
-                <button
+                <button data-brand-button
                   onClick={() => setConfirmingDelete(false)}
                   className="px-3 py-1.5 rounded-lg text-xs font-semibold text-[var(--color-muted-foreground)] hover:bg-[var(--color-muted)]"
                 >
@@ -402,14 +402,14 @@ export function CollectionDialog({
           )}
 
           <div className="flex items-center gap-2">
-            <button
+            <button data-brand-button
               aria-label={t('close')}
               onClick={onClose}
               className="px-4 py-2 rounded-lg text-sm font-semibold text-[var(--color-muted-foreground)] hover:bg-[var(--color-muted)]"
             >
               {t('cancel')}{' '}
             </button>
-            <button
+            <button data-brand-button
               onClick={handleSave}
               disabled={pending}
               className="flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold text-white disabled:opacity-60"

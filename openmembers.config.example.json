@@ -7,7 +7,14 @@
     "og_image_url": null,
     "primary_color": "#0235a8",
     "accent_color": "#f20505",
-    "font_family": "system"
+    "font_family": "system",
+    "heading_font_family": null,
+    "button_shape": null,
+    "public_home_title": null,
+    "public_home_description": null,
+    "public_home_background": null,
+    "login_background": null,
+    "register_background": null
   },
   "public": {
     "title": null,

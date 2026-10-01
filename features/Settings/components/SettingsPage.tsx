@@ -394,7 +394,7 @@ export function SettingsPage() {
                 placeholder={t('profile.namePlaceholder')}
                 className={inputClass}
               />
-              <button onClick={handleSaveName} disabled={savingName || !displayName.trim()} className={btnPrimary}>
+              <button data-brand-button onClick={handleSaveName} disabled={savingName || !displayName.trim()} className={btnPrimary}>
                 {savingName ? t('actions.saving') : t('actions.save')}
               </button>
             </div>
@@ -434,10 +434,10 @@ export function SettingsPage() {
                   className={inputClass}
                 />
                 <div className="flex gap-2">
-                  <button onClick={handleEmailChange} disabled={savingEmail || !newEmail.trim()} className={btnPrimary}>
+                  <button data-brand-button onClick={handleEmailChange} disabled={savingEmail || !newEmail.trim()} className={btnPrimary}>
                     {savingEmail ? t('actions.sending') : t('email.sendConfirmation')}
                   </button>
-                  <button onClick={() => setShowEmailForm(false)} className={btnGhost}>{t('actions.cancel')}</button>
+                  <button data-brand-button onClick={() => setShowEmailForm(false)} className={btnGhost}>{t('actions.cancel')}</button>
                 </div>
                 {emailStatus && <StatusMsg {...emailStatus} />}
               </motion.div>
@@ -485,10 +485,10 @@ export function SettingsPage() {
                   className={inputClass}
                 />
                 <div className="flex gap-2">
-                  <button onClick={handlePasswordChange} disabled={savingPassword || !newPassword || !confirmPassword} className={btnPrimary}>
+                  <button data-brand-button onClick={handlePasswordChange} disabled={savingPassword || !newPassword || !confirmPassword} className={btnPrimary}>
                     {savingPassword ? t('actions.updating') : t('password.update')}
                   </button>
-                  <button onClick={() => setShowPasswordForm(false)} className={btnGhost}>{t('actions.cancel')}</button>
+                  <button data-brand-button onClick={() => setShowPasswordForm(false)} className={btnGhost}>{t('actions.cancel')}</button>
                 </div>
                 {passwordStatus && <StatusMsg {...passwordStatus} />}
               </motion.div>
@@ -567,7 +567,7 @@ export function SettingsPage() {
               <p className="text-sm font-semibold text-[var(--color-foreground)]">{t('session.signOut')}</p>
               <p className="text-xs text-[var(--color-muted-foreground)] mt-0.5">{t('session.description')}</p>
             </div>
-            <button
+            <button data-brand-button
               onClick={async () => {
                 const supabase = createClient();
                 await supabase.auth.signOut();
@@ -590,7 +590,7 @@ export function SettingsPage() {
                   {t('danger.description')}
                 </p>
               </div>
-              <button
+              <button data-brand-button
                 onClick={() => setShowDeleteConfirm(true)}
                 className="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-accent)]/40 px-5 py-2.5 text-sm font-semibold text-[var(--color-accent)] transition-colors hover:bg-[var(--color-accent)]/10 shrink-0"
               >
@@ -624,14 +624,14 @@ export function SettingsPage() {
                 className={inputClass}
               />
               <div className="flex gap-2">
-                <button
+                <button data-brand-button
                   onClick={handleDeleteAccount}
                   disabled={deleting || deleteInput !== t('danger.confirmWord')}
                   className="inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   {deleting ? t('danger.deleting') : t('danger.deleteAccount')}
                 </button>
-                <button onClick={() => { setShowDeleteConfirm(false); setDeleteInput(''); }} className={btnGhost}>
+                <button data-brand-button onClick={() => { setShowDeleteConfirm(false); setDeleteInput(''); }} className={btnGhost}>
                   {t('actions.cancel')}
                 </button>
               </div>

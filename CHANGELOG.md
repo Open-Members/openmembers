@@ -6,6 +6,8 @@ Open Members is experimental software. No stable release or release date is anno
 
 ### Included
 
+- Independent public home, login and registration backgrounds, public home copy, body/heading font selection with self-hosted licensed fonts, and opt-in action-button shapes with draft previews. See [appearance](docs/features/appearance.md) for the additive migration and usage.
+
 - Member learning experience with course catalog, modules, video lessons, attachments, PDF reading, progress, discussions, notifications, and support.
 - Administration for content, accounts, enrollments, access, collections, instructors, reporting, and CSV workflows.
 - Configurable identity, logos, colors, navigation, dashboard presentation, metadata, and transactional email identity, with administrative branding taking precedence over file defaults.

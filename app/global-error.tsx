@@ -132,7 +132,7 @@ export default function GlobalError({
             {copy.reference.replace('{digest}', error.digest)}
           </p>
         )}
-        <button
+        <button data-brand-button
           type="button"
           onClick={reset}
           style={{

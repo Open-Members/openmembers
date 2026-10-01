@@ -25,6 +25,7 @@ export function DefaultBrandWordmark({
       <span className={compactOnMobile ? 'hidden sm:block' : 'block'}>
         <Image
           src="/brand/wordmark-dark.svg"
+          data-brand-logo-surface="light"
           alt="Open Members"
           width={690}
           height={100}
@@ -34,6 +35,7 @@ export function DefaultBrandWordmark({
         />
         <Image
           src="/brand/wordmark-light.svg"
+          data-brand-logo-surface="dark"
           alt="Open Members"
           width={690}
           height={100}

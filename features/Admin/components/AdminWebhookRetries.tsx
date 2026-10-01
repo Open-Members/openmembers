@@ -164,14 +164,14 @@ export function AdminWebhookRetries({
                       <td className="px-4 py-3 text-right">
                         {confirmDelete === r.id ? (
                           <div className="inline-flex items-center gap-1">
-                            <button
+                            <button data-brand-button
                               onClick={() => handleDelete(r.id)}
                               disabled={pending}
                               className="rounded bg-red-500 text-white px-2 py-0.5 text-[11px] font-bold hover:bg-red-600"
                             >
                               {t('integrations.retries.actions.confirmDelete')}
                             </button>
-                            <button
+                            <button data-brand-button
                               onClick={() => setConfirmDelete(null)}
                               className="rounded px-2 py-0.5 text-[11px] font-semibold text-[var(--color-muted-foreground)]"
                             >
@@ -180,7 +180,7 @@ export function AdminWebhookRetries({
                           </div>
                         ) : (
                           <div className="inline-flex items-center gap-1">
-                            <button
+                            <button data-brand-button
                               onClick={() => handleRetry(r.id)}
                               disabled={pending || r.status === 'processed'}
                               title={t('integrations.retries.actions.retryNow')}
@@ -189,7 +189,7 @@ export function AdminWebhookRetries({
                               <RefreshCw className="w-3 h-3" />
                               {t('integrations.retries.actions.retry')}
                             </button>
-                            <button
+                            <button data-brand-button
                               onClick={() => setConfirmDelete(r.id)}
                               className="inline-flex items-center gap-1 px-2 py-1 rounded text-[11px] font-semibold text-red-600 hover:bg-red-500/10"
                             >

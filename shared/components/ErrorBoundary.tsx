@@ -23,7 +23,7 @@ function DefaultErrorFallback({ onRefresh }: { onRefresh: () => void }) {
       <p className="text-sm text-[var(--color-muted-foreground)]">
         {t('description')}
       </p>
-      <button
+      <button data-brand-button
         type="button"
         onClick={onRefresh}
         className="rounded-full bg-[var(--color-primary)] px-6 py-2.5 text-sm font-bold text-white shadow-[0_4px_0_var(--color-primary-dark)] transition-all active:translate-y-[2px] active:shadow-[0_2px_0_var(--color-primary-dark)]"

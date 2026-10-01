@@ -75,7 +75,7 @@ describe('Public installation surfaces', () => {
     });
     const page = await HomePage();
     // The footer is its own async server component, exercised separately below.
-    view(page.props.children[0]);
+    view(page.props.children.find((child: { type?: string }) => child?.type === 'main'));
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('A second academy');
     expect(screen.getByText('Learn at your pace.')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Installation logo' })).toHaveAttribute('href', '/');
@@ -83,8 +83,17 @@ describe('Public installation surfaces', () => {
 
   it('keeps neutral translated copy when no entry override exists', async () => {
     const page = await HomePage();
-    view(page.props.children[0]);
+    view(page.props.children.find((child: { type?: string }) => child?.type === 'main'));
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Your learning starts here.');
+  });
+
+  it('gives saved public copy precedence over installation copy', async () => {
+    mocks.config.mockResolvedValue({ ...DEFAULT_INSTALLATION_CONFIG, public: { title: 'File title', description: 'File description' } });
+    mocks.settings.mockResolvedValue({ ...DEFAULT_TENANT_SETTINGS, public_home_title: 'Published title', public_home_description: 'Published description' });
+    const page = await HomePage();
+    view(page.props.children.find((child: { type?: string }) => child?.type === 'main'));
+    expect(screen.getByRole('heading', {level:1})).toHaveTextContent('Published title');
+    expect(screen.getByText('Published description')).toBeInTheDocument();
   });
 
   it('shows the resolved installation name during setup', async () => {

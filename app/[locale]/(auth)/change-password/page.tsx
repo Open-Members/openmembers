@@ -1,3 +1,4 @@
+import { AuthPageFrame } from '@/features/Auth/components/shared/AuthPageFrame';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { redirect } from 'next/navigation';
@@ -23,11 +24,13 @@ export default async function ChangePasswordPage() {
   const t = await getTranslations('authPages.changePassword');
 
   return (
+    <AuthPageFrame screen="legacy">
     <AuthShell
       title={t('title')}
       subtitle={t('subtitle')}
     >
       <ChangePasswordForm />
     </AuthShell>
+    </AuthPageFrame>
   );
 }

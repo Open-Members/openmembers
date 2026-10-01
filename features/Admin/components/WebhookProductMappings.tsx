@@ -249,7 +249,7 @@ export function WebhookProductMappings({
                   </div>
 
                   <div className="mt-3 pt-2 border-t border-[var(--color-border)] flex items-center gap-1 flex-wrap">
-                    <button
+                    <button data-brand-button
                       onClick={() => handleToggle(m.id)}
                       disabled={isPending}
                       className="inline-flex items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold text-[var(--color-muted-foreground)] hover:bg-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors"
@@ -266,7 +266,7 @@ export function WebhookProductMappings({
                         </>
                       )}
                     </button>
-                    <button
+                    <button data-brand-button
                       onClick={() => {
                         setEditingId(m.id);
                         setShowAdd(false);
@@ -282,14 +282,14 @@ export function WebhookProductMappings({
                         <span className="text-xs text-[var(--color-muted-foreground)] mr-1">
                           {t("deleteThisOffer")}{" "}
                         </span>
-                        <button
+                        <button data-brand-button
                           onClick={() => handleDelete(m.id)}
                           disabled={isPending}
                           className="rounded-lg bg-red-500 text-white px-2 py-1 text-xs font-bold hover:bg-red-600"
                         >
                           {t("yesDelete")}{" "}
                         </button>
-                        <button
+                        <button data-brand-button
                           onClick={() => setConfirmDeleteId(null)}
                           className="rounded-lg px-2 py-1 text-xs font-semibold text-[var(--color-muted-foreground)] hover:bg-[var(--color-muted)]"
                         >
@@ -297,7 +297,7 @@ export function WebhookProductMappings({
                         </button>
                       </div>
                     ) : (
-                      <button
+                      <button data-brand-button
                         onClick={() => setConfirmDeleteId(m.id)}
                         className="inline-flex items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold text-red-600 hover:bg-red-500/10 transition-colors"
                       >
@@ -343,7 +343,7 @@ export function WebhookProductMappings({
               }}
             />
           ) : (
-            <button
+            <button data-brand-button
               onClick={() => {
                 setShowAdd(true);
                 setEditingId(null);
@@ -746,14 +746,14 @@ export function OfferForm({
           {isEdit ? t("editingOffer") : t("newOffer")}
         </p>
         <div className="flex items-center gap-2">
-          <button
+          <button data-brand-button
             type="button"
             onClick={onCancel}
             className="px-3 py-1.5 rounded-lg text-xs font-semibold text-[var(--color-muted-foreground)] hover:bg-[var(--color-card)] transition-colors"
           >
             {t("cancel")}{" "}
           </button>
-          <button
+          <button data-brand-button
             type="submit"
             disabled={isPending}
             className="px-3 py-1.5 rounded-lg text-white text-xs font-semibold disabled:opacity-50"

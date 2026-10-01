@@ -23,7 +23,7 @@ export function AuthButton({
 }: AuthButtonProps) {
   const t = useTranslations('auth.shared');
   return (
-    <button
+    <button data-brand-button
       type={type}
       disabled={isPending}
       onClick={onClick}

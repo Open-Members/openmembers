@@ -1,3 +1,4 @@
+import { AuthPageFrame } from '@/features/Auth/components/shared/AuthPageFrame';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/core/i18n/routing';
@@ -18,6 +19,7 @@ export default async function LoginPage({ searchParams }: {
 }) {
   const [t, query] = await Promise.all([getTranslations('authPages.login'), searchParams]);
   return (
+    <AuthPageFrame screen="login">
     <AuthShell
       title={t('title')}
       subtitle={t('subtitle')}
@@ -38,5 +40,6 @@ export default async function LoginPage({ searchParams }: {
       )}
       <LoginForm />
     </AuthShell>
+    </AuthPageFrame>
   );
 }

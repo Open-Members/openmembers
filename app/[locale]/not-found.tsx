@@ -34,7 +34,7 @@ export default async function NotFound() {
       </p>
 
       <div className="flex items-center gap-3 flex-wrap justify-center">
-        <Link
+        <Link data-brand-button
           href="/dashboard"
           className="inline-flex items-center gap-2 rounded-full bg-[var(--color-primary)] px-5 py-2.5 text-sm font-bold text-white shadow-[0_3px_0_var(--color-primary-dark)] transition-all active:translate-y-[2px] active:shadow-[0_1px_0_var(--color-primary-dark)]"
         >

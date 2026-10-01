@@ -178,14 +178,14 @@ function CohortDialog({
           {error && <p className="text-sm text-red-500 font-medium">{error}</p>}
 
           <div className="flex gap-3 pt-2">
-            <button
+            <button data-brand-button
               type="button"
               onClick={onClose}
               className="flex-1 px-4 py-3 rounded-xl text-sm font-semibold text-[var(--color-muted-foreground)] hover:bg-[var(--color-muted)] transition-colors"
             >
               {t("cancel")}{" "}
             </button>
-            <button
+            <button data-brand-button
               type="submit"
               disabled={isPending}
               className="flex-1 px-4 py-3 rounded-xl text-white text-sm font-semibold disabled:opacity-60 transition-colors"
@@ -292,7 +292,7 @@ export function CourseCohorts({
             {t("cohortsDescription", { course: courseTitle })}
           </p>
         </div>
-        <button
+        <button data-brand-button
           type="button"
           onClick={() => {
             setEditing(undefined);
@@ -314,7 +314,7 @@ export function CourseCohorts({
         ) : loadFailed ? (
           <p role="alert">
             {t("errors.loadFailed")}{" "}
-            <button onClick={reload}>{t("retry")}</button>
+            <button data-brand-button onClick={reload}>{t("retry")}</button>
           </p>
         ) : cohorts.length === 0 ? (
           <p className="text-sm text-[var(--color-muted-foreground)] text-center py-6">
@@ -373,7 +373,7 @@ export function CourseCohorts({
                     </button>
                     {deletingId === c.id ? (
                       <div className="flex items-center gap-1">
-                        <button
+                        <button data-brand-button
                           type="button"
                           onClick={() => handleDelete(c.id)}
                           disabled={isPending}
@@ -381,7 +381,7 @@ export function CourseCohorts({
                         >
                           {t("confirm")}{" "}
                         </button>
-                        <button
+                        <button data-brand-button
                           type="button"
                           onClick={() => setDeletingId(null)}
                           className="px-2 py-1 rounded-lg text-xs font-medium text-[var(--color-muted-foreground)] hover:bg-[var(--color-muted)]"
