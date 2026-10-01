@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Link } from '@/core/i18n/routing';
 import { useLocale, useTranslations } from 'next-intl';
 import { Play, Info } from 'lucide-react';
+import { HeroBackgroundVideo } from './HeroBackgroundVideo';
 
 type CTA = {
   label: string;
@@ -99,20 +100,11 @@ export function HeroBanner({
     >
       {/* Media layer */}
       {trailerYoutubeId ? (
-        <iframe
-          className="absolute inset-0 w-full h-full pointer-events-none"
-          // Scaled up to hide YouTube's own letterbox bars.
-          style={{
-            width: '120%',
-            height: '120%',
-            left: '-10%',
-            top: '-10%',
-          }}
-          src={`https://www.youtube-nocookie.com/embed/${trailerYoutubeId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${trailerYoutubeId}&modestbranding=1&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&hl=${locale}`}
+        <HeroBackgroundVideo
+          key={trailerYoutubeId}
+          videoId={trailerYoutubeId}
           title={title ?? t('trailer')}
-          allow="autoplay; encrypted-media"
-          loading="eager"
-          tabIndex={-1}
+          locale={locale}
         />
       ) : imageUrl ? (
         <Image
