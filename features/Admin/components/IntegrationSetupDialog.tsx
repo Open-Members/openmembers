@@ -334,7 +334,7 @@ export function IntegrationSetupDialog({
                     <code className="flex-1 text-xs text-[var(--color-foreground)] truncate font-mono">
                       {webhookUrl}
                     </code>
-                    <button
+                    <button data-brand-button
                       type="button"
                       onClick={copyUrl}
                       className="inline-flex items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold text-white"
@@ -365,7 +365,7 @@ export function IntegrationSetupDialog({
                     <ExternalLink className="w-3 h-3" />
                   </a>
                   {isUrlToken && existing && !confirmRotate && (
-                    <button
+                    <button data-brand-button
                       type="button"
                       onClick={() => setConfirmRotate(true)}
                       className="text-xs font-semibold text-[var(--color-muted-foreground)] hover:text-red-600"
@@ -378,7 +378,7 @@ export function IntegrationSetupDialog({
                       <span className="text-[11px] text-amber-700 dark:text-amber-300">
                         {t('integrations.dialog.rotationGrace')}
                       </span>
-                      <button
+                      <button data-brand-button
                         type="button"
                         onClick={handleRotate}
                         disabled={pending}
@@ -386,7 +386,7 @@ export function IntegrationSetupDialog({
                       >
                         {t('integrations.dialog.actions.rotate')}
                       </button>
-                      <button
+                      <button data-brand-button
                         type="button"
                         onClick={() => setConfirmRotate(false)}
                         className="rounded px-2 py-0.5 text-[11px] font-semibold text-[var(--color-muted-foreground)] hover:bg-[var(--color-muted)]"
@@ -543,7 +543,7 @@ export function IntegrationSetupDialog({
                 ) : (
                   <span />
                 )}
-                <button
+                <button data-brand-button
                   type="submit"
                   disabled={pending}
                   className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold text-white disabled:opacity-50"
@@ -570,7 +570,7 @@ export function IntegrationSetupDialog({
                       {t('integrations.dialog.test.description')}
                     </p>
                   </div>
-                  <button
+                  <button data-brand-button
                     type="button"
                     onClick={handleSendTest}
                     disabled={testing}
@@ -676,7 +676,7 @@ export function IntegrationSetupDialog({
               </div>
               {confirmDelete ? (
                 <div className="flex items-center gap-1.5">
-                  <button
+                  <button data-brand-button
                     type="button"
                     onClick={handleDelete}
                     disabled={pending}
@@ -684,7 +684,7 @@ export function IntegrationSetupDialog({
                   >
                     {t('integrations.dialog.actions.confirm')}
                   </button>
-                  <button
+                  <button data-brand-button
                     type="button"
                     onClick={() => setConfirmDelete(false)}
                     className="text-xs font-semibold text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] px-2 py-1"
@@ -693,7 +693,7 @@ export function IntegrationSetupDialog({
                   </button>
                 </div>
               ) : (
-                <button
+                <button data-brand-button
                   type="button"
                   onClick={() => setConfirmDelete(true)}
                   className="inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-semibold text-red-600 hover:bg-red-500/10"

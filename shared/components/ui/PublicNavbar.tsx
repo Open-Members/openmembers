@@ -39,7 +39,7 @@ export default function PublicNavbar({ brand }: { brand: ReactNode }) {
             >
               {t('login')}
             </Link>
-            <Link
+            <Link data-brand-button
               href="/register"
               className="inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--color-primary)] px-5 py-2 text-sm font-bold text-[var(--color-primary-foreground)] shadow-[0_3px_0_var(--color-primary-dark)] transition-all hover:brightness-110 active:translate-y-[2px] active:shadow-[0_1px_0_var(--color-primary-dark)]"
             >
@@ -81,7 +81,7 @@ export default function PublicNavbar({ brand }: { brand: ReactNode }) {
               transition={{ duration: 0.2 }}
             >
               <div className="flex flex-col gap-1">
-                <Link
+                <Link data-brand-button
                   href="/login"
                   className="rounded-xl px-4 py-3 text-sm font-semibold text-[var(--color-foreground)] transition-colors hover:bg-[var(--color-muted)]"
                   onClick={() => setIsOpen(false)}
@@ -89,7 +89,7 @@ export default function PublicNavbar({ brand }: { brand: ReactNode }) {
                   {t('login')}
                 </Link>
                 <div className="my-2 h-px bg-[var(--color-border)]" />
-                <Link
+                <Link data-brand-button
                   href="/register"
                   className="inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--color-primary)] px-5 py-3 text-sm font-bold text-[var(--color-primary-foreground)] shadow-[0_3px_0_var(--color-primary-dark)] transition-all active:translate-y-[2px] active:shadow-[0_1px_0_var(--color-primary-dark)]"
                   onClick={() => setIsOpen(false)}

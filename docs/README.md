@@ -8,12 +8,12 @@ Build an independent home for your courses and learning community. These guides 
 | --- | --- | --- |
 | Try the application with fictitious data | [Local development](development.md) | English |
 | Understand the detailed local setup | [Supabase, fixtures, and first administrator](development/local-database.md) | Portuguese |
-| Change the name, logos, colors, and presentation | [Customization](customization.md) | Portuguese |
+| Change the name, logos, colors, and presentation | [Customization](customization.md) and [appearance controls](features/appearance.md) | Portuguese |
 | Prepare an independent deployment | [Installation](deployment/installation.md) · [Source package guide](deployment/source-package.md) | Portuguese |
 | Operate, back up, or update an installation | [Operations](deployment/operations.md) | Portuguese |
 | Understand what still needs validation | [Known limitations](known-limitations.md) | English |
 | Contribute a change | [Contributing](../CONTRIBUTING.md) · [Source verification](source-verification.md) | English |
-| Review the proposed appearance extension | [Advanced appearance proposal](proposals/advanced-appearance.md) (draft; implementation pending) | English |
+| Understand the appearance extension | [Appearance design record](proposals/advanced-appearance.md) and [usage/migration guide](features/appearance.md) | English / Portuguese |
 | Report a security concern | [Security policy](../SECURITY.md) | English |
 
 The [Help Center](https://openmembers.club/en/help/) offers curated English and Portuguese editions of selected guides. Interface language is a separate setting: members can choose English, Brazilian Portuguese, or Spanish in their profile. Course content and administrator-written text retain their authored language.

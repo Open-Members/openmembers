@@ -1,3 +1,4 @@
+import { AuthPageFrame } from '@/features/Auth/components/shared/AuthPageFrame';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/core/i18n/routing';
@@ -16,6 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function RegisterPage() {
   const t = await getTranslations('authPages.register');
   return (
+    <AuthPageFrame screen="register">
     <AuthShell
       title={t('title')}
       subtitle={t('subtitle')}
@@ -33,5 +35,6 @@ export default async function RegisterPage() {
     >
       <RegisterForm />
     </AuthShell>
+    </AuthPageFrame>
   );
 }

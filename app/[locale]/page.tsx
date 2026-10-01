@@ -1,3 +1,5 @@
+import { getTenantSettings } from '@/core/theme/settings';
+import { EntryBackgroundLayer, entrySurfaceStyle, entryBrandSurface } from '@/shared/components/ui/EntryBackground';
 import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import { hasSupabaseConfiguration } from '@/core/config/env';
@@ -16,33 +18,35 @@ export default async function HomePage() {
     if (user) redirect('/dashboard');
   }
 
-  const [t, config] = await Promise.all([
+  const [t, config, settings] = await Promise.all([
     getTranslations('landing.home'),
     getInstallationConfig(),
+    getTenantSettings(),
   ]);
 
   return (
-    <div className="flex min-h-screen flex-col bg-[var(--color-background)]">
+    <div data-entry-screen="home" data-entry-brand-surface={entryBrandSurface(settings.public_home_background)} data-entry-solid-background={settings.public_home_background?.mode === 'color' ? true : undefined} className="relative flex min-h-screen flex-col bg-[var(--color-background)]" style={entrySurfaceStyle(settings.public_home_background)}>
+      <EntryBackgroundLayer background={settings.public_home_background}/>
       <main
         id="main-content"
         tabIndex={-1}
-        className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center px-6 py-24 focus:outline-none"
+        className="relative mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center px-6 py-24 focus:outline-none"
       >
         <div className="mb-8"><AuthLogo /></div>
         <h1 className="font-display text-4xl font-semibold tracking-tight text-[var(--color-foreground)] sm:text-5xl">
-          {config.public.title ?? t('title')}
+          {settings.public_home_title ?? config.public.title ?? t('title')}
         </h1>
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-[var(--color-muted-foreground)]">
-          {config.public.description ?? t('description')}
+          {settings.public_home_description ?? config.public.description ?? t('description')}
         </p>
         <div className="mt-10 flex flex-wrap gap-4">
-          <Link
+          <Link data-brand-button
             href="/login"
             className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[var(--color-primary)] px-6 py-3 font-semibold text-[var(--color-primary-foreground)]"
           >
             {t('login')}
           </Link>
-          <Link
+          <Link data-brand-button
             href="/register"
             className="inline-flex min-h-11 items-center justify-center rounded-xl border border-[var(--color-border)] px-6 py-3 font-semibold text-[var(--color-foreground)]"
           >
@@ -50,7 +54,7 @@ export default async function HomePage() {
           </Link>
         </div>
       </main>
-      <SiteFooter />
+      <div className="relative"><SiteFooter /></div>
     </div>
   );
 }

@@ -37,6 +37,7 @@ function FooterBrand({ settings, homeLabel }: { settings: TenantSettings; homeLa
             {logoLight && (
               <Image
                 src={logoLight}
+                data-brand-logo-surface="light"
                 alt={siteName}
                 width={140}
                 height={28}
@@ -47,6 +48,7 @@ function FooterBrand({ settings, homeLabel }: { settings: TenantSettings; homeLa
             {logoDark && (
               <Image
                 src={logoDark}
+                data-brand-logo-surface="dark"
                 alt={siteName}
                 width={140}
                 height={28}

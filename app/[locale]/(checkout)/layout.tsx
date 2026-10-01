@@ -25,7 +25,7 @@ export default async function CheckoutLayout({
           <AuthLogo />
           {/* Mirrors AuthButton (features/Auth/.../AuthButton.tsx) so the CTA
               matches the login page, rendered as a Link for navigation. */}
-          <Link
+          <Link data-brand-button
             href="/login"
             className="group relative inline-flex items-center justify-center overflow-hidden rounded-full px-6 py-2.5 text-sm font-semibold text-[var(--color-primary-foreground)] transition-all duration-200 ease-out hover:brightness-[1.08] active:scale-[0.985]"
             style={{

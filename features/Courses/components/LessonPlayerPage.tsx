@@ -500,7 +500,7 @@ function AutoplayOverlay({
           {countdown}
         </div>
         <div className="flex items-center justify-center gap-3">
-          <button
+          <button data-brand-button
             type="button"
             onClick={onCancel}
             className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/20"
@@ -508,7 +508,7 @@ function AutoplayOverlay({
             <X className="w-4 h-4" />
             {t('cancel')}
           </button>
-          <Link
+          <Link data-brand-button
             href={`/courses/${courseSlug}/${nextLesson.slug}`}
             className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold text-black bg-white hover:bg-white/90"
           >

@@ -117,7 +117,7 @@ export function ScoringRulesEditor({ rules }: Props) {
                     className="w-20 rounded-lg border border-[var(--color-border)] bg-[var(--color-background)] px-2 py-1 text-sm tabular-nums text-[var(--color-foreground)] text-right focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/40"
                   />
                   <span className="text-xs text-[var(--color-muted-foreground)]"> {t('pointsUnit')} </span>
-                  <button
+                  <button data-brand-button
                     type="button"
                     onClick={() => save(trigger)}
                     disabled={pending}
@@ -131,7 +131,7 @@ export function ScoringRulesEditor({ rules }: Props) {
                       <Check className="w-3.5 h-3.5" />
                     )}
                   </button>
-                  <button
+                  <button data-brand-button
                     type="button"
                     onClick={() => setEditing(null)}
                     disabled={pending}

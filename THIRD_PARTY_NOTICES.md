@@ -101,3 +101,9 @@ Project SVG artwork and application screenshots are documented in the [media inv
 ## Compiled distribution
 
 Before distributing bundles, executables, or container images, identify their exact components and include the applicable notices and other required distribution materials. Copying this document and the project LICENSE into an image does not complete that review. A source-only distribution and a compiled distribution have different contents; their applicable materials must be assessed separately.
+
+## Self-hosted appearance fonts
+
+Inter, Montserrat and Lora variable fonts are included under SIL Open Font License 1.1. The original notices are preserved in [Inter OFL](public/fonts/inter-OFL.txt), [Montserrat OFL](public/fonts/montserrat-OFL.txt) and [Lora OFL](public/fonts/lora-OFL.txt). Original internal font names are retained; application CSS uses neutral family aliases.
+
+The files were independently obtained from the official [Google Fonts repository](https://github.com/google/fonts/tree/9710da1eacb3be272583c3224dcb70f9da6eadbb/ofl), revision `9710da1eacb3be272583c3224dcb70f9da6eadbb`. The original normal variable TTFs were compressed to WOFF2 with fontTools 4.60.1 without subsetting or changing font names. Exact upstream URLs, revision, axes, sizes and SHA-256 digests are preserved in [the font source manifest](public/fonts/sources.json). Browser requests are served by the installation, without a Google Fonts runtime request.

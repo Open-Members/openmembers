@@ -25,7 +25,7 @@ export function NotificationItem({ notification: n, time, compact = false, disab
     </button>
     <div className="shrink-0 mt-1 flex items-center gap-1">
       {!n.isRead && <span aria-hidden="true" className="w-2 h-2 rounded-full bg-[var(--color-primary)]" />}
-      <button type="button" onClick={() => onDelete(n)} disabled={disabled} aria-label={t('delete')} className="flex items-center justify-center w-7 h-7 rounded-full text-[var(--color-muted-foreground)] hover:bg-[var(--color-border)] hover:text-[var(--color-foreground)] transition disabled:opacity-60">
+      <button data-brand-button type="button" onClick={() => onDelete(n)} disabled={disabled} aria-label={t('delete')} className="flex items-center justify-center w-7 h-7 rounded-full text-[var(--color-muted-foreground)] hover:bg-[var(--color-border)] hover:text-[var(--color-foreground)] transition disabled:opacity-60">
         <Trash2 className="w-3.5 h-3.5" />
       </button>
     </div>

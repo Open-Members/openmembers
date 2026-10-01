@@ -141,7 +141,7 @@ export function AdminLiveClasses({ initialData, courses }: Props) {
         title={t('liveClasses')}
         description={t('scheduleLiveSessionsZoomMeetAnywherePickOneOr')}
         actions={
-          <button
+          <button data-brand-button
             type="button"
             onClick={() => setDialog({ mode: 'create' })}
             disabled={courses.length === 0}
@@ -307,7 +307,7 @@ function Row({
         <ExternalLink className="w-4 h-4" />
       </a>
 
-      <button
+      <button data-brand-button
         type="button"
         onClick={onEdit}
         disabled={pending}
@@ -316,7 +316,7 @@ function Row({
       >
         <Pencil className="w-4 h-4" />
       </button>
-      <button
+      <button data-brand-button
         type="button"
         onClick={onDelete}
         disabled={pending}
@@ -703,7 +703,7 @@ function LiveClassDialog({
         </div>
 
         <div className="flex items-center justify-end gap-2 px-6 py-4 border-t border-[var(--color-border)]">
-          <button
+          <button data-brand-button
             type="button"
             onClick={onClose}
             disabled={pending}
@@ -711,7 +711,7 @@ function LiveClassDialog({
           >
             {t('cancel')}{' '}
           </button>
-          <button
+          <button data-brand-button
             type="submit"
             disabled={pending}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-white text-sm font-semibold disabled:opacity-50"

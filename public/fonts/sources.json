@@ -1,0 +1,52 @@
+{
+  "revision": "9710da1eacb3be272583c3224dcb70f9da6eadbb",
+  "conversion": "fontTools 4.60.1, WOFF2 compression only; no glyph subset or name changes",
+  "fonts": [
+    {
+      "family": "inter",
+      "source": "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be272583c3224dcb70f9da6eadbb/ofl/inter/Inter%5Bopsz%2Cwght%5D.ttf",
+      "source_sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+      "woff2_sha256": "13b4cddc57045d40b411008e61588c8f81aa0bd72fe884624831a0ff9c4d159a",
+      "license_sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+      "axes": {
+        "opsz": [
+          14.0,
+          32.0
+        ],
+        "wght": [
+          100.0,
+          900.0
+        ]
+      },
+      "bytes": 350460
+    },
+    {
+      "family": "montserrat",
+      "source": "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be272583c3224dcb70f9da6eadbb/ofl/montserrat/Montserrat%5Bwght%5D.ttf",
+      "source_sha256": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7",
+      "woff2_sha256": "6e712eafc11f23dc2b0651c0849c1a331aa81a3a4499ba61ef5091e5c123c796",
+      "license_sha256": "8b7141c03fa4f8d44e6345d5d4931709290f0f67875e452e95ac1fd3a027802e",
+      "axes": {
+        "wght": [
+          100.0,
+          900.0
+        ]
+      },
+      "bytes": 215968
+    },
+    {
+      "family": "lora",
+      "source": "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be272583c3224dcb70f9da6eadbb/ofl/lora/Lora%5Bwght%5D.ttf",
+      "source_sha256": "822a6621ccbe8d97d20ac88c1c41f5615c9c2c202eaa75f272cd452aac6475a7",
+      "woff2_sha256": "7c514f026f03de1b0fc344c0c0f0df141fcf16b6f9ab672db191908ba740dab6",
+      "license_sha256": "1d9a970809ac804b582a6ce7f0ebc4e7fefcbfd7ff6299cad35ee656a21be716",
+      "axes": {
+        "wght": [
+          400.0,
+          700.0
+        ]
+      },
+      "bytes": 85096
+    }
+  ]
+}

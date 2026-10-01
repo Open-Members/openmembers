@@ -146,7 +146,7 @@ function CompareToggle({
   return (
     <div className="flex flex-col items-start gap-1">
       <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-muted-foreground)] md:invisible md:select-none"> {t('compare')} </span>
-      <Link
+      <Link data-brand-button
         href={`/admin/reports?${params.toString()}`}
         title={
           compare
@@ -286,7 +286,7 @@ export function AdminReportsLoadError() {
   return (
     <section role="alert" className="max-w-xl mx-auto rounded-2xl border border-red-500/30 bg-[var(--color-card)] p-6">
       <p className="text-sm text-[var(--color-foreground)]">{t('loadFailed')}</p>
-      <Link
+      <Link data-brand-button
         href="/admin/reports"
         className="mt-4 inline-flex rounded-xl bg-[var(--color-primary)] px-4 py-2 text-sm font-semibold text-white"
       >

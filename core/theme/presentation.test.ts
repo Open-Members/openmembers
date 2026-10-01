@@ -30,6 +30,22 @@ describe('installation presentation', () => {
     expect(css).not.toContain('<script>');
   });
 
+  it('changes heading fonts and action-button shape without changing media controls', () => {
+    const css = createThemeCss({ ...settings, font_family: 'inter', heading_font_family: 'lora', button_shape: 'square' });
+    expect(css).toContain('--font-sans:"Open Members Inter"');
+    expect(css).toContain('--font-display:"Open Members Lora"');
+    expect(css).toContain('--brand-button-radius:0px');
+    expect(css).toContain('[data-brand-button]');
+    expect(css).not.toMatch(/(?:^|\})button\s*\{/u);
+  });
+
+  it('supports heading inheritance and retains legacy shapes unless selected', () => {
+    expect(createThemeCss({ ...settings, heading_font_family: 'inherit' })).toContain('--font-display:ui-serif, Georgia');
+    const legacy = createThemeCss(settings);
+    expect(legacy).not.toContain('--brand-button-radius');
+    expect(legacy).not.toContain('--font-display:');
+  });
+
   it('uses a dark foreground for a light brand color', () => {
     expect(createThemeCss({ ...settings, primary_color: '#ffff00' })).toContain('--color-primary-foreground:#000000');
   });

@@ -1,3 +1,4 @@
+import { randomUUID } from 'node:crypto';
 import { createAdminClient } from '@/core/supabase/admin';
 
 export const PLATFORM_ASSETS_BUCKET = 'platform-assets';
@@ -17,6 +18,7 @@ export type AllowedMime = (typeof ALLOWED_MIME_TYPES)[number];
 
 export type UploadFolder =
   | 'branding'
+  | 'branding/backgrounds'
   | `courses/${string}`
   | `instructors/${string}`;
 
@@ -50,12 +52,12 @@ export async function createSignedUpload(
   fileName: string,
 ): Promise<SignedUploadResult> {
   const safeName = sanitizeFileName(fileName);
-  const path = `${folder}/${Date.now()}-${safeName}`;
+  const path = `${folder}/${folder === 'branding/backgrounds' ? randomUUID() : Date.now()}-${safeName}`;
 
   const supabase = createAdminClient();
   const { data, error } = await supabase.storage
     .from(PLATFORM_ASSETS_BUCKET)
-    .createSignedUploadUrl(path, { upsert: true });
+    .createSignedUploadUrl(path, { upsert: folder !== 'branding/backgrounds' });
 
   if (error || !data) {
     throw new Error(`Could not create signed URL: ${error?.message ?? 'unknown'}`);

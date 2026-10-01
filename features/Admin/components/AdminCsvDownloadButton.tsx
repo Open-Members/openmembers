@@ -22,7 +22,7 @@ export function AdminCsvDownloadButton(props: {
   });
 
   return (
-    <button
+    <button data-brand-button
       type="button"
       onClick={() => void download()}
       disabled={isLoading}

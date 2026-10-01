@@ -59,6 +59,7 @@ export function AuthInput({
           />
         )}
         <input
+          data-auth-input
           id={id}
           name={name}
           type={actualType}

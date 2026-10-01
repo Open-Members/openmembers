@@ -31,6 +31,7 @@ export type EqualityGroups = Partial<
 export const catalogEqualityAllowlist = {
   pt: {
     sharedVocabulary: [
+      'adminOperations.branding.appearance.screens.login',
       'adminAccess.status',
       'adminAccess.sources.manual',
       'adminOperations.home.header.eyebrow',
@@ -57,6 +58,9 @@ export const catalogEqualityAllowlist = {
       'adminAccess.sources.stripe',
       'adminAccess.sources.guru',
       'adminOperations.branding.identity.favicon',
+      'adminOperations.branding.identity.fonts.inter',
+      'adminOperations.branding.identity.fonts.montserrat',
+      'adminOperations.branding.identity.fonts.lora',
       'adminOverview.sources.webhook',
       'adminOverview.sources.youtube',
       'adminOverview.sources.hotmart',
@@ -137,6 +141,9 @@ export const catalogEqualityAllowlist = {
       'adminAccess.sources.stripe',
       'adminAccess.sources.guru',
       'adminOperations.branding.identity.favicon',
+      'adminOperations.branding.identity.fonts.inter',
+      'adminOperations.branding.identity.fonts.montserrat',
+      'adminOperations.branding.identity.fonts.lora',
       'adminOverview.sources.webhook',
       'adminOverview.sources.youtube',
       'adminOverview.sources.hotmart',

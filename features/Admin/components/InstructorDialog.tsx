@@ -209,7 +209,7 @@ export function InstructorDialog({
                 <span className="text-xs text-[var(--color-muted-foreground)]">
                   {t('deletePermanently')}{' '}
                 </span>
-                <button
+                <button data-brand-button
                   type="button"
                   onClick={handleDelete}
                   disabled={pending}
@@ -217,7 +217,7 @@ export function InstructorDialog({
                 >
                   {t('confirm')}{' '}
                 </button>
-                <button
+                <button data-brand-button
                   type="button"
                   onClick={() => setConfirmingDelete(false)}
                   className="px-3 py-1.5 rounded-lg text-xs font-semibold text-[var(--color-muted-foreground)] hover:bg-[var(--color-muted)]"
@@ -226,7 +226,7 @@ export function InstructorDialog({
                 </button>
               </div>
             ) : (
-              <button
+              <button data-brand-button
                 type="button"
                 onClick={() => setConfirmingDelete(true)}
                 disabled={pending || instructor.courseCount > 0}
@@ -246,14 +246,14 @@ export function InstructorDialog({
           )}
 
           <div className="flex items-center gap-2">
-            <button
+            <button data-brand-button
               type="button"
               onClick={onClose}
               className="px-4 py-2 rounded-lg text-sm font-semibold text-[var(--color-muted-foreground)] hover:bg-[var(--color-muted)]"
             >
               {t('cancel')}{' '}
             </button>
-            <button
+            <button data-brand-button
               type="button"
               onClick={handleSave}
               disabled={pending}

@@ -146,7 +146,7 @@ export function AdminCourseContent({
         title={course.title}
         description={t('addModulesReorderThemAndDropLessonsInsideThe')}
         actions={
-          <button
+          <button data-brand-button
             type="button"
             onClick={() => setModuleDialog({ mode: 'create' })}
             className="flex items-center gap-2 px-4 py-2 rounded-xl text-white text-sm font-semibold"
@@ -266,7 +266,7 @@ export function AdminCourseContent({
 
               {/* Add lesson */}
               <div className="px-5 py-3 bg-[var(--color-muted)]/20">
-                <button
+                <button data-brand-button
                   type="button"
                   onClick={() =>
                     setLessonDialog({ mode: 'create', moduleId: mod.id })

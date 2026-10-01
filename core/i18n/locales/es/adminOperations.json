@@ -70,11 +70,14 @@
       "socialImage": "Imagen para compartir",
       "socialImageHelp": "Se muestra cuando su plataforma se comparte en redes sociales.",
       "bodyFont": "Fuente del texto",
-      "bodyFontHelp": "Usa fuentes disponibles en el dispositivo. Los títulos conservan su estilo con serifas.",
+      "bodyFontHelp": "Elige una fuente del dispositivo o una alojada en la plataforma.",
       "fonts": {
         "system": "Sin serifas del sistema",
         "serif": "Con serifas del sistema",
-        "mono": "Monoespaciada del sistema"
+        "mono": "Monoespaciada del sistema",
+        "inter": "Inter",
+        "montserrat": "Montserrat",
+        "lora": "Lora"
       }
     },
     "colors": {
@@ -133,7 +136,62 @@
     "saving": "Guardando…",
     "saved": "Guardado",
     "save": "Guardar cambios",
-    "savedToast": "Marca guardada. Volviendo a cargar para aplicar el tema…"
+    "savedToast": "Marca guardada. Volviendo a cargar para aplicar el tema…",
+    "appearance": {
+      "headingFont": "Fuente de los títulos",
+      "inherit": "Heredar fuente del texto",
+      "current": "Apariencia actual",
+      "buttonShape": "Forma de los botones",
+      "buttons": {
+        "square": "Cuadrado",
+        "rounded": "Redondeado",
+        "pill": "Cápsula"
+      },
+      "title": "Apariencia por pantalla",
+      "description": "Cada pantalla tiene su propio fondo. Copiar es una elección explícita y las configuraciones siguen independientes. La vista previa se publica solo al guardar.",
+      "screens": {
+        "home": "Inicio público",
+        "login": "Inicio de sesión",
+        "register": "Registro"
+      },
+      "mode": "Tipo de fondo",
+      "color": "Color sólido",
+      "image": "Imagen",
+      "backgroundColor": "Color del fondo",
+      "upload": "Imagen de fondo",
+      "uploadHelp": "PNG, JPEG o WebP hasta 5 MB. Reemplazar o quitar aquí no elimina el archivo publicado.",
+      "position": "Posición de la imagen",
+      "positions": {
+        "center": "Centro",
+        "top": "Superior",
+        "bottom": "Inferior"
+      },
+      "overlay": "Superposición",
+      "overlayHelp": "Aumenta la superposición para mejorar el contraste del texto. Revisa ambos temas antes de guardar.",
+      "copyFrom": "Copiar fondo de",
+      "choose": "Selecciona otra pantalla",
+      "copy": "Copiar configuración",
+      "homeTitle": "Título del inicio público",
+      "homeDescription": "Descripción del inicio público",
+      "copyHelp": "Deja vacío para usar el texto predeterminado de la instalación.",
+      "preview": "Vista previa",
+      "desktop": "Ordenador",
+      "mobile": "Móvil",
+      "light": "Claro",
+      "dark": "Oscuro",
+      "previewHelp": "Simulación de apariencia. Los formularios de vista previa no envían datos.",
+      "loginTitle": "Bienvenido de nuevo",
+      "registerTitle": "Crea tu cuenta",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "name": "Nombre completo",
+      "loginAction": "Iniciar sesión",
+      "registerAction": "Crear cuenta",
+      "defaultTitle": "Tu viaje comienza aquí",
+      "defaultDescription": "Accede a tus cursos y materiales de aprendizaje.",
+      "migrationRequired": "La personalización por pantalla estará disponible después de actualizar la base de datos.",
+      "imageRequired": "Sube una imagen para completar este fondo."
+    }
   },
   "home": {
     "header": {

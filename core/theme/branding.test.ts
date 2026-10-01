@@ -53,6 +53,27 @@ describe('resolved installation branding', () => {
     expect(TENANT_SETTINGS_COLUMNS).not.toContain('*');
     expect(TENANT_SETTINGS_COLUMNS).not.toContain('certificate_body');
   });
+
+  it('resolves three independent backgrounds without inheriting another screen', () => {
+    const home = { mode: 'color', color: '#123456' };
+    const login = { mode: 'color', color: '#abcdef' };
+    const settings = resolveTenantSettings({}, { public_home_background: home, login_background: login });
+    expect(settings).toMatchObject({ public_home_background: home, login_background: login, register_background: null });
+    expect(resolveTenantSettings({}, { login_background: null, register_background: login })).toMatchObject({ public_home_background: null, login_background: null, register_background: login });
+  });
+
+  it('accepts modern body fonts and independent classic headings', () => {
+    expect(resolveTenantSettings({}, { font_family: 'inter', heading_font_family: 'lora', button_shape: 'square' })).toMatchObject({ font_family: 'inter', heading_font_family: 'lora', button_shape: 'square' });
+  });
+
+  it('ignores malformed background configuration and trims authored home copy', () => {
+    expect(resolveTenantSettings({}, {
+      public_home_background: { mode: 'image', imageUrl: 'javascript:alert(1)', position: 'center', overlayOpacity: 70 },
+      login_background: { mode: 'color', color: '</style>', extra: true },
+      public_home_title: '  Comunidade Open Members  ',
+      public_home_description: '  Aprenda em comunidade.  ',
+    })).toMatchObject({ public_home_background: null, login_background: null, public_home_title: 'Comunidade Open Members', public_home_description: 'Aprenda em comunidade.' });
+  });
 });
 
 describe('admin branding input', () => {
@@ -61,6 +82,24 @@ describe('admin branding input', () => {
   it('normalizes valid preferences and removes the hidden legacy logo fallback', () => {
     const parsed = parseAdminBranding({ ...input, fontFamily: 'serif', logoLightUrl: '/branding.svg' });
     expect(parsed.data).toMatchObject({ site_name: 'Jardim Escola', accent_color: '#d97706', font_family: 'serif', logo_light_url: '/branding.svg', logo_url: null });
+  });
+
+  it('saves independent appearance fields and preserves omitted preferences', () => {
+    const parsed = parseAdminBranding({ ...input, headingFontFamily: 'inherit', buttonShape: 'pill', publicHomeTitle: '  Open Members  ', loginBackground: { mode: 'color', color: '#ABCDEF' }, registerBackground: null });
+    expect(parsed.data).toMatchObject({ heading_font_family: 'inherit', button_shape: 'pill', public_home_title: 'Open Members', login_background: { mode: 'color', color: '#abcdef' }, register_background: null });
+    expect(parsed.data).not.toHaveProperty('public_home_background');
+    expect(parseAdminBranding(input).data).not.toHaveProperty('login_background');
+  });
+
+  it.each([
+    { loginBackground: { mode: 'image', imageUrl: '//evil.example/a.png' } },
+    { registerBackground: { mode: 'image', imageUrl: '/safe.png', overlayOpacity: 101 } },
+    { publicHomeTitle: 'x'.repeat(181) },
+    { publicHomeDescription: 'x'.repeat(1201) },
+    { headingFontFamily: 'url(font.woff)' },
+    { buttonShape: 'arbitrary-css' },
+  ])('rejects unsafe appearance input %#', (override) => {
+    expect(parseAdminBranding({ ...input, ...override })).toHaveProperty('error');
   });
 
   it.each([

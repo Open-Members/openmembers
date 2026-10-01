@@ -76,7 +76,7 @@ export function CertificateDownloadButton({ courseId }: { courseId: string }) {
   }, [courseId, loading, t]);
 
   return (
-    <button
+    <button data-brand-button
       type="button"
       onClick={download}
       disabled={loading}

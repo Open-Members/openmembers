@@ -84,14 +84,14 @@ export function NewTicketForm() {
       )}
 
       <div className="flex items-center justify-end gap-2">
-        <button
+        <button data-brand-button
           type="button"
           onClick={() => router.push('/support')}
           className="rounded-lg px-4 py-2 text-sm font-medium text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)]"
         >
           {t('cancel')}
         </button>
-        <button
+        <button data-brand-button
           type="submit"
           disabled={isPending}
           className="rounded-lg bg-[var(--color-primary)] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[var(--color-primary-dark)] disabled:cursor-not-allowed disabled:opacity-60"

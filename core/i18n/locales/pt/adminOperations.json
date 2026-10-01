@@ -70,11 +70,14 @@
       "socialImage": "Imagem de compartilhamento",
       "socialImageHelp": "Exibida quando sua plataforma é compartilhada nas redes sociais.",
       "bodyFont": "Fonte do texto",
-      "bodyFontHelp": "Usa fontes já disponíveis no dispositivo. Os títulos mantêm o estilo serifado.",
+      "bodyFontHelp": "Escolha uma fonte do dispositivo ou uma fonte hospedada na plataforma.",
       "fonts": {
         "system": "Sem serifa do sistema",
         "serif": "Serifada do sistema",
-        "mono": "Monoespaçada do sistema"
+        "mono": "Monoespaçada do sistema",
+        "inter": "Inter",
+        "montserrat": "Montserrat",
+        "lora": "Lora"
       }
     },
     "colors": {
@@ -133,7 +136,62 @@
     "saving": "Salvando…",
     "saved": "Salvo",
     "save": "Salvar alterações",
-    "savedToast": "Marca salva. Recarregando para aplicar o tema…"
+    "savedToast": "Marca salva. Recarregando para aplicar o tema…",
+    "appearance": {
+      "headingFont": "Fonte dos títulos",
+      "inherit": "Herdar fonte dos textos",
+      "current": "Aparência atual",
+      "buttonShape": "Formato dos botões",
+      "buttons": {
+        "square": "Quadrado",
+        "rounded": "Arredondado",
+        "pill": "Cápsula"
+      },
+      "title": "Aparência por tela",
+      "description": "Cada tela tem seu próprio fundo. Copiar é uma escolha explícita e as configurações continuam independentes. A prévia só é publicada ao salvar.",
+      "screens": {
+        "home": "Home pública",
+        "login": "Login",
+        "register": "Cadastro"
+      },
+      "mode": "Tipo de fundo",
+      "color": "Cor sólida",
+      "image": "Imagem",
+      "backgroundColor": "Cor do fundo",
+      "upload": "Imagem de fundo",
+      "uploadHelp": "PNG, JPEG ou WebP até 5 MB. Substituir ou remover aqui não apaga o arquivo publicado.",
+      "position": "Posição da imagem",
+      "positions": {
+        "center": "Central",
+        "top": "Superior",
+        "bottom": "Inferior"
+      },
+      "overlay": "Sobreposição",
+      "overlayHelp": "Aumente a sobreposição para melhorar o contraste do texto. Confira os dois temas antes de salvar.",
+      "copyFrom": "Copiar fundo de",
+      "choose": "Selecione outra tela",
+      "copy": "Copiar configuração",
+      "homeTitle": "Título da home pública",
+      "homeDescription": "Descrição da home pública",
+      "copyHelp": "Deixe vazio para usar o texto padrão da instalação.",
+      "preview": "Prévia",
+      "desktop": "Computador",
+      "mobile": "Celular",
+      "light": "Claro",
+      "dark": "Escuro",
+      "previewHelp": "Simulação da aparência. Os formulários da prévia não enviam dados.",
+      "loginTitle": "Bem-vindo de volta",
+      "registerTitle": "Crie sua conta",
+      "email": "E-mail",
+      "password": "Senha",
+      "name": "Nome completo",
+      "loginAction": "Entrar",
+      "registerAction": "Criar conta",
+      "defaultTitle": "Sua jornada começa aqui",
+      "defaultDescription": "Acesse seus cursos e materiais de aprendizagem.",
+      "migrationRequired": "A personalização por tela estará disponível após a atualização do banco de dados.",
+      "imageRequired": "Envie uma imagem para concluir este fundo."
+    }
   },
   "home": {
     "header": {

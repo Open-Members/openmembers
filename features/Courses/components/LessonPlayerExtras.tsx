@@ -194,7 +194,7 @@ function MaterialDownload({ attachment }: { attachment: LessonWithProgress['atta
       ? `${format.number(bytes / 1024, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} KB`
       : `${format.number(bytes / (1024 * 1024), { minimumFractionDigits: 1, maximumFractionDigits: 1 })} MB`;
   return (
-    <button
+    <button data-brand-button
       type="button"
       onClick={() => void download()}
       disabled={isLoading}

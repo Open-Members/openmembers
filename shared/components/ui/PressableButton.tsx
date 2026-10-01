@@ -53,7 +53,7 @@ export function PressableButton({
   ...props
 }: PressableButtonProps) {
   return (
-    <motion.button
+    <motion.button data-brand-button
       whileHover={{ scale: 1.02, y: -1 }}
       whileTap={{ scale: 0.96, y: 2 }}
       transition={{ type: 'spring', stiffness: 400, damping: 17 }}

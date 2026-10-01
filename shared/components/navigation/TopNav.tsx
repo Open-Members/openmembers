@@ -326,7 +326,7 @@ function RouteTopNav({
                     disabled={isPending}
                     aria-busy={isPending}
                     role="menuitem"
-                    className="flex items-center gap-3 w-full px-4 py-2 text-sm font-semibold text-[var(--color-accent)] hover:bg-[var(--color-accent)]/10 transition disabled:cursor-not-allowed disabled:opacity-60"
+                    className="flex items-center gap-3 w-full px-4 py-2 text-sm font-semibold text-[var(--color-error-text)] hover:bg-[var(--color-error-text)]/10 transition disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     <LogOut className="w-4 h-4" />
                     {t('signOut')}
@@ -431,7 +431,7 @@ function RouteTopNav({
                 onClick={handleLogout}
                 disabled={isPending}
                 aria-busy={isPending}
-                className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-[var(--color-accent)] hover:bg-[var(--color-accent)]/10 transition text-left disabled:cursor-not-allowed disabled:opacity-60"
+                className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-[var(--color-error-text)] hover:bg-[var(--color-error-text)]/10 transition text-left disabled:cursor-not-allowed disabled:opacity-60"
               >
                 <LogOut className="w-5 h-5 shrink-0" />
                 {t('signOut')}

@@ -129,7 +129,7 @@ export function QuizRunner({
             {t('outOfAttempts')}
           </div>
         ) : (
-          <button
+          <button data-brand-button
             type="button"
             onClick={() => setStage('taking')}
             className="px-6 py-3 rounded-xl text-white text-sm font-bold"
@@ -203,7 +203,7 @@ export function QuizRunner({
       </div>
 
       <div className="flex items-center justify-end gap-2">
-        <button
+        <button data-brand-button
           type="button"
           onClick={handleSubmit}
           disabled={pending || !allAnswered}
@@ -335,7 +335,7 @@ function ResultsView({
       {/* Actions */}
       {onRetry && (
         <div className="flex items-center justify-center">
-          <button
+          <button data-brand-button
             type="button"
             onClick={onRetry}
             className="flex items-center gap-2 px-5 py-3 rounded-xl border border-[var(--color-border)] text-sm font-semibold text-[var(--color-foreground)] hover:bg-[var(--color-muted)]"

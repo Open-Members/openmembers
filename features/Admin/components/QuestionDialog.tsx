@@ -295,7 +295,7 @@ export function QuestionDialog({
                 </div>
               ))}
               {type === 'single_choice' && (
-                <button
+                <button data-brand-button
                   type="button"
                   onClick={addOption}
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10"
@@ -322,14 +322,14 @@ export function QuestionDialog({
         </div>
 
         <div className="flex items-center justify-end gap-2 px-6 py-4 border-t border-[var(--color-border)] bg-[var(--color-muted)]/40">
-          <button
+          <button data-brand-button
             aria-label={t('close')}
             onClick={onClose}
             className="px-4 py-2 rounded-lg text-sm font-semibold text-[var(--color-muted-foreground)] hover:bg-[var(--color-muted)]"
           >
             {t('cancel')}{' '}
           </button>
-          <button
+          <button data-brand-button
             onClick={handleSave}
             disabled={pending}
             className="flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold text-white disabled:opacity-60"

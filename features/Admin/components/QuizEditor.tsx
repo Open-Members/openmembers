@@ -108,7 +108,7 @@ export function QuizEditor({ lessonId, initialQuiz, ...props }: Props) {
         <p className="text-sm text-[var(--color-muted-foreground)] mt-1 mb-5">
           {t('quizNotConfiguredHelp')}
         </p>
-        <button
+        <button data-brand-button
           type="button"
           onClick={createQuiz}
           disabled={pending}
@@ -347,14 +347,14 @@ function ConfiguredQuizEditor({
 
         <div className="flex items-center justify-end gap-2">
           {dirty && (
-            <button
+            <button data-brand-button
               onClick={() => setConfig(savedConfig)}
               className="px-4 py-2 rounded-lg text-sm font-semibold text-[var(--color-muted-foreground)] hover:bg-[var(--color-muted)]"
             >
               {t('discard')}{' '}
             </button>
           )}
-          <button
+          <button data-brand-button
             onClick={saveConfig}
             disabled={!dirty || pending}
             className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white disabled:opacity-60"
@@ -381,7 +381,7 @@ function ConfiguredQuizEditor({
               {t('questionCount', { count: quiz.questions.length })}
             </p>
           </div>
-          <button
+          <button data-brand-button
             type="button"
             onClick={() => setQuestionDialog({ mode: 'create' })}
             className="flex items-center gap-2 px-4 py-2 rounded-xl text-white text-sm font-semibold"
@@ -468,14 +468,14 @@ function ConfiguredQuizEditor({
                     </button>
                     {deletingId === q.id ? (
                       <div className="flex items-center gap-1">
-                        <button
+                        <button data-brand-button
                           onClick={() => handleDelete(q.id)}
                           disabled={pending}
                           className="px-2 py-1 rounded-lg bg-[var(--color-accent)] text-white text-xs font-semibold"
                         >
                           {t('confirm')}{' '}
                         </button>
-                        <button
+                        <button data-brand-button
                           onClick={() => setDeletingId(null)}
                           className="px-2 py-1 rounded-lg text-xs font-semibold text-[var(--color-muted-foreground)] hover:bg-[var(--color-muted)]"
                         >

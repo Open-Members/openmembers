@@ -146,7 +146,7 @@ export function AdminOffers({
           </p>
         </div>
         {hasAnyConfig ? (
-          <button
+          <button data-brand-button
             onClick={() => setShowProviderPicker(true)}
             className="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white"
             style={{ backgroundColor: "var(--color-primary)" }}
@@ -325,7 +325,7 @@ export function AdminOffers({
                 </div>
 
                 <div className="mt-3 pt-3 border-t border-[var(--color-border)] flex items-center gap-1 flex-wrap">
-                  <button
+                  <button data-brand-button
                     onClick={() => handleToggle(o.id)}
                     disabled={isPending}
                     className="inline-flex items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold text-[var(--color-muted-foreground)] hover:bg-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors"
@@ -342,7 +342,7 @@ export function AdminOffers({
                       </>
                     )}
                   </button>
-                  <button
+                  <button data-brand-button
                     onClick={() => setTarget({ mode: "edit", offer: o })}
                     className="inline-flex items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 transition-colors"
                   >
@@ -355,14 +355,14 @@ export function AdminOffers({
                       <span className="text-xs text-[var(--color-muted-foreground)] mr-1">
                         {t("deleteThisOffer")}{" "}
                       </span>
-                      <button
+                      <button data-brand-button
                         onClick={() => handleDelete(o.id)}
                         disabled={isPending}
                         className="rounded-lg bg-red-500 text-white px-2 py-1 text-xs font-bold hover:bg-red-600"
                       >
                         {t("yesDelete")}{" "}
                       </button>
-                      <button
+                      <button data-brand-button
                         onClick={() => setConfirmDeleteId(null)}
                         className="rounded-lg px-2 py-1 text-xs font-semibold text-[var(--color-muted-foreground)] hover:bg-[var(--color-muted)]"
                       >
@@ -370,7 +370,7 @@ export function AdminOffers({
                       </button>
                     </div>
                   ) : (
-                    <button
+                    <button data-brand-button
                       onClick={() => setConfirmDeleteId(o.id)}
                       className="inline-flex items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold text-red-600 hover:bg-red-500/10 transition-colors"
                     >
@@ -434,7 +434,7 @@ export function AdminOffers({
                 );
               })}
             </div>
-            <button
+            <button data-brand-button
               onClick={() => setShowProviderPicker(false)}
               className="mt-3 text-xs font-semibold text-[var(--color-muted-foreground)] hover:underline"
             >

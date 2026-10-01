@@ -264,7 +264,7 @@ export function AdminAnnouncements({ options }: Props) {
               {t('announcements.reach.description', { count: reachCount })}
             </p>
 
-            <button
+            <button data-brand-button
               type="button"
               onClick={handleSend}
               disabled={!canSend}

@@ -237,7 +237,7 @@ function HeroCta({ cta, variant }: { cta: CTA; variant: 'primary' | 'ghost' }) {
   }
 
   return (
-    <Link href={cta.href} className={classes}>
+    <Link href={cta.href} data-brand-button className={classes}>
       {icon}
       {cta.label}
     </Link>

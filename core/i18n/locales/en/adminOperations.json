@@ -70,11 +70,14 @@
       "socialImage": "Social preview image",
       "socialImageHelp": "Shown when your platform is shared on social media.",
       "bodyFont": "Body font",
-      "bodyFontHelp": "Uses fonts already available on the device. Display headings retain their serif style.",
+      "bodyFontHelp": "Choose a device font or a font hosted with the platform.",
       "fonts": {
         "system": "System sans-serif",
         "serif": "System serif",
-        "mono": "System monospace"
+        "mono": "System monospace",
+        "inter": "Inter",
+        "montserrat": "Montserrat",
+        "lora": "Lora"
       }
     },
     "colors": {
@@ -133,7 +136,62 @@
     "saving": "Saving…",
     "saved": "Saved",
     "save": "Save changes",
-    "savedToast": "Branding saved. Reloading to apply the theme…"
+    "savedToast": "Branding saved. Reloading to apply the theme…",
+    "appearance": {
+      "headingFont": "Heading font",
+      "inherit": "Inherit body font",
+      "current": "Current appearance",
+      "buttonShape": "Button shape",
+      "buttons": {
+        "square": "Square",
+        "rounded": "Rounded",
+        "pill": "Pill"
+      },
+      "title": "Appearance by screen",
+      "description": "Each screen has its own background. Copying is explicit and configurations remain independent. Previews are published only when saved.",
+      "screens": {
+        "home": "Public home",
+        "login": "Login",
+        "register": "Registration"
+      },
+      "mode": "Background type",
+      "color": "Solid color",
+      "image": "Image",
+      "backgroundColor": "Background color",
+      "upload": "Background image",
+      "uploadHelp": "PNG, JPEG or WebP up to 5 MB. Replacing or removing here does not delete the published file.",
+      "position": "Image position",
+      "positions": {
+        "center": "Center",
+        "top": "Top",
+        "bottom": "Bottom"
+      },
+      "overlay": "Overlay",
+      "overlayHelp": "Increase the overlay to improve text contrast. Check both themes before saving.",
+      "copyFrom": "Copy background from",
+      "choose": "Select another screen",
+      "copy": "Copy configuration",
+      "homeTitle": "Public home title",
+      "homeDescription": "Public home description",
+      "copyHelp": "Leave blank to use the installation default text.",
+      "preview": "Preview",
+      "desktop": "Desktop",
+      "mobile": "Mobile",
+      "light": "Light",
+      "dark": "Dark",
+      "previewHelp": "Appearance simulation. Preview forms do not submit data.",
+      "loginTitle": "Welcome back",
+      "registerTitle": "Create your account",
+      "email": "Email",
+      "password": "Password",
+      "name": "Full name",
+      "loginAction": "Sign in",
+      "registerAction": "Create account",
+      "defaultTitle": "Your journey starts here",
+      "defaultDescription": "Access your courses and learning materials.",
+      "migrationRequired": "Screen customization will be available after the database update.",
+      "imageRequired": "Upload an image to complete this background."
+    }
   },
   "home": {
     "header": {

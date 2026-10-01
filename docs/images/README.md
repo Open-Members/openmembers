@@ -1,6 +1,6 @@
 # Documentation images
 
-These files illustrate the [README](../../README.md) and [website](../../website/README.md). The six application screenshots were captured on September 16, 2026 (UTC) using fictional local accounts and authored test content, with no customer branding, real member data, or credentials.
+These files illustrate the [README](../../README.md) and [website](../../website/README.md). The original six application screenshots were captured on September 16, 2026 (UTC) using fictional local accounts and authored test content, with no customer branding, real member data, or credentials.
 
 ## Artwork
 
@@ -20,6 +20,17 @@ The captures show the current wordmark and mobile icon from source revision `be0
 | [Mobile lesson](mobile-lesson.png) | The lesson experience on a narrow viewport | 1082 × 4407 | `e2e/learning-localization.spec.ts` |
 
 The names, course content and `example.test` accounts visible in the captures are fictional fixtures. No purchased stock photography is included. Notices for UI dependencies remain applicable; screenshots do not relicense those dependencies.
+
+## Appearance captures
+
+The appearance images were captured on October 1, 2026 (UTC) from the feature branch for [PR #2](https://github.com/Open-Members/openmembers/pull/2), using a local production build and authored sample copy. They show Inter body text, Lora headings, pill action buttons and a solid `#edf2f7` home background. The browser uses the dark theme; the artwork variant follows the configured light surface. Desktop uses a 1280 × 900 viewport; mobile uses Pixel 7 emulation. These are unretouched captures with the default Open Members artwork and no member accounts, customer assets, external browser requests or production deployment.
+
+| Asset | What it shows | Pixels | Fixture source |
+|---|---|---|---|
+| [Desktop appearance](appearance-home-desktop.png) | Public home with independent fonts, a solid background and pill actions | 1280 × 900 | Local installation configuration |
+| [Mobile appearance](appearance-home-mobile.png) | Public home with independent fonts, a solid background and pill actions | 1082 × 2205 | Local installation configuration |
+
+To reproduce, build without external services, run the production server on an unused local port and select a separate installation JSON with the settings above and the sample title “Your community, your way”. Capture the public home after fonts and entrance transitions finish, using Playwright's bundled Chromium. No authenticated database or reset is needed. Application dependencies retain their original licenses.
 
 ## Website preview
 

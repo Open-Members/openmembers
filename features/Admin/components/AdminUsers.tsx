@@ -103,13 +103,13 @@ function ConfirmDialog({
           </div>
         )}
         <div className="flex gap-3 justify-end">
-          <button
+          <button data-brand-button
             onClick={onCancel}
             className="px-4 py-2 rounded-xl text-sm font-semibold text-[var(--color-muted-foreground)] hover:bg-[var(--color-muted)] transition-colors"
           >
             {t("cancel")}{" "}
           </button>
-          <button
+          <button data-brand-button
             onClick={onConfirm}
             disabled={!canConfirm}
             className={`px-4 py-2 rounded-xl text-sm font-semibold text-white transition-all disabled:opacity-40 ${
@@ -269,7 +269,7 @@ function PasswordResetDialog({
                 <code className="flex-1 font-mono text-base tracking-wider text-[var(--color-foreground)] select-all">
                   {generated}
                 </code>
-                <button
+                <button data-brand-button
                   type="button"
                   onClick={handleCopy}
                   className="shrink-0 inline-flex items-center gap-1.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-card)] px-2.5 py-1.5 text-xs font-semibold text-[var(--color-foreground)] hover:bg-[var(--color-background)] transition-colors"
@@ -287,7 +287,7 @@ function PasswordResetDialog({
                   )}
                 </button>
               </div>
-              <button
+              <button data-brand-button
                 onClick={onClose}
                 className="w-full px-4 py-2.5 rounded-xl bg-[var(--color-primary)] text-white text-sm font-semibold hover:brightness-110 transition-colors"
               >
@@ -308,7 +308,7 @@ function PasswordResetDialog({
                 <code className="flex-1 font-mono text-xs break-all text-[var(--color-foreground)] select-all">
                   {generatedLink}
                 </code>
-                <button
+                <button data-brand-button
                   type="button"
                   onClick={handleCopy}
                   className="shrink-0 inline-flex items-center gap-1.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-card)] px-2.5 py-1.5 text-xs font-semibold text-[var(--color-foreground)] hover:bg-[var(--color-background)] transition-colors"
@@ -326,7 +326,7 @@ function PasswordResetDialog({
                   )}
                 </button>
               </div>
-              <button
+              <button data-brand-button
                 onClick={onClose}
                 className="w-full px-4 py-2.5 rounded-xl bg-[var(--color-primary)] text-white text-sm font-semibold hover:brightness-110 transition-colors"
               >
@@ -663,7 +663,7 @@ export function AdminUsers({
               className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-hairline bg-[var(--color-muted)] text-sm text-[var(--color-foreground)] focus:outline-none focus:border-[var(--color-primary)]"
             />
           </div>
-          <button
+          <button data-brand-button
             type="submit"
             className="px-5 py-2.5 rounded-xl text-white text-sm font-semibold"
             style={{ backgroundColor: "var(--color-primary)" }}
@@ -691,7 +691,7 @@ export function AdminUsers({
             )}
           </button>
         </form>
-        <button
+        <button data-brand-button
           type="button"
           onClick={() => setAddDialogOpen(true)}
           className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-white text-sm font-semibold transition hover:opacity-90"
@@ -700,7 +700,7 @@ export function AdminUsers({
           <UserPlus className="w-4 h-4" />
           {t("addStudent")}{" "}
         </button>
-        <Link
+        <Link data-brand-button
           href="/admin/users/import"
           title={t("importManyStudentsFromACsv")}
           className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-card)] text-sm font-medium text-[var(--color-foreground)] transition hover:bg-[var(--color-muted)]"
@@ -890,7 +890,7 @@ export function AdminUsers({
         ) : loadFailed ? (
           <div role="alert" className="p-6">
             {t("errors.loadFailed")}{" "}
-            <button onClick={() => load({ page })}>{t("retry")}</button>
+            <button data-brand-button onClick={() => load({ page })}>{t("retry")}</button>
           </div>
         ) : users.length === 0 ? (
           <p className="p-8 text-center text-sm text-[var(--color-muted-foreground)]">

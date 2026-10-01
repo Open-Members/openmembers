@@ -22,7 +22,7 @@ export default async function SupportPage() {
           </h1>
           <p className="mt-1 text-sm text-[var(--color-muted-foreground)]">{t('subtitle')}</p>
         </div>
-        <Link
+        <Link data-brand-button
           href="/support/new"
           className="inline-flex items-center justify-center rounded-lg bg-[var(--color-primary)] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[var(--color-primary-dark)]"
         >

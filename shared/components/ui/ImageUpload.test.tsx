@@ -70,6 +70,29 @@ describe('image changes remain a draft until their record is saved', () => {
     expect(screen.queryByText(/internal-provider-detail/u)).not.toBeInTheDocument();
   });
 
+  it('ignores drops while its enclosing form is disabled', async () => {
+    renderUpload(<fieldset disabled><ImageUpload label="Logo" folder="branding" onChange={vi.fn()}/></fieldset>);
+    fireEvent.drop(screen.getByRole('button', {name:'Upload Logo'}), {dataTransfer:{files:[new File(['<svg/>'],'blocked.svg',{type:'image/svg+xml'})]}});
+    await new Promise(resolve=>setTimeout(resolve,0));
+    expect(mocks.upload).not.toHaveBeenCalled();
+  });
+
+  it('accepts only one drop until the first upload settles', async () => {
+    let finish!: (value: unknown) => void;
+    mocks.upload.mockReturnValue(new Promise(resolve=>{finish=resolve;}));
+    const change=vi.fn();
+    renderUpload(<ImageUpload label="Logo" value="/original.svg" folder="branding" onChange={change}/>);
+    const area=screen.getByRole('img',{name:'Logo'}).parentElement!;
+    const drop=(name:string)=>fireEvent.drop(area,{dataTransfer:{files:[new File(['<svg/>'],name,{type:'image/svg+xml'})]}});
+    drop('first.svg');
+    await waitFor(()=>expect(mocks.upload).toHaveBeenCalledTimes(1));
+    drop('second.svg');
+    await new Promise(resolve=>setTimeout(resolve,0));
+    expect(mocks.upload).toHaveBeenCalledTimes(1);
+    finish({signedUrl:'https://storage.example.test/signed',publicUrl:'/first.svg',path:'branding/first.svg'});
+    await waitFor(()=>expect(change).toHaveBeenCalledExactlyOnceWith('/first.svg','branding/first.svg'));
+  });
+
   it('derives the visible technical format list from the accepted MIME types', () => {
     renderUpload(
       <ImageUpload

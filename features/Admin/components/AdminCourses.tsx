@@ -168,14 +168,14 @@ function CreateCourseForm({
           )}
 
           <div className="flex gap-3 pt-2">
-            <button
+            <button data-brand-button
               type="button"
               onClick={onClose}
               className="flex-1 px-4 py-3 rounded-xl text-sm font-semibold text-[var(--color-muted-foreground)] hover:bg-[var(--color-muted)]"
             >
               {t('cancel')}{' '}
             </button>
-            <button
+            <button data-brand-button
               type="submit"
               disabled={isPending}
               className="flex-1 px-4 py-3 rounded-xl text-white text-sm font-semibold disabled:opacity-60"
@@ -274,7 +274,7 @@ function InstructorsPanel({
                       {t('courseCount', { count: ins.courseCount })}
                     </p>
                   </div>
-                  <button
+                  <button data-brand-button
                     onClick={() => setDialog({ mode: 'edit', instructor: ins })}
                     className="px-3 py-1.5 rounded-lg text-xs font-semibold text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10"
                   >
@@ -286,7 +286,7 @@ function InstructorsPanel({
           </div>
 
           <div className="px-6 py-4 border-t border-[var(--color-border)]">
-            <button
+            <button data-brand-button
               type="button"
               onClick={() => setDialog({ mode: 'create' })}
               className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white w-full justify-center"
@@ -428,7 +428,7 @@ export function AdminCourses({
               <UserRound className="w-4 h-4" />
               {t('instructors')}{' '}
             </button>
-            <button
+            <button data-brand-button
               onClick={() => setShowCreate(true)}
               className="flex items-center gap-2 px-4 py-2 rounded-xl text-white text-sm font-semibold"
               style={{ backgroundColor: 'var(--color-primary)' }}
@@ -702,14 +702,14 @@ function SortableCourseRow({
           </button>
           {deletingId === course.id ? (
             <div className="flex items-center gap-1">
-              <button
+              <button data-brand-button
                 onClick={onDelete}
                 disabled={isPending}
                 className="px-2 py-1 rounded-lg bg-[var(--color-accent)] text-white text-xs font-medium"
               >
                 {t('confirm')}{' '}
               </button>
-              <button
+              <button data-brand-button
                 onClick={onCancelDelete}
                 className="px-2 py-1 rounded-lg text-xs font-medium text-[var(--color-muted-foreground)] hover:bg-[var(--color-muted)]"
               >

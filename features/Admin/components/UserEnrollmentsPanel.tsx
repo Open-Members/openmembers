@@ -559,7 +559,7 @@ function UserEnrollmentsPanelContent({
                   </div>
                 )}
 
-                <button
+                <button data-brand-button
                   onClick={handleEnroll}
                   disabled={!canEnroll || isPending}
                   className="w-full px-4 py-2.5 rounded-lg bg-[var(--color-primary)] text-white text-sm font-semibold hover:brightness-110 disabled:opacity-50 transition-colors"
@@ -699,7 +699,7 @@ function EnrollmentGroup({
                 </p>
               )}
             </div>
-            <button
+            <button data-brand-button
               onClick={() => onToggle(e.id, e.isActive)}
               disabled={isPending}
               className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${

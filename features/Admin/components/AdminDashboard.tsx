@@ -111,7 +111,7 @@ export function AdminDashboard({
         description={t('dashboardDescription')}
         actions={
           <>
-            <Link
+            <Link data-brand-button
               href="/admin/content"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-white text-sm font-semibold"
               style={{ backgroundColor: 'var(--color-primary)' }}
@@ -229,7 +229,7 @@ export function AdminDashboardLoadError() {
   return (
     <section role="alert" className="max-w-xl mx-auto rounded-2xl border border-red-500/30 bg-[var(--color-card)] p-6">
       <p className="text-sm text-[var(--color-foreground)]">{t('loadFailed')}</p>
-      <button
+      <button data-brand-button
         type="button"
         onClick={() => window.location.reload()}
         className="mt-4 rounded-xl bg-[var(--color-primary)] px-4 py-2 text-sm font-semibold text-white"

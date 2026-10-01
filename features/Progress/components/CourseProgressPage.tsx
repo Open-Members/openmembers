@@ -252,7 +252,7 @@ function EmptyState() {
       <p className="text-sm md:text-base text-[var(--color-muted-foreground)] max-w-md mx-auto mb-6 leading-relaxed">
         {t('progress.empty.description')}
       </p>
-      <Link
+      <Link data-brand-button
         href="/courses"
         className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-90"
         style={{ backgroundColor: 'var(--color-primary)' }}
