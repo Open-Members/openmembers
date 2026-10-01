@@ -32,6 +32,17 @@ The appearance images were captured on October 1, 2026 (UTC) from the feature br
 
 To reproduce, build without external services, run the production server on an unused local port and select a separate installation JSON with the settings above and the sample title “Your community, your way”. Capture the public home after fonts and entrance transitions finish, using Playwright's bundled Chromium. No authenticated database or reset is needed. Application dependencies retain their original licenses.
 
+## Banner video captures
+
+The banner images were generated locally on October 1, 2026 with the real `HeroBanner` component, translations, navigation and application CSS. The remote iframe contains controlled 16:9 gradient media; the heading and action use fictitious copy. These unretouched captures exercise a deliberately enlarged 700 px banner, rather than change the application's default height. They show coverage and action placement, not real YouTube playback or a production deployment.
+
+| Asset | What it shows | Pixels | Fixture source |
+|---|---|---|---|
+| [Desktop banner](member-banner-video-desktop.png) | Proportional media covers a wide banner; the action remains inside | 1440 × 900 | `e2e/hero-banner.spec.ts` |
+| [Mobile banner](member-banner-video-mobile.png) | Media covers a tall narrow banner; the action remains below | 1024 × 2216 | `e2e/hero-banner.spec.ts` |
+
+Run `npx playwright test --config playwright.banner.config.ts`. The coverage cases write `banner-dark.png` under their desktop/mobile directories in `test-results/`. Desktop uses a 1440 × 900 viewport; mobile uses Pixel 7 emulation at 390 × 844 CSS pixels, with its device scale factor. The preceding matrix also checks widths through 2560 px and viewport changes. No external media is included in these assets; application dependencies retain their original licenses.
+
 ## Website preview
 
 [website-preview.jpg](website-preview.jpg) is an unchanged 956 × 720 capture of the website from September 14, 2026. It shows the header, wordmark and planned services. It illustrates the website, not a hosted application demo.
