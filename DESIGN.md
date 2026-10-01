@@ -79,3 +79,11 @@ Preserve the installation's current look until an administrator opts in. Keep th
 References for this extension: [Attio](https://attio.com) supports distinct display and utility font roles; [Cal.com](https://cal.com) supports deliberate action silhouettes. Refero's [Vimeo customization screen](https://refero.design/pages/b3260ffa-bfb9-4abf-a7de-302410531b63) and [Tome typography editor](https://refero.design/pages/bdc19655-2c12-4620-8ba4-d125fdaa3285) inform grouped controls with immediate preview. Existing Open Members components remain the primary reference. Do not import reference palettes, proprietary fonts or imagery, and do not turn the settings page into a page builder.
 
 Solid entry backgrounds derive the logo variant from their readable foreground, independent of the global theme. Home, authentication and footer artwork share this rule with the draft preview. Image and default backgrounds keep theme-based artwork selection.
+
+## Decorative banner video
+
+The existing Open Members dashboard and course banners are the visual reference. Preserve their typography, colors, 21:9 default banner ratio, desktop height cap, overlays and action placement.
+
+`HeroBackgroundVideo` is the shared decorative-media owner inside `HeroBanner`. Center 16:9 video over both axes using the actual banner dimensions, including the 560px desktop cap. Cropping is intentional; stretching is not. Keep image presentation unchanged.
+
+Decorative video remains outside keyboard focus and the accessibility tree, with inline autoplay, looping, zero volume and native captions disabled through iframe control. Validate the exact provider origin and current iframe window; release subscriptions on removal/replacement. Lesson players retain their independent sound, captions, controls and progress. The optional real-provider check must prove initially visible captions, playback and loop rather than infer success from URL parameters.
