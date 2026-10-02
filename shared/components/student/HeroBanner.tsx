@@ -13,7 +13,7 @@ type CTA = {
 };
 
 type HeroBannerProps = {
-  /** Optional. If set, trailer takes precedence. Unused if `trailerYoutubeId` is set. */
+  /** Static artwork; also backs the trailer while its player initializes. */
   imageUrl?: string | null;
   /** If provided, renders an autoplaying muted looped YouTube iframe. */
   trailerYoutubeId?: string | null;
@@ -100,12 +100,27 @@ export function HeroBanner({
     >
       {/* Media layer */}
       {trailerYoutubeId ? (
+        <>
+        {imageUrl ? (
+          <Image
+            src={imageUrl}
+            alt=""
+            fill
+            sizes="100vw"
+            loading="eager"
+            className="object-cover"
+            unoptimized
+          />
+        ) : (
+          <div aria-hidden="true" className="absolute inset-0 bg-black" />
+        )}
         <HeroBackgroundVideo
           key={trailerYoutubeId}
           videoId={trailerYoutubeId}
           title={title ?? t('trailer')}
           locale={locale}
         />
+        </>
       ) : imageUrl ? (
         <Image
           src={imageUrl}

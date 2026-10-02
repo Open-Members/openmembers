@@ -76,12 +76,23 @@ test('real YouTube banner overrides active native captions, stays silent and loo
   page.on('request', request => requestStages.set(request, stage));
   await context.addInitScript(() => {
     const counts: Record<string, number> = {};
+    const history: { event: string; at: number; info?: unknown }[] = [];
     (window as Window & { bannerProviderEvents?: Record<string, number> }).bannerProviderEvents = counts;
+    (window as Window & { bannerProviderHistory?: typeof history }).bannerProviderHistory = history;
+    window.addEventListener('load', event => {
+      if (event.target instanceof HTMLIFrameElement) history.push({ event: 'iframe-load', at: Date.now() });
+    }, true);
     window.addEventListener('message', event => {
       if (event.origin !== 'https://www.youtube-nocookie.com') return;
       let data = event.data;
       if (typeof data === 'string') { try { data = JSON.parse(data); } catch { return; } }
-      if (data && typeof data.event === 'string') counts[data.event] = (counts[data.event] ?? 0) + 1;
+      if (data && typeof data.event === 'string') {
+        counts[data.event] = (counts[data.event] ?? 0) + 1;
+        if (['onReady', 'onStateChange', 'onApiChange', 'onError', 'onAutoplayBlocked', 'initialDelivery'].includes(data.event)
+          || (data.event === 'infoDelivery' && typeof data.info?.playerState === 'number')) {
+          history.push({ event: data.event, at: Date.now(), info: typeof data.info === 'number' ? data.info : data.info?.playerState });
+        }
+      }
     });
   });
   page.on('requestfailed', request => {
@@ -121,11 +132,13 @@ test('real YouTube banner overrides active native captions, stays silent and loo
 
     stage = 'production banner with caption preference enabled';
     await page.goto(`${bannerOrigin}/__banner`);
+    await expect(page.locator('iframe')).toHaveCSS('opacity', '0');
     await expect.poll(async () => (await observed().catch(() => null))?.current ?? 0, { timeout: 30_000 }).toBeGreaterThan(2);
     // getOptions can keep listing captions after unloadModule. Check the
     // active track AND the rendered subtitles while real playback advances.
     await expect.poll(async () => (await observed()).captionLanguage, { timeout: 10_000 }).toBeNull();
     await expect.poll(async () => (await observed()).current, { timeout: 10_000 }).toBeGreaterThan(5);
+    await expect(page.locator('iframe')).toHaveCSS('opacity', '1', { timeout: 30_000 });
     let state = await observed();
     expect(state.muted || state.volume === 0).toBe(true);
     expect(state.captionText).toEqual([]);
@@ -140,6 +153,8 @@ test('real YouTube banner overrides active native captions, stays silent and loo
     }, state.duration - 2);
     await expect.poll(async () => (await observed()).current, { timeout: 10_000 }).toBeGreaterThan(state.duration - 5);
     await expect.poll(async () => (await observed()).current, { timeout: 15_000 }).toBeLessThan(10);
+    // Seeking may buffer before looping; allow the 10s gate plus its fade.
+    await expect(page.locator('iframe')).toHaveCSS('opacity', '1', { timeout: 15_000 });
     // Restart is asynchronous: a track can be selected before the player
     // emits its API/state event. Observe actual playback through the first
     // spoken captions, rather than declare success/failure at currentTime=0.
@@ -156,6 +171,19 @@ test('real YouTube banner overrides active native captions, stays silent and loo
     expect(state.captionLanguage).toBeNull();
     expect(state.captionText).toEqual([]);
     evidence.looped = state;
+    const loopControls = await page.frameLocator('iframe').locator('body').evaluate(() => {
+      return [...document.querySelectorAll('.ytp-large-play-button, .ytp-bezel, .ytmCuedOverlayPlayButton, .player-control-play-pause-icon, .player-middle-controls-prev-next-button')].filter(node => {
+        const box = node.getBoundingClientRect();
+        if (!box.width || !box.height) return false;
+        for (let current: Element | null = node; current; current = current.parentElement) {
+          const style = getComputedStyle(current);
+          if (style.display === 'none' || style.visibility !== 'visible' || Number(style.opacity) <= 0.01) return false;
+        }
+        return true;
+      }).map(node => node.className);
+    });
+    expect(loopControls).toEqual([]);
+    evidence.loopControls = loopControls;
     const events = await page.evaluate(() => (window as Window & { bannerProviderEvents?: Record<string, number> }).bannerProviderEvents);
     evidence.events = events;
     expect(events?.onApiChange ?? 0, 'Caption unload must not create a feedback loop.').toBeLessThan(20);
@@ -164,10 +192,110 @@ test('real YouTube banner overrides active native captions, stays silent and loo
     evidence.stage = stage;
     evidence.networkFailures = failures;
     evidence.lastObserved = await observed().catch(() => null);
+    evidence.events = await page.evaluate(() => (window as Window & { bannerProviderEvents?: Record<string, number> }).bannerProviderEvents);
+    evidence.history = await page.evaluate(() => (window as Window & { bannerProviderHistory?: unknown[] }).bannerProviderHistory);
     const output = testInfo.outputPath('real-youtube-banner.json');
     await mkdir(dirname(output), { recursive: true });
     await writeFile(output, JSON.stringify(evidence, null, 2));
     await testInfo.attach('real-youtube-banner', { path: output, contentType: 'application/json' });
+  }
+});
+
+test('startup controls stay behind the backing image, including reloads and buffering', async ({ page, bannerOrigin }, testInfo) => {
+  await page.setViewportSize(testInfo.project.name === 'mobile'
+    ? { width: 390, height: 844 }
+    : { width: 1440, height: 900 });
+  await page.route(`${provider}/embed/**`, route => route.fulfill({
+    contentType: 'text/html',
+    body: `<html><head><style>html,body{margin:0;width:100%;height:100%;background:#0e7490}#controls{position:absolute;inset:40%;color:white}#controls button{font-size:24px}</style></head><body><div id="controls"><button>Previous</button><button>Pause</button><button>Next</button></div><script>
+      let started=false;
+      window.addEventListener('message',event=>{
+        let data;try{data=JSON.parse(event.data)}catch{return}
+        if(data.event==='listening'&&!started){
+          started=true;
+          parent.postMessage({event:'onReady'},'*');
+          parent.postMessage({event:'onStateChange',info:1},'*');
+          setTimeout(()=>document.getElementById('controls').hidden=true,7000);
+        }
+      });
+      </script></body></html>`,
+  }));
+  for (const load of ['first', 'reload']) {
+    await page.emulateMedia({ reducedMotion: load === 'first' ? 'reduce' : 'no-preference' });
+    if (load === 'first') await page.goto(`${bannerOrigin}/__banner`);
+    else await page.reload();
+    const imageUrl = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="210" height="90"><rect width="210" height="90" fill="#334155"/></svg>');
+    await page.getByRole('heading', { name: 'Welcome' }).waitFor();
+    await page.evaluate(options => (window as unknown as Window & { setBannerOptions: (value: unknown) => void }).setBannerOptions(options), { trailerYoutubeId: videoId, imageUrl });
+    const iframe = page.locator('iframe');
+    const controls = page.frameLocator('iframe').locator('#controls');
+    await expect(controls).toBeVisible();
+    await expect(iframe).toHaveCSS('opacity', '0');
+    await expect(page.locator('section img')).toBeVisible();
+    await expect.poll(() => page.locator('section img').evaluate(element => (element as HTMLImageElement).naturalWidth)).toBe(210);
+    await expect(page.getByRole('heading', { name: 'Welcome' })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Explore' }).filter({ visible: true })).toBeVisible();
+    await page.screenshot({ path: testInfo.outputPath(`startup-${load}.png`) });
+    await expect(controls).toBeHidden({ timeout: 10_000 });
+    await expect(iframe).toHaveCSS('opacity', '0');
+    await expect(iframe).toHaveCSS('opacity', '1', { timeout: 10_000 });
+    // The global reduced-motion rule sets a tiny !important duration;
+    // transition-property:none is what actually disables the fade.
+    if (load === 'first') await expect(iframe).toHaveCSS('transition-property', 'none');
+    else await expect(iframe).toHaveCSS('transition-duration', '0.5s');
+    await page.frameLocator('iframe').locator('body').evaluate(() => parent.postMessage({ event: 'onStateChange', info: 3 }, '*'));
+    await expect(iframe).toHaveCSS('opacity', '0');
+    if (load === 'first') await expect(iframe).toHaveCSS('transition-property', 'none');
+    else await expect(iframe).toHaveCSS('transition-duration', '0s');
+  }
+});
+
+test('real provider never exposes startup controls when the banner is revealed', async ({ page, bannerOrigin }, testInfo) => {
+  test.skip(process.env.OPENMEMBERS_YOUTUBE_INTEGRATION !== '1', 'Explicit external-provider opt-in required.');
+  test.setTimeout(120_000);
+  const evidence: Record<string, unknown>[] = [];
+  const observed = () => page.frameLocator('iframe').locator('body').evaluate(() => {
+    const video = document.querySelector('video');
+    const selectors = '.ytp-large-play-button, .ytp-bezel, .ytmCuedOverlayPlayButton, .player-control-play-pause-icon, .player-middle-controls-prev-next-button';
+    const controls = [...document.querySelectorAll(selectors)].filter(node => {
+      const box = node.getBoundingClientRect();
+      if (!box.width || !box.height) return false;
+      for (let current: Element | null = node; current; current = current.parentElement) {
+        const style = getComputedStyle(current);
+        if (style.display === 'none' || style.visibility !== 'visible' || Number(style.opacity) <= 0.01) return false;
+      }
+      return true;
+    }).map(node => ({ class: node.className, label: node.getAttribute('aria-label') }));
+    return { current: video?.currentTime ?? 0, muted: video?.muted, paused: video?.paused, controls };
+  }, undefined, { timeout: 2000 });
+  try {
+    for (const load of ['first', 'reload']) {
+      if (load === 'first') await page.goto(`${bannerOrigin}/__banner`);
+      else await page.reload();
+      const iframe = page.locator('iframe');
+      await expect(iframe).toHaveCSS('opacity', '0');
+      let revealed = false;
+      const started = Date.now();
+      while (Date.now() - started < 35_000) {
+        const state = await observed().catch(() => null);
+        const opacity = await iframe.evaluate(element => Number(getComputedStyle(element).opacity));
+        evidence.push({ load, elapsed: Date.now() - started, opacity, ...state });
+        if (opacity > 0 && state) {
+          expect(state.controls, `Provider UI visible at ${state.current}s (${load})`).toEqual([]);
+          expect(state.muted).toBe(true);
+          expect(state.paused).toBe(false);
+        }
+        // Playback time resets on loops, so short usable clips also qualify.
+        if (opacity === 1 && state && state.current > 0 && !state.paused) { revealed = true; break; }
+        await page.waitForTimeout(150);
+      }
+      expect(revealed, 'A usable provider video must become visible after startup.').toBe(true);
+      await page.screenshot({ path: testInfo.outputPath(`real-startup-${load}.png`) });
+    }
+  } finally {
+    const output = testInfo.outputPath('real-youtube-startup.json');
+    await writeFile(output, JSON.stringify({ videoId, samples: evidence }, null, 2));
+    await testInfo.attach('real-youtube-startup', { path: output, contentType: 'application/json' });
   }
 });
 
@@ -176,7 +304,7 @@ test('16:9 media covers the actual banner in wide, mobile and tall layouts', asy
   page.on('pageerror', error => errors.push(error.message));
   await page.route(`${provider}/embed/**`, route => route.fulfill({
     contentType: 'text/html',
-    body: '<html><head><style>html,body{margin:0;width:100%;height:100%;background:black}body{display:grid;place-items:center}#video{width:min(100vw,177.77777778vh);height:min(100vh,56.25vw);background:linear-gradient(90deg,#0e7490,#7c3aed)}</style></head><body><div id="video"></div></body></html>',
+    body: '<html><head><style>html,body{margin:0;width:100%;height:100%;background:black}body{display:grid;place-items:center}#video{width:min(100vw,177.77777778vh);height:min(100vh,56.25vw);background:linear-gradient(90deg,#0e7490,#7c3aed)}</style></head><body><div id="video"></div><script>let sent=false;window.addEventListener("message",event=>{let data;try{data=JSON.parse(event.data)}catch{return}if(data.event==="listening"&&!sent){sent=true;parent.postMessage({event:"onReady"},"*");parent.postMessage({event:"onStateChange",info:1},"*")}})</script></body></html>',
   }));
   await page.goto(`${bannerOrigin}/__banner`);
   const widths = testInfo.project.name === 'mobile' ? [390, 844] : [1440, 1920, 2560];
@@ -187,7 +315,7 @@ test('16:9 media covers the actual banner in wide, mobile and tall layouts', asy
       // Restore the ordinary class-based size after the tall case.
       if (!tall) await page.locator('style').filter({ hasText: 'height:700px' }).evaluateAll(styles => styles.forEach(style => style.remove()));
       const iframe = page.locator('iframe');
-      await expect(iframe).toBeVisible();
+      await expect(iframe).toHaveCSS('opacity', '1', { timeout: 20_000 });
       const banner = (await page.locator('section').boundingBox())!;
       const frame = (await iframe.boundingBox())!;
       const video = (await page.frameLocator('iframe').locator('#video').boundingBox())!;

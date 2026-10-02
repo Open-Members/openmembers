@@ -43,6 +43,17 @@ The banner images were generated locally on October 1, 2026 with the real `HeroB
 
 Run `npx playwright test --config playwright.banner.config.ts`. The coverage cases write `banner-dark.png` under their desktop/mobile directories in `test-results/`. Desktop uses a 1440 × 900 viewport; mobile uses Pixel 7 emulation at 390 × 844 CSS pixels, with its device scale factor. The preceding matrix also checks widths through 2560 px and viewport changes. No external media is included in these assets; application dependencies retain their original licenses.
 
+## Banner startup captures
+
+The startup images were captured locally on October 1, 2026 (America/Sao_Paulo) from the feature branch for the banner startup fix. Playwright rendered the real `HeroBanner`, translations, navigation and application CSS. The backing artwork is an authored solid-color SVG; the controlled remote iframe contains deliberately visible startup buttons that remain hidden behind that image. The heading and action use fictitious copy. These are unretouched component captures, without accounts, external media or a production deployment.
+
+| Asset | What it shows | Pixels | Fixture source |
+|---|---|---|---|
+| [Desktop startup](member-banner-startup-desktop.png) | Backing image and action while the decorative player initializes | 1440 × 900 | `e2e/hero-banner.spec.ts` |
+| [Mobile startup](member-banner-startup-mobile.png) | Backing image and the separate action below the narrow banner | 1024 × 2216 | `e2e/hero-banner.spec.ts` |
+
+Run `npx playwright test --config playwright.banner.config.ts --grep 'startup controls stay'`. The test writes `startup-first.png` and `startup-reload.png` in the desktop/mobile result directories. Desktop uses a 1440 × 900 viewport; mobile uses Pixel 7 emulation at 390 × 844 CSS pixels and its device scale factor. The same cases check initial load, reload, buffering, normal fade and reduced motion. These captures illustrate startup concealment; the separate opt-in real-provider tests verify actual playback and native controls. No new third-party material is distributed; application dependencies retain their original licenses.
+
 ## Website preview
 
 [website-preview.jpg](website-preview.jpg) is an unchanged 956 × 720 capture of the website from September 14, 2026. It shows the header, wordmark and planned services. It illustrates the website, not a hosted application demo.
